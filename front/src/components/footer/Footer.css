@@ -1,0 +1,13 @@
+#footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #ddd;
+  border-radius: 15px 15px;
+}
+
+#footer ul {
+  list-style-type: none;
+}

@@ -1,0 +1,29 @@
+nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: #ddd;
+  border-radius: 15px 15px;
+}
+nav ul {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+}
+nav ul li {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.1em 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+nav ul li:hover {
+  color: #aaa;
+  border-left: 1px solid blue;
+  border-right: 1px solid blue;
+}

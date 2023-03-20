@@ -1,3 +1,4 @@
+
 import { Router } from 'express';
 import jetValidator from 'jet-validator';
 
@@ -85,10 +86,15 @@ productRouter.get(
   ProductRoutes.getOne,
 );
 
+// productRouter.get(
+//   Paths.Products.getMany,
+//   ProductRoutes.
+// )
+
 productRouter.get(
   Paths.Products.Migrate,
   ProductRoutes.migrate,
-)
+);
 
 productRouter.post(
   Paths.Products.Add,
