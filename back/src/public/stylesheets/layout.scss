@@ -1,0 +1,9 @@
+@import '_globals';
+
+ul {
+  list-style: none;
+  li a {
+    text-decoration: none;
+    color: $zinc-700;
+  }
+}

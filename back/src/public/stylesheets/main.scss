@@ -1,0 +1,57 @@
+@import '_globals';
+@import 'layout';
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.align-start {
+    align-items: flex-start;
+  }
+  &.align-end {
+    align-items: flex-end;
+  }
+  &.justify-start {
+    justify-content: flex-start;
+  }
+  &.justify-end {
+    justify-content: flex-end;
+  }
+  &.justify-around {
+    justify-content: space-around;
+  }
+  &.justify-between {
+    justify-content: space-between;
+  }
+  &.gap-1 {
+    gap: 1rem;
+  }
+  &.column {
+    flex-direction: column;
+    @media screen and (max-width: 680px) {
+      
+    }
+    @media screen and (min-width: 680px) and (max-width: 1280px) {
+
+    }
+    @media screen and (min-width: 1280px) {
+      
+    }
+  }
+  @media screen and (max-width: 680px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  @media screen and (min-width: 680px) and (max-width: 1280px) {
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: 1280px) {
+    
+  }
+}
+
+.grid {
+  display: grid;
+  
+}

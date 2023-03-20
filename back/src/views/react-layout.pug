@@ -1,0 +1,20 @@
+!DOCTYPE html
+html
+    head
+        meta charset="UTF-8"
+        title Hello React
+        script(src="https://unpkg.com/react@18/umd/react.development.js")
+        script(src="https://unpkg.com/react-dom@18/umd/react-dom.development.js")
+        script(src="https://unpkg.com/@babel/standalone@latest/babel.min.js")
+
+    body
+        div#root
+        script(type='text/babel')
+            // Rendu dans le DOM de deux components hiérarchiques
+            const Hello = () => {
+                return (
+                    <div className=''> Hello </div>
+                )
+            };
+            ReactDOM.createRoot(document.getElementById('root')).render(<Hello />);
+

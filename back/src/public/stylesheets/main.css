@@ -1,0 +1,49 @@
+ul {
+  list-style: none;
+}
+ul li a {
+  text-decoration: none;
+  color: rgb(63, 63, 70);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex.align-start {
+  align-items: flex-start;
+}
+.flex.align-end {
+  align-items: flex-end;
+}
+.flex.justify-start {
+  justify-content: flex-start;
+}
+.flex.justify-end {
+  justify-content: flex-end;
+}
+.flex.justify-around {
+  justify-content: space-around;
+}
+.flex.justify-between {
+  justify-content: space-between;
+}
+.flex.gap-1 {
+  gap: 1rem;
+}
+.flex.column {
+  flex-direction: column;
+}
+@media screen and (max-width: 680px) {
+  .flex {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+@media screen and (min-width: 680px) and (max-width: 1280px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,59 @@
+// global style 
+
+// import variables
+
+@import '_colors';
+
+// ----------------------------------- colors definition --------------------------------------------------------
+
+
+$primary-color: rgba(252, 252, 252);
+$secondary-color: rgba(235, 255, 235);
+$tertiary-color: rgba(253, 230, 240);
+$fourth-color: rgba(255, 245, 210);
+$fifth-color: rgba(255, 157, 51);
+$sixth-color: rgba(30, 32, 30);
+$text: rgba(30, 32, 30, 0.5);
+$interactive-color: rgba(202, 202, 202);
+
+// ----------------------------------- spaces definition ---------------------------------------------------------
+
+// ---------------------------------------relative ---------------------------------------------------
+
+$sizes-vw: 5vw, 10vw, 15vw, 20vw, 25vw, 30vw, 35vw, 40vw, 45vw, 50vw, 55vw, 60vw, 65vw, 70vw, 75vw, 80vw, 85vw, 90vw, 95vw, 100vw;
+$sizes-vh: 5vh, 10vh, 15vh, 20vh, 25vh, 30vh, 35vh, 40vh, 45vh, 50vh, 55vh, 60vh, 65vh, 70vh, 75vh, 80vh, 85vh, 90vh, 95vh, 100vh;
+$sizes-em: .25rem, .375rem, .5rem, .625rem, .75rem, .875rem, 1rem, 2rem, 3rem, 4rem, 5rem, 6rem, 7rem, 8rem, 9rem, 10rem;
+$sizes-em: 1em, 2em, 3em, 4em, 5em, 6em, 7em, 8em, 9em, 10em;
+
+// --------------------------------------- absolute ---------------------------------------------------
+
+$sizes-px: 0px, 1px, 2px, 3px, 4px, 5px, 10px, 15px, 20px, 25px, 30px, 35px, 40px, 45px, 50px, 55px, 60px, 65px, 70px, 75px, 80px, 85px, 90px, 100px;
+$sizes-px-large: 150px, 200px, 250px, 300px, 350px, 400px, 450px, 500px, 550px, 600px, 650px, 700px, 750px, 800px, 850px, 900px, 950px, 1000px;
+
+// -------------------------------------------   -------------------------------------------------------
+
+$sizes-round: 0.125rem, 0.25rem, 0.375rem, 0.5rem, 0.75rem, 1rem, 1.5rem, 9999px;
+$sizes-border: 1px, 2px, 4px, 6px, 8px, 10px;
+$b-shadow-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$b-shadow-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+$b-shadow-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$b-shadow-4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$b-shadow-5: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+$b-shadow-6: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+
+$desktop-margin-layout: 5vw;
+$mobile-margin-layout: 1%;
+
+
+$font-size: 13px;
+$space1: 1rem;
+$space2: 2rem;
+$space3: 3rem;
+$br-5: 5px;
+$br-10: 10px;
+$br-20: 20px;
+
+
+// ----------------------------------------------------- colors -------------------------------------------------------------------
+

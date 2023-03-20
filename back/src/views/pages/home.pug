@@ -1,0 +1,57 @@
+extends ../layout
+
+block content
+  main.home.center
+    //h1 #{title}
+    section.hero.bg-fourth-color.p-y-2
+      article.flex.gap-30
+        div.flex-40
+          div 
+            img(src="./images/photos/plantemain.png" width=300 height=300).round-mid
+        div.flex-40
+          h1 Planty, votre jardinière connectée 
+          p Home is behind, the world ahead and there are many paths to tread through shadows to the edge.
+          a(href="/product").btn Purchase Now
+
+    section.bg-primary-color
+      article.flex.bg-secondary-color.p-y-2.p-x-2.m-x-y-2
+        div.p-x-2.p-y-2.flex-element-40  
+          img(src="./images/photos/jardinière1.png" width=200 height=200)
+        div.p-x-2.p-y-2.flex-element-40  
+          h3 SOLDES SOLDES SOLDES 
+          p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi ex aliquid voluptatum perspiciatis est ipsa
+          a(href="/product").btn Purchase Now 
+
+      section.flex-column.text-center.p-y-2.p-x-2.m-x-y-2
+        h3 Nos produits
+        div.flex.gap-10
+          article.flex-column.relative 
+            img(src="./images/photos/pot1.jpg" width="250" height="250")
+            div.price.bg-fifth-color 45.9e
+            h4 Pot connecté
+          article.flex-column.relative 
+            img(src="./images/photos/pot2.jpg" width="250" height="250")
+            div.price.bg-fifth-color 45.9e
+            h4 Pot connecté
+          article.flex-column.relative 
+            img(src="./images/photos/pot3.jpg" width="250" height="250")
+            div.price.bg-fifth-color 45.9e
+            h4 Pot connecté
+
+
+    section.p-y-2.p-x-2.m-x-y-2.text-center.hero
+      article.bg-teriary-color.flex.gap-20
+        div 
+          img(src="./images/photos/rose.png")
+        div 
+          h3 Notre mission
+          p It's dangerous business, Frodo, going out your door. You step onto the road Where the Shadows lie.
+
+    section.flex.gap-20.p-y-2.p-x-2.m-x-y-2.text-center.hero
+      div
+        h2 Download now
+        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, aliquid sint?
+        div 
+          a(href="#").btn.m-x-10 Get started
+          a(href="#").btn2.m-x-10 Learn More
+      img(src="./images/photos/data.jpg")
