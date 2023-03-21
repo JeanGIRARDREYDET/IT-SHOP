@@ -11,6 +11,7 @@ import {
   LoaderFunction,
   ActionFunction,
 } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 
 interface IRoute {
