@@ -7,6 +7,7 @@ const handleFiltering = (filter: any) => {
 }
 const Products = () => {
   const [fetchRes, setFetchRes] = useState([])
+  const [filter, setFilter] = useState({})
   const url = 'http://localhost:3000/api/products'
   useEffect(() => {
     fetch(url).then(res => res.json()).then(result => {
