@@ -1,8 +1,22 @@
-type Props = {
 
+export interface IProduct {
+  id?: object | undefined;
+  name: string;
+  brand: string;
+  description: string;
+  categories: string[];
+  images: string[];
+  price: number;
+  stock: number;
+  rating: number;
+  createdAt: Date;
 }
 
-const ProductCard = ({}: Props) => {
+type Props = {
+  product: IProduct
+}
+
+const ProductCard = ({product}: Props) => {
   return (
     <div className="card">
       <div className="header">

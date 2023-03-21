@@ -9,7 +9,9 @@ const Products = () => {
   return (
     <>
       <div className="container wrap desktop:columns-5 mobile:columns-2">
-        { }
+        { fetchRes.map(product => {
+          return (<ProductCard product={product} />)
+        }) }
       </div>
     </>
   )
