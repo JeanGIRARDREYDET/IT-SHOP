@@ -5,7 +5,7 @@ import SearchBar from '../searchBar/SearchBar';
 import './Nav.css'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import PersonIcon from '@mui/icons-material/Person';
 import Logo from "../../assets/IT_Shop.png"
 
 
@@ -24,7 +24,6 @@ const Nav = ({onSearch}: Props) => {
         <img src={Logo} alt=""/>
         </NavLink>
         
-
         
       </div>
       <div id="searchshits">
@@ -34,7 +33,7 @@ const Nav = ({onSearch}: Props) => {
         <ul>
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink to="/products" >Products</NavLink>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/login"><PersonIcon /></NavLink>
           <NavLink to="/cart"><ShoppingCartIcon /></NavLink>
         </ul>
       </div>
