@@ -7,7 +7,7 @@ const Products = () => {
     fetch(url).then(res => res.json()).then(result => [...fetchRes, result.products])
   }, [])
   return (
-    <>
+    <><h1>Products</h1>
       <div className="container wrap desktop:columns-5 mobile:columns-2">
         { fetchRes.map(product => {
           return (<ProductCard product={product} />)

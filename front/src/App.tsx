@@ -12,6 +12,9 @@ import {
   ActionFunction,
 } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router-dom";
+import Products from './components/products/Products'
+import Login from './components/login/Login'
+import Cart from './components/cart/Cart'
 
 
 // interface IRoute {
@@ -67,9 +70,10 @@ function App() {
         {/* <RouterProvider router={router} fallbackElement={ <BigSpinner /> } /> */}
         <Routes>
         {/*  path-հասցե, element-ինչը ցույց տա*/}
-          <Route path="/" element={ <Home /> }>
-          {/* <Route index element={<Home />} /> */}
-        </Route>
+          <Route path="/" element={ <Home /> }/>
+          <Route path="/products" element={ <Products /> }/>
+          <Route path="/login" element={ <Login /> }/>
+          <Route path="/cart" element={ <Cart /> }/>
           {/* 
               Ридирект
               Սենց կարանք տանք path որը կգննա նույն element-ը
