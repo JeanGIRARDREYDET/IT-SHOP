@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import ProductCard from "../productCard/ProductCard"
 import Box from '@mui/material/Box';
-
+import ProductFilter from "../productFilter/ProductFilter";
+const handleFiltering = (filter: any) => {
+  console.log(filter)
+}
 const Products = () => {
   const [fetchRes, setFetchRes] = useState([])
   const url = 'http://localhost:3000/api/products'
@@ -21,6 +24,7 @@ const Products = () => {
                   }
               
     }>
+      <ProductFilter products={fetchRes} onFilter={handleFiltering} />
         { fetchRes.map((product, index) => {
           return (<ProductCard product={product} key={index}/>)
         }) }

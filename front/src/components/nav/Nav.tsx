@@ -40,7 +40,7 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 }
 
 const Nav = ({onSearch}: Props) => {
-  const [formattedProducts, setFormattedProducts] = useState<IFormattedProduct[]>([])
+
   useEffect(()=> {
   }, [])
   return (
