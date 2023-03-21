@@ -16,6 +16,7 @@ import Products from './components/products/Products'
 import Login from './components/login/Login'
 import Cart from './components/cart/Cart'
 import Product from './components/product/Product'
+import ErrorPage from './pages/ErrorPage'
 
 
 // interface IRoute {
@@ -63,39 +64,16 @@ import Product from './components/product/Product'
 // );
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <Layout>
-        {/* <RouterProvider router={router} fallbackElement={ <BigSpinner /> } /> */}
         <Routes>
-        {/*  path-հասցե, element-ինչը ցույց տա*/}
           <Route path="/" element={ <Home /> }/>
-          <Route path="/products" element={ <Products /> }/>
+          <Route path="/products" element={ <Products />}/>
           <Route path="/product/:id" element={ <Product /> }/>
           <Route path="/login" element={ <Login /> }/>
           <Route path="/cart" element={ <Cart /> }/>
-          {/* 
-              Ридирект
-              Սենց կարանք տանք path որը կգննա նույն element-ը
-              Սենց խորհուրդ չի տրվում search ռոբոտը կհասկանա 2 դուբլ
-              Ճիշտ Ридирект անելու համար խորհուրդա տրվում օգտագործել Navigate կոմպոնենտը
-              <Route path="about-us" element={<About />} /> 
-          */}
-          {/* Navigate to-ով անում ենք պերեադրեսացիյա replace դնում ենք որ հիշողությունում չպահի*/}
-          {/* <Route path="about-us" element={<Navigate to="/about" replace />} />
-          <Route path="posts" element={<Blogpage />} />
-          <Route path="contact" element={<Contact />} />
-
-          {/* <Route path="posts/:id/:category/:title" element={<Singlepage />} /> */}
-          {/* posts/:id - սենց կետով փոխանցում ենք useParams {id: "id"}*/}
-
-        
-          {/* <Route path="login" element={<Loginpage />} /> */}
-          {/* "*"-դնելով հասկացնում ենք մնացած դեպքերում  */}
-          {/* <Route path="*" element={<Notfoundpage />} /> */}
- 
+          <Route path="/*" element={<ErrorPage />} /> 
       </Routes>
       </Layout>
     </div>

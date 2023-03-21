@@ -32,7 +32,7 @@ const ProductCard = ({product}: Props) => {
         </div>
         <div className="main">
         
-        <Link to={`/product/${product._id}`} >{product.name}</Link>
+        <Link to={`/product/${product._id}`} state={{ data: product }}>{product.name}</Link>
         
         name : {product.name}
         </div>

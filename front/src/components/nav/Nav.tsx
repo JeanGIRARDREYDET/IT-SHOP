@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import { NavLink, Outlet } from "react-router-dom";
 import ProTip from '../proTip/ProTip';
 import SearchBar from '../searchBar/SearchBar';
@@ -35,7 +35,8 @@ type Props = {
   onSearch: any
 }
 const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | null) => {
-  console.log(value)
+  console.log(`product/${value?._id}`)
+  return redirect(`/product/${value?._id}`)
 }
 
 const Nav = ({onSearch}: Props) => {
