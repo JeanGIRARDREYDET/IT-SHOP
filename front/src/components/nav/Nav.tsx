@@ -33,9 +33,10 @@ const Nav = ({onSearch}: Props) => {
       <div id="navshits" className="">
         <ul>
           { /*  or <li> via children ?  ADD ROUTER */ }
-          <li className=""><NavLink to="/products" /></li>
-          <li className="">Catégories</li>
-          <li className=""><ShoppingCartIcon /></li>
+          <NavLink to="/products" >Products</NavLink>
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/cart"><ShoppingCartIcon /></NavLink>
+
         </ul>
       </div>
     </nav>
