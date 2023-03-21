@@ -21,7 +21,7 @@ const Paths = {
   },
   Products: {
     Base: '/products',
-    Get: '/all',
+    Get: '',
     GetOne: '/:id',
     Migrate: '/migrate/all',
     Add: '/add',
