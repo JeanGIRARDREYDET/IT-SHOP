@@ -6,9 +6,9 @@ type LayoutProps = {
   children: React.ReactNode;
 }
 
-const handleSearch = (event: Event) => {
-  const target = event.target as HTMLButtonElement;
-  console.error(target.value)
+const handleSearch = (inputSearch: string) => {
+  // const target = event.target as HTMLButtonElement;
+  console.error(inputSearch)
   
 }
 

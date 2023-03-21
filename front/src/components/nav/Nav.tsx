@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ProTip from '../proTip/ProTip';
 import SearchBar from '../searchBar/SearchBar';
 import './Nav.css'
 
@@ -15,6 +16,7 @@ const Nav = ({onSearch}: Props) => {
       </div>
       <div id="searchshits">
         <SearchBar onSearch={onSearch} />
+        <ProTip />
       </div>
       <div id="navshits" className="">
         <ul>
