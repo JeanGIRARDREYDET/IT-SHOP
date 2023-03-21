@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import ProTip from '../proTip/ProTip';
 import SearchBar from '../searchBar/SearchBar';
 import './Nav.css'
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+
 
 type Props = {
   onSearch: any
@@ -12,7 +14,7 @@ const Nav = ({onSearch}: Props) => {
     <nav >
       <div id="brandshits" className="">
         <img src="" alt=""></img>
-        <div>Home redirection</div>
+        <HomeOutlinedIcon />
       </div>
       <div id="searchshits">
         <SearchBar onSearch={onSearch} />
