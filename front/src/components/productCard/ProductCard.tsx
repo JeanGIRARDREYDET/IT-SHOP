@@ -1,6 +1,6 @@
-
+import { Link } from 'react-router-dom';
 export interface IProduct {
-  id?: object | undefined;
+  _id?: object | undefined;
   name: string;
   brand: string;
   description: string;
@@ -23,7 +23,11 @@ const ProductCard = ({product}: Props) => {
         <img></img>
       </div>
       <div className="main">
-        name : {product.name}
+        <>
+        <Link to={`/products/${product._id}`} >{product.name}</Link>
+        </>
+        <>name : {product.name}</>
+        
       </div>
       <div className="footer">
 

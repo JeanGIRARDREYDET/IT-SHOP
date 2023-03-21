@@ -5,7 +5,7 @@ const Products = () => {
   const url = 'http://localhost:3000/api/products/all'
   useEffect(() => {
     fetch(url).then(res => res.json()).then(result => {
-      console.table(result)
+     // console.table(result)
       setFetchRes(prev => [...prev, ...result])
     }
       )
