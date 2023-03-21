@@ -1,6 +1,7 @@
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
 import './Layout.css';
+import { Outlet } from "react-router-dom";
 
 type LayoutProps = {
   children: React.ReactNode;

@@ -34,7 +34,7 @@ const SearchBar = ({onSearch}: Props) => {
       </button> */}
 <Box sx={{ m: 1 }}>
 
-      <SearchIcon onClick={handle}  />
+      <SearchIcon onClick={handle} className={Style.cursor} />
 </Box>
 
 

@@ -67,7 +67,7 @@ function App() {
         {/* <RouterProvider router={router} fallbackElement={ <BigSpinner /> } /> */}
         <Routes>
         {/*  path-հասցե, element-ինչը ցույց տա*/}
-          <Route path="/" element={<Home />}>
+          <Route path="/" element={ <Home /> }>
           {/* <Route index element={<Home />} /> */}
         </Route>
           {/* 
