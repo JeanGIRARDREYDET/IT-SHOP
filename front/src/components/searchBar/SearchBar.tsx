@@ -20,26 +20,25 @@ const SearchBar = ({onSearch}: Props) => {
   
   return (
     <>
-      <Box sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-          }}>
+      <div
+          className={Style.input1}
+          >
 
-      <input type="text" placeholder="chercher un produit" onKeyUp={(e) => setSearchValue(e.currentTarget.value)}></input>
+            
+      <input className={Style.searchBar} type="text" placeholder="chercher un produit" onKeyUp={(e) => setSearchValue(e.currentTarget.value)}></input>
     
 
       {/* <button className={Style.SearchIcone} onClick={handle}> 
       <SearchIcon  />
       </button> */}
-<Box sx={{ m: 1 }}>
+        <Box sx={{ m: 1 }}>
 
-      <SearchIcon onClick={handle} className={Style.cursor} />
-</Box>
+          <SearchIcon onClick={handle} className={Style.cursor} />
+        </Box>
 
 
 
-      </Box>
+      </div>
       
     </>
 
