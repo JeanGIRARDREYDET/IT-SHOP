@@ -63,7 +63,7 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <RouterProvider router={router} fallbackElement={<BigSpinner />}/>
+        <RouterProvider router={router} fallbackElement={ <BigSpinner /> }/>
       </Layout>
     </div>
   )
