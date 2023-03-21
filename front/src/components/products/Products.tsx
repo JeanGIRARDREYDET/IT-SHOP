@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 const Products = () => {
   const [fetchRes, setFetchRes] = useState([])
-  const url = 'http://localhost:3000/api/products/all'
+  const url = 'http://localhost:3000/api/products'
   useEffect(() => {
     fetch(url).then(res => res.json()).then(result => {
      // console.table(result)

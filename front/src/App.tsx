@@ -15,6 +15,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Products from './components/products/Products'
 import Login from './components/login/Login'
 import Cart from './components/cart/Cart'
+import Product from './components/product/Product'
 
 
 // interface IRoute {
@@ -72,6 +73,7 @@ function App() {
         {/*  path-հասցե, element-ինչը ցույց տա*/}
           <Route path="/" element={ <Home /> }/>
           <Route path="/products" element={ <Products /> }/>
+          <Route path="/product/:id" element={ <Product /> }/>
           <Route path="/login" element={ <Login /> }/>
           <Route path="/cart" element={ <Cart /> }/>
           {/* 
