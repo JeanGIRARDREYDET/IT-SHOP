@@ -52,8 +52,8 @@ const Nav = ({onSearch}: Props) => {
         
       </div>
       <div id="searchshits">
-        {/* <SearchBar onSearch={onSearch} /> */}
-        <CustomAutocomplete onChange={handleSearch} />
+        <SearchBar onSearch={handleSearch} />
+        
       </div>
       <div></div>
       <div id="navshits" className="">

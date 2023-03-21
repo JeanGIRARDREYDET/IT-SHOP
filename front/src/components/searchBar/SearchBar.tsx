@@ -1,22 +1,30 @@
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, SyntheticEvent, useState } from 'react';
 import Style from './SearchBar.module.css'
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import { spacing } from '@mui/system';
+import CustomAutocomplete from '../autoComplete/AutoComplete';
 
 
 type Props = {
-  onSearch: (inputValue: string) => void;
+  onSearch: (event: SyntheticEvent<Element, Event>, value: IProduct | null) => void;
+}
+
+export interface IProduct {
+  _id?: object | undefined;
+  name: string;
+  brand: string;
+  description: string;
+  categories: string[];
+  images: string[];
+  price: number;
+  stock: number;
+  rating: number;
+  createdAt: Date;
 }
 
 
 const SearchBar = ({onSearch}: Props) => {
-  const [searchValue, setSearchValue] = useState('')
-
-  const handle = () => {
-    onSearch(searchValue)
-  }
-
   
   return (
     <>
@@ -25,15 +33,15 @@ const SearchBar = ({onSearch}: Props) => {
           >
 
             
-      <input className={Style.searchBar} type="text" placeholder="chercher un produit" onKeyUp={(e) => setSearchValue(e.currentTarget.value)}></input>
+      <CustomAutocomplete onChange={onSearch} />
     
 
       {/* <button className={Style.SearchIcone} onClick={handle}> 
       <SearchIcon  />
       </button> */}
-        <Box sx={{ m: 1 }}>
+        <Box sx={{ m: 2 }}>
 
-          <SearchIcon onClick={handle} className={Style.cursor} />
+          <SearchIcon />
         </Box>
 
 
