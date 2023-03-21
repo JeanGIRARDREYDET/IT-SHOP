@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { NavLink, Outlet } from "react-router-dom";
 import ProTip from '../proTip/ProTip';
 import SearchBar from '../searchBar/SearchBar';
 import './Nav.css'
@@ -19,7 +20,10 @@ const Nav = ({onSearch}: Props) => {
   return (
     <nav >
       <div id="brandshits" className="">
+      <NavLink to="/">
         <img src={Logo} alt=""/>
+        </NavLink>
+        
 
         
       </div>
@@ -29,7 +33,7 @@ const Nav = ({onSearch}: Props) => {
       <div id="navshits" className="">
         <ul>
           { /*  or <li> via children ?  ADD ROUTER */ }
-          <li className="">Produits</li>
+          <li className=""><NavLink to="/products" /></li>
           <li className="">Catégories</li>
           <li className=""><ShoppingCartIcon /></li>
         </ul>
