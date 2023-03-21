@@ -1,3 +1,9 @@
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Style from "./Productcard.module.css";
+
+
 
 export interface IProduct {
   id?: object | undefined;
@@ -17,18 +23,24 @@ type Props = {
 }
 
 const ProductCard = ({product}: Props) => {
-  return (
-    <div className="card">
-      <div className="header">
-        <img></img>
-      </div>
-      <div className="main">
-        name : {product.name}
-      </div>
-      <div className="footer">
+  return ( 
+    <Card className={Style.Card} sx={{ width: 250 }}>
+      <CardContent>
 
-      </div>
-    </div>
+        <div className="header">
+          <img></img>
+        </div>
+        <div className="main">
+          name : {product.name}
+        </div>
+        <div className="footer">
+
+        </div>
+      </CardContent>
+
+    </Card>  
+
+
   )
 }
 
