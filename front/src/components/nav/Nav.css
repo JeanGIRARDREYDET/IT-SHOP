@@ -27,3 +27,8 @@ nav ul li:hover {
   border-left: 1px solid blue;
   border-right: 1px solid blue;
 }
+
+img{
+
+  width: 20%;
+}
