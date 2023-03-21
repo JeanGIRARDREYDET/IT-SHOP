@@ -36,7 +36,6 @@ const Nav = ({onSearch}: Props) => {
           <NavLink to="/products" >Products</NavLink>
           <NavLink to="/login">Login</NavLink>
           <NavLink to="/cart"><ShoppingCartIcon /></NavLink>
-
         </ul>
       </div>
     </nav>

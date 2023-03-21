@@ -11,6 +11,7 @@ import { IReq, IRes } from './types/express/misc';
  * Get all products.
  */
 async function getAll(_: IReq, res: IRes) {
+  console.log('API PRODUCTS')
   const products = await ProductService.getAll();
 
   return res.status(HttpStatusCodes.OK).json(products);

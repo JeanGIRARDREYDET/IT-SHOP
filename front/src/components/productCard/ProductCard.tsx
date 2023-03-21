@@ -23,7 +23,7 @@ const ProductCard = ({product}: Props) => {
         <img></img>
       </div>
       <div className="main">
-
+        name : {product.name}
       </div>
       <div className="footer">
 

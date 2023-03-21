@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import ProductCard from "../productCard/ProductCard"
 const Products = () => {
   const [fetchRes, setFetchRes] = useState([])
-  const url = 'localhost:3000/api/products'
+  const url = 'http://localhost:3000/api/products/all'
   useEffect(() => {
-    fetch(url).then(res => res.json()).then(result => [...fetchRes, result.products])
+    fetch(url).then(res => res.json()).then(result => console.table(result))
   }, [])
   return (
     <><h1>Products</h1>

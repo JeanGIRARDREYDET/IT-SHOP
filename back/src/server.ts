@@ -16,6 +16,7 @@ import Paths from '@src/routes/constants/Paths';
 
 import EnvVars from '@src/constants/EnvVars';
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
+import  cors from 'cors'
 
 import { NodeEnvs } from '@src/constants/misc';
 import { RouteError } from '@src/other/classes';
@@ -37,7 +38,8 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser(EnvVars.CookieProps.Secret));
-
+app.use(cors());
+app.options('*', cors()) // include before other routes
 // Show routes called in console during development
 if (EnvVars.NodeEnv === NodeEnvs.Dev) {
   app.use(morgan('dev'));
