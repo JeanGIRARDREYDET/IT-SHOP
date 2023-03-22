@@ -4,7 +4,7 @@ import { IUser } from '../../types/user'
 import Styles from './SignIn.module.css'
 
 type Props = {
-  onSignIn: any
+  onSignInFull: any
 }
 // type User = {
 //   firstname: string;
