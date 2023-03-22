@@ -1,0 +1,10 @@
+.footer{
+    height: 5rem;
+    position:relative;
+    top:0
+}
+.add{
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 0.1rem;
+}

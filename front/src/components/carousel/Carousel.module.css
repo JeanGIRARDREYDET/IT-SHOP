@@ -1,5 +1,5 @@
 .slick-slide {
-    height: auto; // ← that must not be ignored
+    height: 100vh;
   }
   .slick-track {
     display: flex;

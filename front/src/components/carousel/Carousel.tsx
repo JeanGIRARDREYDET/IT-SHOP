@@ -11,7 +11,8 @@ import { IProduct } from '../../types/product';
 type Props = {
   product:IProduct,
   slides : number,
-  autoplay: boolean
+  autoplay: boolean,
+  arrows:boolean
 }
 const Carrousel = ({product,slides,autoplay}:Props)=>  {
     // Définition du chemin du produit
@@ -26,7 +27,10 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
       autoplay:autoplay,
       autoplaySpeed: 1000,
       centerMode: true,
-      vertical: false
+      vertical: false,
+      arrows: false,
+      pauseOnFocus : true,
+      swipe:false
     };
 
  
