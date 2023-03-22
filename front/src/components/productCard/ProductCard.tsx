@@ -1,7 +1,11 @@
+import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Style from "./Productcard.module.css";
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Style from "./ProductCard.module.css"
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -39,41 +43,38 @@ const AddProductToCart = (e)=>{
 
 const ProductCard = ({product}: Props) => {
 
-const image = `src/assets/products/${product._id}/${product.images[0]}`  
+const images = `src/assets/products/${product._id}/${product.images[0]}`  
 
-console.log(image);
 
 
   return ( 
    
         <Link to={`/product/${product._id}`} state={{ data: product }}>
-    <Card className={Style.Card} sx={{ width: 260 }}>
-      <CardContent >
 
-        <div className="header">
-        <img className={Style.images} src={image}/>
-         
-        </div>
-        <div className="main">
-        
-       <h1 className={Style.title}>{product.name.slice(0,25)}...</h1> 
-       <h2 className={Style.rating}>{product.rating}</h2> 
-        
 
-        </div>
-        <div className={Style.footer}>
-        <Box sx={{ display: 'flex',
-                  justifyContent: 'space-evenly'
-      }}>
-         <p className={Style.price}>{product.price}€</p>
 
-          <p><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e)} className={Style.add} /></p>
-
-        </Box>
-        </div>
+<Card className={Style.Card} sx={{ width: 345,height:345 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image={images}
+        title="green iguana"
+      />
+      <CardContent>
+        <Typography className={Style.title} gutterBottom variant="h5" component="div">
+        {product.name.slice(0,25)}...
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+       {product.description.slice(0,15)}
+        </Typography>
       </CardContent>
+      <CardActions>
+        <Button className={Style.price}>{product.price}€</Button>
+        <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e)} className={Style.add} /></Button>
+      </CardActions>
+    </Card>
 
-    </Card>  
+
+    
     </Link>
 
 
