@@ -38,7 +38,7 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
          <div key={index}>
             <img src={image_url+image} alt={product.name+ "_" + index} />
           </div>
-         )) }
+         ))}
         </Slider>
       </div>
     );

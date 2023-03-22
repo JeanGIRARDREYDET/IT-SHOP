@@ -13,10 +13,10 @@ const Product = () => {
     return (
     <>
         <Grid container spacing={2}>
-            <Grid xs={4}>
+            <Grid xs={4} >
                 <Carrousel product={product} autoplay={true} slides={1} />
             </Grid>
-            <Grid xs={8}>
+            <Grid xs={8} >
                 <h1>{product.name} </h1>
                 <div>ref : {id}</div>
                 <div>name : {product.name}</div>
