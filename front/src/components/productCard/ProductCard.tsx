@@ -67,8 +67,9 @@ const images = `src/assets/products/${product._id}/${product.images[0]}`
        {product.description.slice(0,15)}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button className={Style.price}>{product.price}€</Button>
+
+      <CardActions className={Style.footer}>
+        <Button color="error">{product.price}€</Button>
         <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e)} className={Style.add} /></Button>
       </CardActions>
     </Card>
