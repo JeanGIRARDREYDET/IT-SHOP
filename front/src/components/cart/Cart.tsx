@@ -1,9 +1,12 @@
 import Styles from './Cart.module.css'
 
-const Cart = ()=> {
+type Props = {
+  cartProducts: []
+}
+const Cart = ({cartproducts}: Props)=> {
  return (
 <>
-<h1>Cart</h1>
+  <h1>Cart</h1>
 </>
 
  )
