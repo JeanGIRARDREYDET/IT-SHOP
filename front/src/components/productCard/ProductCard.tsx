@@ -48,6 +48,9 @@ const [fetchRes, setFetchRes] = useState([])
       )
   }, []) 
 
+
+ 
+
   const AddProductToCart = (e,nomProduit)=>{
   
     e.preventDefault()
@@ -71,26 +74,26 @@ const [fetchRes, setFetchRes] = useState([])
 
 
 
-<Card className={Style.Card} sx={{ width: 345,height:345 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image={images}
-        title="green iguana"
-      />
-      <CardContent>
-        <Typography className={Style.title} gutterBottom variant="h5" component="div">
-        {product.name.slice(0,25)}...
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-       {product.description.slice(0,15)}
-        </Typography>
-      </CardContent>
+      <Card className={Style.Card} sx={{ width: 345,height:345 }}>
+            <CardMedia
+              sx={{ height: 140 }}
+              image={images}
+              title="green iguana"
+            />
+            <CardContent>
+              <Typography className={Style.title} gutterBottom variant="h5" component="div">
+              {product.name.slice(0,25)}...
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+            {product.description.slice(0,15)}
+              </Typography>
+            </CardContent>
 
-      <CardActions className={Style.footer}>
-        <Button color="error">{product.price}€</Button>
-        <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e,product.name)} className={Style.add} /></Button>
-      </CardActions>
-    </Card>
+            <CardActions className={Style.footer}>
+              <Button color="error">{product.price}€</Button>
+              <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e,product.name)} className={Style.add} /></Button>
+            </CardActions>
+          </Card>
 
 
     
