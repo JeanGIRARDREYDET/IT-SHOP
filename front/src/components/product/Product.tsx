@@ -18,7 +18,7 @@ const Product = () => {
     
 
 
-    <div>categories : {product.categories.map((item:string, index) => 
+    <div>categories : {product.categories.map((item:string, index: number) => 
                              <div key={index}>cat-{item}-</div>
                            )}</div>
     <div>images : {product.images}</div>

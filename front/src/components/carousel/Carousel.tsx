@@ -32,15 +32,11 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
 
         {
           //src/assets/products/${product._id}/
-        product.images.map((image:string,index) => (
-           
-         <div><img src={image_url+image} alt={product.name+"_"+index} /></div>
-         )) }
-
-      
-          <div>
-            <h3>6</h3>
+        product.images.map((image:string, index: number) => (
+         <div key={index}>
+            <img src={image_url+image} alt={product.name+ "_" + index} />
           </div>
+         )) }
         </Slider>
       </div>
     );
