@@ -28,14 +28,14 @@ export interface ICart {
 }
 
 export interface IPaiement {
-  userID: Types.ObjectId
+  userID: string
   card_name: string;
   card_number: number;
   cvc: number;
   expiration_date: Date;
 }
 export interface IOrder {
-  userID: Types.ObjectId
+  userID: string
   products: ICartProduct[];
   delivery_address: string;
   billing_address: string;

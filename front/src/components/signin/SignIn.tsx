@@ -50,7 +50,7 @@ const SignIn = ({onSignIn}:Props)=> {
 
  return (
   <>
-  <h1>Pas encore client ?</h1>
+  <h2>Pas encore client ?</h2>
   
     <Box sx={{p: 2}}>
       <InputLabel htmlFor="email-login">Email address</InputLabel>

@@ -41,7 +41,7 @@ const SignInFull = ({onSignInFull}:Props)=> {
 
  return (
   <>
-  <h1>Pas encore client ?</h1>
+  <h2>Informations complémentaires </h2>
   
     <Box sx={{p: 2}}>
       <InputLabel htmlFor="email-login">Prenom</InputLabel>

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from "react"
+import { useContext } from 'react';
 
 
 
@@ -36,7 +37,7 @@ type Props = {
 const ProductCard = ({product}: Props) => {
 
 const images = `src/assets/products/${product._id}/${product.images[0]}`  
-
+// const theme = useContext(ThemeContext);
 const [fetchRes, setFetchRes] = useState([])
   const [filter, setFilter] = useState({})
   const url = 'http://localhost:3000/api/products'
@@ -48,20 +49,32 @@ const [fetchRes, setFetchRes] = useState([])
       )
   }, []) 
 
+<<<<<<< HEAD
 
  
 
   const AddProductToCart = (e,nomProduit)=>{
   
+=======
+  const AddProductToCart = (e: MouseEvent) => {
+    // useContext()
+    // useLocalStorage('product', product)
+
+    // si on veut ajouter le produit au panier de l'utilisateur
+    // Il faut récupérer l'id de l'utilisateur : on regarde dans le localstorage l'id de l'utilisateur const id = locatorage.id
+    // fetch user.find(id).cart.push(product)
+    // et ensuite requete pour trouver l'utilisateur et lui ajouter à son panier le produit
+
+>>>>>>> d794fa8650777528b7b64d22a683ad50b8b9d9b4
     e.preventDefault()
     e.stopPropagation()
-    console.log(nom);
+    console.log(product);
   
     
   
-    const ProduitPanier =fetchRes.find(p=>p.name===nomProduit)
+    // const ProduitPanier =fetchRes.find(p=>p.name===nomProduit)
   
-    console.log(ProduitPanier);
+    // console.log(ProduitPanier);
     
   
   
@@ -89,11 +102,19 @@ const [fetchRes, setFetchRes] = useState([])
               </Typography>
             </CardContent>
 
+<<<<<<< HEAD
             <CardActions className={Style.footer}>
               <Button color="error">{product.price}€</Button>
               <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e,product.name)} className={Style.add} /></Button>
             </CardActions>
           </Card>
+=======
+      <CardActions className={Style.footer}>
+        <Button color="error">{product.price}€</Button>
+        <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
+      </CardActions>
+    </Card>
+>>>>>>> d794fa8650777528b7b64d22a683ad50b8b9d9b4
 
 
     

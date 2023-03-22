@@ -18,15 +18,15 @@ const Product = () => {
     
 
 
-    <div>categories : {product.categories.map((item:string) => 
-                             <div>cat-{item}-</div>
+    <div>categories : {product.categories.map((item:string, index) => 
+                             <div key={index}>cat-{item}-</div>
                            )}</div>
     <div>images : {product.images}</div>
 
    
    
-    { product.images.map((item:string) => (
-         <div>img-{item}-</div>
+    { product.images.map((item:string, index: number) => (
+         <div key={index}>img-{item}-</div>
          ) 
                             
                            )
