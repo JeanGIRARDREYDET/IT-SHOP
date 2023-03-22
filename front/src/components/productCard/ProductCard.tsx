@@ -49,13 +49,6 @@ const [fetchRes, setFetchRes] = useState([])
       )
   }, []) 
 
-<<<<<<< HEAD
-
- 
-
-  const AddProductToCart = (e,nomProduit)=>{
-  
-=======
   const AddProductToCart = (e: MouseEvent) => {
     // useContext()
     // useLocalStorage('product', product)
@@ -65,7 +58,6 @@ const [fetchRes, setFetchRes] = useState([])
     // fetch user.find(id).cart.push(product)
     // et ensuite requete pour trouver l'utilisateur et lui ajouter à son panier le produit
 
->>>>>>> d794fa8650777528b7b64d22a683ad50b8b9d9b4
     e.preventDefault()
     e.stopPropagation()
     console.log(product);
@@ -102,19 +94,11 @@ const [fetchRes, setFetchRes] = useState([])
               </Typography>
             </CardContent>
 
-<<<<<<< HEAD
-            <CardActions className={Style.footer}>
-              <Button color="error">{product.price}€</Button>
-              <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e,product.name)} className={Style.add} /></Button>
-            </CardActions>
-          </Card>
-=======
       <CardActions className={Style.footer}>
         <Button color="error">{product.price}€</Button>
         <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
       </CardActions>
     </Card>
->>>>>>> d794fa8650777528b7b64d22a683ad50b8b9d9b4
 
 
     
