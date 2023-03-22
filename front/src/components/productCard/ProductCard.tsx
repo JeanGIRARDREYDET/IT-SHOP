@@ -39,7 +39,7 @@ const AddProductToCart = (e)=>{
 
 const ProductCard = ({product}: Props) => {
 
-const image = `/assets/products/${product._id}/${product.images[0]}`  
+const image = `src/assets/products/${product._id}/${product.images[0]}`  
 
 console.log(image);
 
@@ -47,11 +47,11 @@ console.log(image);
   return ( 
    
         <Link to={`/product/${product._id}`} state={{ data: product }}>
-    <Card className={Style.Card} sx={{ width: 250 }}>
+    <Card className={Style.Card} sx={{ width: 260 }}>
       <CardContent >
 
         <div className="header">
-        <img src={image}/>
+        <img className={Style.images} src={image}/>
          
         </div>
         <div className="main">
