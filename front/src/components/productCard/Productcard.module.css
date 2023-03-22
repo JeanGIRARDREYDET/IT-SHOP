@@ -1,4 +1,46 @@
 .Card{
 
-    margin:1rem
+    margin:1rem;
+    cursor: pointer;
+}
+.Card:hover{
+transform: scale(1.1);
+}
+
+.imageProduit{
+
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.title{
+
+    font-size: 1rem;
+    color: #012040;
+}
+
+
+.footer{
+
+    margin-top: 1rem;
+}
+
+.price{
+
+    color:#E22828;
+    display: inline;
+}
+
+.add{
+
+cursor: pointer;
+border: 1px solid black;
+padding: 0.1rem;
+
+}
+
+.add:hover{
+
+    transform: scale(1.5);
 }

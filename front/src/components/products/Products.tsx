@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import ProductCard from "../productCard/ProductCard"
 import Box from '@mui/material/Box';
 import ProductFilter from "../productFilter/ProductFilter";
+import Style from "./Products.module.css"
 const handleFiltering = (filter: any) => {
   console.log(filter)
 }
@@ -18,7 +19,8 @@ const Products = () => {
   }, [])
   return (
     <><h1>Products</h1>
-      <Box sx={{ display: 'flex',
+
+      <Box  sx={{ display: 'flex',
                   flexWrap: 'wrap' ,
                   justifyContent: 'space-evenly' 
                 }
@@ -28,6 +30,7 @@ const Products = () => {
           return (<ProductCard product={product} key={index}/>)
         }) }
       </Box>
+
     </>
   )
 }
