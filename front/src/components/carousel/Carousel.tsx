@@ -24,7 +24,7 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
       autoplaySpeed: 2000
      
     };
-    const image_url="src/assets/products/"+product._id+"/"
+    const image_url="/src/assets/products/"+product._id+"/"
     return (
       <div>
         <h2> Single Item</h2>
