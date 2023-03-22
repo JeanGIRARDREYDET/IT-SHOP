@@ -9,7 +9,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import Logo from "../../assets/IT_Shop.png"
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { IProduct } from '../../types/product'
-
+import {useContext} from 'react'
+import { CartContext } from '../../context/CartContext';
 
 
 // export interface IProduct {
@@ -40,7 +41,7 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 }
 
 const Nav = ({onSearch}: Props) => {
-
+  const userInfos = useContext(CartContext);
   useEffect(()=> {
   }, [])
   return (
@@ -49,8 +50,6 @@ const Nav = ({onSearch}: Props) => {
       <NavLink to="/">
         <img src={Logo} alt=""/>
         </NavLink>
-        
-        
       </div>
       <div id="searchshits">
         <SearchBar onSearch={handleSearch} />
@@ -61,7 +60,7 @@ const Nav = ({onSearch}: Props) => {
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink to="/products" >Products</NavLink>
           <NavLink to="/login"><PersonIcon /></NavLink>
-          <NavLink to="/cart"><ShoppingCartIcon /></NavLink>
+          <NavLink to="/cart"><ShoppingCartIcon className='flex' /><span className={'cart-product-number'}>{0}</span></NavLink>
         </ul>
       </div>
     </nav>

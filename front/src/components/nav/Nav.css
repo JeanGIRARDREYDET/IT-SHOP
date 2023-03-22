@@ -29,6 +29,14 @@ nav ul li:hover {
 }
 
 img{
-
   width: 20%;
 }
+.cart-product-number {
+  position: absolute;
+  font-size: 0.6rem;
+  color: green;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+

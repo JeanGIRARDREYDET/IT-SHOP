@@ -1,5 +1,5 @@
 export interface IProduct {
-  _id?: object | undefined;
+  _id?: string;
   name: string;
   brand: string;
   description: string;

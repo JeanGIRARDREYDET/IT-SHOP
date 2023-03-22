@@ -16,12 +16,15 @@ import Cart from './components/cart/Cart'
 import Product from './components/product/Product'
 import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
+import { CartContext } from './context/CartContext'
+import {UserInfos} from './context/CartContext'
 
-const CartContext = createContext(null);
 function App() {
+  const [userCart, setUserCart] = useState({userID: '', role: '', cart: []})
   return (
     <div className="App">
-      <CartContext.Provider value={[]}></CartContext.Provider>
+      
+      <CartContext.Provider value={UserInfos}></CartContext.Provider>
       <Layout>
         <Routes>
           <Route path="/" element={ <Home /> }/>

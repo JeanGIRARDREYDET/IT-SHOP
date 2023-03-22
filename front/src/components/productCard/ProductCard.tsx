@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from "react"
 import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 
 
@@ -40,15 +41,6 @@ const images = `src/assets/products/${product._id}/${product.images[0]}`
 // const theme = useContext(ThemeContext);
 const [fetchRes, setFetchRes] = useState([])
   const [filter, setFilter] = useState({})
-  const url = 'http://localhost:3000/api/products'
-  useEffect(() => {
-    fetch(url).then(res => res.json()).then(result => {
-     // console.table(result)
-      setFetchRes(prev => [...prev, ...result])
-    }
-      )
-  }, []) 
-
   const AddProductToCart = (e: MouseEvent) => {
     // useContext()
     // useLocalStorage('product', product)
@@ -57,9 +49,10 @@ const [fetchRes, setFetchRes] = useState([])
     // Il faut récupérer l'id de l'utilisateur : on regarde dans le localstorage l'id de l'utilisateur const id = locatorage.id
     // fetch user.find(id).cart.push(product)
     // et ensuite requete pour trouver l'utilisateur et lui ajouter à son panier le produit
-
+    // const {userID, role, cart, add} = useContext(CartContext)
     e.preventDefault()
     e.stopPropagation()
+    // userInfos.addProductToCart(product)
     console.log(product);
   
     
@@ -71,6 +64,16 @@ const [fetchRes, setFetchRes] = useState([])
   
   
   }
+  const url = 'http://localhost:3000/api/products'
+  useEffect(() => {
+    fetch(url).then(res => res.json()).then(result => {
+     // console.table(result)
+      setFetchRes(prev => [...prev, ...result])
+    }
+      )
+  }, []) 
+
+
 
 
   return ( 

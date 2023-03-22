@@ -2,7 +2,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import Styles from 'Product.module.css'
 import Carrousel from '../carousel/Carousel'
-import { Grid } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 
 
 const Product = () => {
@@ -17,6 +17,9 @@ const Product = () => {
                 <Carrousel product={product} autoplay={true} slides={1} />
             </Grid>
             <Grid xs={8} >
+              <Box sx={{p: 2}}>
+                
+                
                 <h1>{product.name} </h1>
                 <div>ref : {id}</div>
                 <div>name : {product.name}</div>
@@ -26,6 +29,7 @@ const Product = () => {
                 <div>stock : {product.stock}</div>
                 <div>rating : {product.rating}</div>
                 <div>description : {product.createdAt}</div>
+              </Box>
             </Grid>
         </Grid>
 
