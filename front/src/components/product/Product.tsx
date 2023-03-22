@@ -1,6 +1,7 @@
 import { Routes, Route, useParams } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import Styles from 'Product.module.css'
+import Carrousel from '../carousel/Carousel'
 
 const Product = () => {
     let { id } = useParams();
@@ -9,11 +10,12 @@ const Product = () => {
     console.log(product);
     return (
     <>
+    <Carrousel product={product} autoplay={true} slides={1} />
     <h1>The Best Product is {id}</h1>
     <div>name : {product.name}</div>
     <div>brand : {product.brand}</div>
     <div>description : {product.description}</div>
-
+    
 
 
     <div>categories : {product.categories.map((item:string) => 
@@ -23,10 +25,12 @@ const Product = () => {
 
    
    
-    { product.images.map((item:string) => 
-                             <div>img-{item}-</div>
+    { product.images.map((item:string) => (
+         <div>img-{item}-</div>
+         ) 
+                            
                            )
-                           }
+    }
 
   <div>Prix : {product.price}</div>
   <div>stock : {product.stock}</div>
