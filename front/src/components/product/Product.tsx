@@ -7,7 +7,7 @@ const Product = () => {
     let { id } = useParams();
     const location = useLocation();
     const product = location.state?.data;
-    console.log(product);
+
     return (
     <>
     <Carrousel product={product} autoplay={true} slides={1} />
