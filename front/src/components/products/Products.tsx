@@ -20,11 +20,9 @@ const Products = () => {
     <><h1>Products</h1>
       <Box sx={{ display: 'flex',
                   flexWrap: 'wrap' ,
-                  justifyContent: 'space-evenly'
-                    
-                  }
-              
-    }>
+                  justifyContent: 'space-evenly' 
+                }
+              }>
       <ProductFilter products={fetchRes} onFilter={handleFiltering} />
         { fetchRes.map((product, index) => {
           return (<ProductCard product={product} key={index}/>)
