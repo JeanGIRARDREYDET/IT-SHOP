@@ -21,7 +21,9 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
       slidesToShow: slides,
       slidesToScroll: 1,
       autoplay:autoplay,
-      autoplaySpeed: 2000
+      autoplaySpeed: 1000,
+      centerMode: true,
+      vertical: false
      
     };
     const image_url="/src/assets/products/"+product._id+"/"
