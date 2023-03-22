@@ -21,7 +21,7 @@ const Product = () => {
             </Grid>
             <Grid xs={8} >
               <Box sx={{p: 2}}>
-                <h1>{product.name} </h1>
+               
                 <div>ref : {id}</div>
                 <div>name : {product.name}</div>
                 <div>brand : {product.brand}</div>
