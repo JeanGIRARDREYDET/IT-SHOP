@@ -9,6 +9,7 @@ import Style from "./ProductCard.module.css"
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useEffect, useState } from "react"
 
 
 
@@ -30,21 +31,38 @@ type Props = {
   product: IProduct
 }
 
-const AddProductToCart = (e)=>{
 
-  
-  e.preventDefault()
-  e.stopPropagation()
-
-  console.log(e)
-
-
-}
 
 const ProductCard = ({product}: Props) => {
 
 const images = `src/assets/products/${product._id}/${product.images[0]}`  
 
+const [fetchRes, setFetchRes] = useState([])
+  const [filter, setFilter] = useState({})
+  const url = 'http://localhost:3000/api/products'
+  useEffect(() => {
+    fetch(url).then(res => res.json()).then(result => {
+     // console.table(result)
+      setFetchRes(prev => [...prev, ...result])
+    }
+      )
+  }, []) 
+
+  const AddProductToCart = (e,nomProduit)=>{
+  
+    e.preventDefault()
+    e.stopPropagation()
+    console.log(nom);
+  
+    
+  
+    const ProduitPanier =fetchRes.find(p=>p.name===nomProduit)
+  
+    console.log(ProduitPanier);
+    
+  
+  
+  }
 
 
   return ( 
@@ -70,7 +88,7 @@ const images = `src/assets/products/${product._id}/${product.images[0]}`
 
       <CardActions className={Style.footer}>
         <Button color="error">{product.price}€</Button>
-        <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e)} className={Style.add} /></Button>
+        <Button size="small"><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e,product.name)} className={Style.add} /></Button>
       </CardActions>
     </Card>
 

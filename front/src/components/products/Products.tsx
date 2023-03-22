@@ -16,7 +16,8 @@ const Products = () => {
       setFetchRes(prev => [...prev, ...result])
     }
       )
-  }, [])
+  }, []) 
+  
   return (
     <><h1>Products</h1>
 
