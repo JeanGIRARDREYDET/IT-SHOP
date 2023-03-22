@@ -123,13 +123,11 @@ const ProductFilter = ({products, onFilter}: Props) => {
             getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
             defaultValue={price}
             getAriaValueText={priceText}
-            min={minPrice}
-            max={maxPrice}
+            min={minPrice?minPrice: 0}
+            max={maxPrice?maxPrice: 100}
           />
         </FormControl>
-    </Box>
-
-
+      </Box>
       <Button variant="outlined" onClick={submitFilter}> Filter </Button>
     </div>
   )

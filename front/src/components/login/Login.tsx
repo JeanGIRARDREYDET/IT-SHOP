@@ -2,12 +2,16 @@ import { Box, Button, FormControl, FormHelperText, Input, InputLabel } from '@mu
 import { useState } from 'react'
 import Styles from './Login.module.css'
 
-const Login = ()=> {
+type Props = {
+  onLogin: any
+}
+
+const Login = ({onLogin}:Props)=> {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const handleLoginForm = () => {
     if (email !== "" && password !== "") {
-      console.log(email, password)
+      onLogin({email, password})
     }  
   }
  return (
