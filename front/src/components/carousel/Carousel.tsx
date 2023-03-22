@@ -20,7 +20,6 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
     const settings = {
       dots: true,
       infinite: true,
-      centerPadding: '6px',
       speed: 2000,
       slidesToShow: 1,
       slidesToScroll: 2,
@@ -43,6 +42,10 @@ const Carrousel = ({product,slides,autoplay}:Props)=>  {
             <img  key={index} src={image_url+image} alt={product.name+ "_" + index} style={{height:"50%",width:"50%" }}/>
        
          )) }
+         <div key={index}>
+            <img src={image_url+image} alt={product.name+ "_" + index} />
+          </div>
+         ))}
         </Slider>
       
     );
