@@ -77,4 +77,4 @@ const SignInFull = ({onSignInFull}:Props)=> {
 
  )
 }
-export default SignIn
+export default SignInFull
