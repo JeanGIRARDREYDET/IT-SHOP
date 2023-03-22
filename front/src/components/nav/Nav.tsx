@@ -7,23 +7,23 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import Logo from "../../assets/IT_Shop.png"
-import CustomAutocomplete from '../autoComplete/AutoComplete';
 import { SyntheticEvent, useEffect, useState } from 'react';
+import { IProduct } from '../../types/product'
 
 
 
-export interface IProduct {
-  _id?: object | undefined;
-  name: string;
-  brand: string;
-  description: string;
-  categories: string[];
-  images: string[];
-  price: number;
-  stock: number;
-  rating: number;
-  createdAt: Date;
-}
+// export interface IProduct {
+//   _id?: object | undefined;
+//   name: string;
+//   brand: string;
+//   description: string;
+//   categories: string[];
+//   images: string[];
+//   price: number;
+//   stock: number;
+//   rating: number;
+//   createdAt: Date;
+// }
 
 type IFormattedProduct = {
   _id: any,
@@ -54,7 +54,6 @@ const Nav = ({onSearch}: Props) => {
       </div>
       <div id="searchshits">
         <SearchBar onSearch={handleSearch} />
-        
       </div>
       <div></div>
       <div id="navshits" className="">

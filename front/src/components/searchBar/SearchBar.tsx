@@ -28,25 +28,25 @@ const SearchBar = ({onSearch}: Props) => {
   
   return (
     <>
-      <div
+      <Box sx={{ mx: 2, display: 'flex', alignItems: 'center'  }}
           className={Style.input1}
           >
 
             
-      <CustomAutocomplete onChange={onSearch} />
+      <CustomAutocomplete onChange={onSearch} /><span><SearchIcon sx={{p: 2}} /></span>
     
 
       {/* <button className={Style.SearchIcone} onClick={handle}> 
       <SearchIcon  />
       </button> */}
-        <Box sx={{ m: 2 }}>
+        {/* <Box sx={{ m: 2 }}>
 
           <SearchIcon />
-        </Box>
+        </Box> */}
 
 
 
-      </div>
+    </Box>
       
     </>
 
