@@ -17,51 +17,8 @@ import Login from './components/login/Login'
 import Cart from './components/cart/Cart'
 import Product from './components/product/Product'
 import ErrorPage from './pages/ErrorPage'
+import LoginPage from './pages/LoginPage'
 
-
-// interface IRoute {
-//   path: string;
-//   Element: JSX.Element;
-//   loader?: LoaderFunction;
-//   action?: ActionFunction;
-//   ErrorBoundary?: JSX.Element;
-// }
-
-// const pages = import.meta.glob("./pages/**/*.tsx", { eager: true });
-
-// const routes: IRoute[] = [];
-// for (const path of Object.keys(pages)) {
-//   const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
-//   if (!fileName) {
-//     continue;
-//   }
-
-//   const normalizedPathName = fileName.includes("$")
-//     ? fileName.replace("$", ":")
-//     : fileName.replace(/\/index/, "");
-
-//   routes.push({
-//     path: fileName === "index" ? "/" : `/${normalizedPathName.toLowerCase()}`,
-//     // @ts-ignore
-//     Element: pages[path].default,
-//     // @ts-ignore
-//     loader: pages[path]?.loader as unknown as LoaderFunction | undefined,
-//     // @ts-ignore
-//     action: pages[path]?.action as unknown as ActionFunction | undefined,
-//     // @ts-ignore
-//     ErrorBoundary: pages[path]?.ErrorBoundary as unknown as JSX.Element,
-//   });
-// }
-
-// const router = createBrowserRouter(
-//   routes.map(({ Element, ErrorBoundary, ...rest }) => ({
-//     ...rest,
-//     // @ts-ignore
-//     element: <Element />,
-//     // @ts-ignore
-//     ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
-//   }))
-// );
 
 function App() {
   return (
@@ -71,7 +28,7 @@ function App() {
           <Route path="/" element={ <Home /> }/>
           <Route path="/products" element={ <Products />}/>
           <Route path="/product/:id" element={ <Product /> }/>
-          <Route path="/login" element={ <Login /> }/>
+          <Route path="/login" element={ <LoginPage /> }/>
           <Route path="/cart" element={ <Cart /> }/>
           <Route path="/*" element={<ErrorPage />} /> 
       </Routes>
