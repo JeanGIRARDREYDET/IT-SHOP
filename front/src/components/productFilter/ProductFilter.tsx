@@ -31,6 +31,7 @@ const ProductFilter = ({products, onFilter}: Props) => {
   const categoriesFlat = categoriesRaw.reduce((acc, currentCategory) => {
     if(currentCategory) return acc.concat(currentCategory)}, [])
   const categories = [...new Set(categoriesFlat.filter(cat => cat !== ''))]
+  // FOR PRICE RANGE DATA --------------------------
   const rawPrices = products.map(product => {
     if(product.price)
       return product.price
@@ -38,11 +39,10 @@ const ProductFilter = ({products, onFilter}: Props) => {
   )
   const minPrice = Math.min(...rawPrices)
   const maxPrice = Math.max(...rawPrices)
-  console.log('min', minPrice)
-  console.log('max', maxPrice)
+
   const [price, setPrice] = useState<Number[]>([minPrice, maxPrice])
   const ratings = [0, 1, 2, 3, 4, 5];
-
+  // ------------------------------------------
   const priceText = (value: number) => {
     return `${value} €`;
   }
@@ -113,17 +113,20 @@ const ProductFilter = ({products, onFilter}: Props) => {
           </Select>
         </FormControl>
       </Box>
-      <Box sx={{ width: 300 }}>
-        <Slider
-          value={price}
-          onChange={handlePrice}
-          valueLabelDisplay="auto"
-          getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
-          defaultValue={price}
-          getAriaValueText={priceText}
-          min={minPrice}
-          max={maxPrice}
-        />
+      <Box sx={{ width: 200 }}>
+        <FormControl fullWidth>
+          <InputLabel id="rating-select-label">Price range</InputLabel>
+          <Slider
+            value={price}
+            onChange={handlePrice}
+            valueLabelDisplay="auto"
+            getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
+            defaultValue={price}
+            getAriaValueText={priceText}
+            min={minPrice}
+            max={maxPrice}
+          />
+        </FormControl>
     </Box>
 
 
