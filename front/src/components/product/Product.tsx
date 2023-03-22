@@ -12,14 +12,15 @@ const Product = () => {
 
     return (
     <>
-        <Grid container spacing={2}>
-            <Grid xs={4} >
+      
+        <Grid container spacing={2}> 
+        <Grid xs={12}><h1>{product.name} </h1></Grid>
+            <Grid xs={4}>
+                <br></br>
                 <Carrousel product={product} autoplay={true} slides={1} />
             </Grid>
             <Grid xs={8} >
               <Box sx={{p: 2}}>
-                
-                
                 <h1>{product.name} </h1>
                 <div>ref : {id}</div>
                 <div>name : {product.name}</div>
@@ -51,16 +52,6 @@ const Product = () => {
 
                     
         </div>
-
-
-        
-    
-   
-    
-
-
-
-
     </>
     )
 }

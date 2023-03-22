@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Styles from 'Carousel.module.css'
+// simport Styles from 'Carousel.module.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { IProduct } from '../../types/product';
@@ -14,33 +14,37 @@ type Props = {
   autoplay: boolean
 }
 const Carrousel = ({product,slides,autoplay}:Props)=>  {
+    // Définition du chemin du produit
+    const image_url="/src/assets/products/"+product._id+"/"
+
     const settings = {
       dots: true,
       infinite: true,
+      centerPadding: '6px',
       speed: 2000,
-      slidesToShow: slides,
-      slidesToScroll: 1,
+      slidesToShow: 1,
+      slidesToScroll: 2,
       autoplay:autoplay,
       autoplaySpeed: 1000,
       centerMode: true,
       vertical: false
-     
     };
-    const image_url="/src/assets/products/"+product._id+"/"
+
+ 
     return (
-      <div>
-        <h2> Single Item</h2>
+    
+       
         <Slider {...settings}>
 
         {
           //src/assets/products/${product._id}/
         product.images.map((image:string, index: number) => (
-         <div key={index}>
-            <img src={image_url+image} alt={product.name+ "_" + index} />
-          </div>
-         ))}
+   
+            <img  key={index} src={image_url+image} alt={product.name+ "_" + index} style={{height:"50%",width:"50%" }}/>
+       
+         )) }
         </Slider>
-      </div>
+      
     );
   }
 export default Carrousel
