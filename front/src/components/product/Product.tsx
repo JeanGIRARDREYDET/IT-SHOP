@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Styles from 'Product.module.css'
 import Carrousel from '../carousel/Carousel'
 
+
 const Product = () => {
     let { id } = useParams();
     const location = useLocation();
@@ -10,32 +11,51 @@ const Product = () => {
 
     return (
     <>
-    <Carrousel product={product} autoplay={true} slides={1} />
-    <h1>The Best Product is {id}</h1>
-    <div>name : {product.name}</div>
-    <div>brand : {product.brand}</div>
-    <div>description : {product.description}</div>
+        <div>
+            <div>
+                <Carrousel product={product} autoplay={true} slides={1} />
+            </div>
+            <div>
+                <h1>{product.name} </h1>
+                <div>ref : {id}</div>
+                <div>name : {product.name}</div>
+                <div>brand : {product.brand}</div>
+                <div>description : {product.description}</div>
+                <div>Prix : {product.price}</div>
+                <div>stock : {product.stock}</div>
+                <div>rating : {product.rating}</div>
+                <div>description : {product.createdAt}</div>
+
+            </div>
+        </div>
+
+        <div>
+
+                    <div>categories : {product.categories.map((item:string, index: number) => 
+                                            <div key={index}>{item}-</div>
+                                        )}</div>
+                    
+
+                
+                
+                    { product.images.map((item:string, index: number) => (
+                        <div key={index}>{item}-</div>
+                        ) 
+                                            
+                                        )
+                    }
+
+                    
+        </div>
+
+
+        
+    
+   
     
 
 
-    <div>categories : {product.categories.map((item:string, index: number) => 
-                             <div key={index}>cat-{item}-</div>
-                           )}</div>
-    <div>images : {product.images}</div>
 
-   
-   
-    { product.images.map((item:string, index: number) => (
-         <div key={index}>img-{item}-</div>
-         ) 
-                            
-                           )
-    }
-
-  <div>Prix : {product.price}</div>
-  <div>stock : {product.stock}</div>
-  <div>rating : {product.rating}</div>
-  <div>description : {product.createdAt}</div>
 
     </>
     )
