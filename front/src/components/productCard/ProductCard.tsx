@@ -26,23 +26,37 @@ type Props = {
   product: IProduct
 }
 
+const AddProductToCart = (e)=>{
+
+  
+  e.preventDefault()
+  e.stopPropagation()
+
+  console.log(e)
+
+
+}
+
 const ProductCard = ({product}: Props) => {
 
-const image = `../../assets/products/${product._id}/${product.images[0]}`  
+const image = `/assets/products/${product._id}/${product.images[0]}`  
+
+console.log(image);
+
+
   return ( 
    
+        <Link to={`/product/${product._id}`} state={{ data: product }}>
     <Card className={Style.Card} sx={{ width: 250 }}>
       <CardContent >
 
         <div className="header">
-        <Link to={`/product/${product._id}`} state={{ data: product }}>
         <img src={image}/>
          
-          </Link>
         </div>
         <div className="main">
         
-       <h1 className={Style.title}>{product.name}</h1> 
+       <h1 className={Style.title}>{product.name.slice(0,25)}...</h1> 
        <h2 className={Style.rating}>{product.rating}</h2> 
         
 
@@ -53,13 +67,14 @@ const image = `../../assets/products/${product._id}/${product.images[0]}`
       }}>
          <p className={Style.price}>{product.price}€</p>
 
-          <p><AddShoppingCartIcon className={Style.add} /></p>
+          <p><AddShoppingCartIcon onClick={(e)=>AddProductToCart(e)} className={Style.add} /></p>
 
         </Box>
         </div>
       </CardContent>
 
     </Card>  
+    </Link>
 
 
   )
