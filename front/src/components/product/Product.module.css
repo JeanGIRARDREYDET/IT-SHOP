@@ -7,4 +7,9 @@
     cursor: pointer;
     border: 1px solid black;
     padding: 0.1rem;
+    text-align: right;
+}
+.buy{
+ text-align: right;   
+ margin-right: 0.1em;
 }

@@ -29,24 +29,26 @@ const Product = () => {
 
 
 
-            <Card  sx={{ p:2 }}>
+            <Card  sx={{ p:2 }}> 
+            <CardActions className={Styles.buy}>
+        <Button color="error">{product.price}€</Button>
+        <Button size="small"><AddShoppingCartIcon  className={Styles.add} /></Button>
+      </CardActions>
             <CardContent>
-  <div>ref : {id}</div>
+  
                 
-                <div>vendeur : {product.brand}</div>
+                <div>Vendeur : {product.brand}</div>
+
                 <div>description : {product.description}</div>
-                <div>Prix : {product.price}</div>
+               
                 <div>stock : {product.stock}</div>
                 <div>rating : {product.rating}</div>
                 <div>description : {product.createdAt}</div>
 
-
+<div>ref : {id}</div>
             </CardContent>
 
-                <CardActions className={Styles.footer}>
-        <Button color="error">{product.price}€</Button>
-        <Button size="small"><AddShoppingCartIcon  className={Styles.add} /></Button>
-      </CardActions>
+               
 
                 </Card>
     
