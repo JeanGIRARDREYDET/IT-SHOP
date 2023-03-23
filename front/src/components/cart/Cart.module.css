@@ -1,3 +1,10 @@
+
+.Titrevide{
+
+  text-align: center;
+  font-size: 5rem;
+}
+
 table{
   table-layout: fixed;
   width: 92%;

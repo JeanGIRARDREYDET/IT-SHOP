@@ -83,7 +83,7 @@ const Cart = ()=> {
       }
 
 
-    </div>) : <h2>Votre Panier est vide</h2>
+    </div>) : <h2 className={Style.Titrevide}>Votre Panier est vide !</h2>
     }
 
   </div>
