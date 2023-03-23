@@ -8,7 +8,7 @@ type IAction = {
 }
 
 type IState = {
-  cart: IProduct[]
+  cart: IProductCart[]
 }
 
 export const initialCartState = {
@@ -41,7 +41,9 @@ export const cartReducer = (state: IState, action: IAction) => {
       const isProduct = isInCart(action.payload, state)
       if(isProduct){
           const index = getProductIndex(action.payload, state)
-          const 
+          if(index !== -1) {
+            return state.cart[index].quantity++
+          }
         return {
           ...state,
           cart: [...state.cart,  ]
