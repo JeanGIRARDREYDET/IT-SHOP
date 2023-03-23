@@ -26,7 +26,7 @@ const CartItem = ({product}:Props) => {
             <th scope="row">{product.name.slice(0,20)}</th>
             <th scope="row">{product.description.slice(0,20)}</th>
             <th>{product.price} €</th>
-            <th><button>-</button> {0} <button>+</button></th>
+            <th><button className={Style.ActionQuantities}>-</button> {0} <button className={Style.ActionQuantities}>+</button></th>
         </tr>
        
     </tbody>
