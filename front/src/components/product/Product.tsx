@@ -14,49 +14,38 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ProductImagesList from '../productImagesList/productImagesList';
 import useFetch from '../../hooks/useFetch'
 import { useEffect, useState } from 'react';
+import { IProduct } from '../../types/product';
 
 const Product = () => {
   
     let { id } = useParams();
     console.log(id)
-    const [product, setProduct] = useState<any>({})
+    const [product, setProduct] = useState<IProduct>()
     const [error, setError] = useState({})
-
+    const [isLoading, setIsLoading] = useState(false)
+    
+ 
     useEffect(() => {
-        const url = `http://localhost:3000/api/products/${id}`
-        console.log(url)
-        fetch(url).then(res => res).then(result => {
-            console.log(result)
-            setProduct(result)
-        }).catch(err => setError(err))
+        const fetching = async () => {
+            const {data, err, loading} = await useFetch<IProduct>(`http://localhost:3000/api/products/${id}`)
+            console.log(data)
+            if(data){
+                setProduct(product => ({...product, ...data}))
+            } else {
+                setError(err)
+            }
+            console.log(product)
+        }
+
     }, [])  
-    console.log('i am here')
+
     //const location = useLocation();
 
 
   //  const product = location.state?.data;
-  /*
-  
-  useEffect(async () => {
-  const data = await fetchData();
-}, [fetchData])
-
-
-useEffect(() => {
-  // declare the data fetching function
-  const fetchData = async () => {
-    const data = await fetch('https://yourapi.com');
-  }
-
-  // call the function
-  fetchData()
-    // make sure to catch any error
-    .catch(console.error);
-}, [])
-*/
 
  
-  // const image_url="/src/assets/products/"+product._id+"/"
+  const image_url="/src/assets/products/"+id+"/"
     return (
     <>
      {error}
@@ -83,11 +72,11 @@ useEffect(() => {
                 }
                     <CardContent>
                         <h1>{product.name} </h1>
-                        <div>Vendeur : {product.brand}</div>
-                        <div> {product.description}</div>
-                        <div>En stock : {product.stock}</div>
-                        <div>rating : {product.rating}</div>
-                        <div>description : {product.createdAt}</div>
+                        <div>Vendeur : { product.brand } </div>
+                        <div> { product.description } </div>
+                        <div>En stock : { product.stock } </div>
+                        <div>rating : { product.rating } </div>
+                        <div>description : { product.createdAt } </div>
                         <div>ref : {id}</div>
                     </CardContent>
                 </Card>
@@ -95,10 +84,10 @@ useEffect(() => {
             <ProductImagesList product={product} />
         </Grid>
         <div>
-                    <div>categories : {product.categories.map((categorie:string, index: number) => 
-                                            <div key={"Cat_"+index}>{categorie}-</div>
-                                        )}
-                                        </div>
+                    {/* <div>categories : 
+                        {product.categories.map( (categorie:string, index: number) => 
+                            <div key={"Cat_"+index}>{categorie}-</div>)}
+                    </div> */}
   
         </div>
     </>

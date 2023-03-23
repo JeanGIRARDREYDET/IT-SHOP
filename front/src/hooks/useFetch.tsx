@@ -1,32 +1,55 @@
 import { useState, useEffect } from 'react'
 import { IProduct } from '../types/product'
+type IReturn<T> = {
+  data: T | null,
+  error: any,
+  loading: boolean
+}
 
-const useFetch = async (uri: string) => {
-  console.log(uri)
-  const [fetchData, setFetchData] = useState<IProduct[] | IProduct | null>(null)
+async function useFetch<T>(uri: string, method='GET', payload ={}):Promise<IReturn<any>> {
+  const [data, setData] = useState<T | null>({})
   const [error, setError] = useState<any>({})
-
+  const [loading,setLoading] = useState(false)
+  // const url = `http://localhost:3000/api/${uri}`
+  console.log(uri)
   useEffect(() => {
-    // declare the data fetching function
-    const url = `http://localhost:3000/api/${uri}`
-    console.log(url)
-    const fetchData = async () => {
-      const data = await fetch(url);
-      setFetchData(await data.json()) ;
-    }
-  
-    // call the function
-       fetchData()
-   
-      // make sure to catch any error
-      .catch( (err)=>setError(err) );
-      
+    
+    console.log(uri)
+      setLoading(true)
+      if(method === 'GET'){
+        fetch(uri)
+        .then(response => response.json())
+        .then(setData)
+        .catch(setError)
+        .finally(() => {
+          console.log(data)
+          setLoading(false)
+        });
+      } else if (method === 'POST') {
+        const fetchOptions =  {
+                    method: 'POST',
+                    headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                  }
+        fetch(uri, fetchOptions)
+        .then(response => response.json())
+        .then(setData)
+        .catch(setError)
+        .finally(() => {
+          console.log(data)
+          setLoading(false)
+        })
+      }
   }, [])
-return (
-  {
-    data: fetchData,
-    error
-  }
+  return (
+    {
+      data,
+      error,
+      loading
+    }
   )
   
 }

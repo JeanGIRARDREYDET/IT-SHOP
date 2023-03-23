@@ -37,10 +37,16 @@ const LoginPage = () => {
   const [isCreated, setIsCreated] = useState(false);
 
   const handleLogin = (credentials: ILogin) => {
-    console.log(credentials)
+    isUserInDatabase(credentials)
   }
-  const isUserNotInDatabase = () => {
-    // fetch()
+  const isUserInDatabase = (credentials: ILogin) => {
+    const fetching = async () => {
+      const {data, err, isLoading} = await useFetch<IUser>(`http://localhost:3000/api/login`, 'POST', credentials)
+      console.log(data)
+      console.log(err)
+      console.log(isLoading)
+    }
+
   }
   
   const handleSignIn = (userCredentials: ILogin) => {

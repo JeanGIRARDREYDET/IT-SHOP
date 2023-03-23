@@ -14,8 +14,9 @@ type Props = {
   autoplay: boolean,
   arrows:boolean
 }
-const Carrousel = ({product,slides,autoplay}:Props)=>  {
+const Carrousel = ( { product, slides, autoplay }: Props)=>  {
     // Définition du chemin du produit
+    console.log(product)
     const image_url="/src/assets/products/"+product._id+"/"
 
     const settings = {
