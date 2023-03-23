@@ -5,29 +5,29 @@
 }
 
 
-table {
+.Item {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
   }
-  
-  thead th:nth-child(1) {
+   
+  .Item thead td:nth-child(1) {
     width: 30%;
   }
   
-  thead th:nth-child(2) {
+  .Item thead td:nth-child(2) {
     width: 20%;
   }
   
-  thead th:nth-child(3) {
+  .Item thead td:nth-child(3) {
     width: 15%;
   }
   
-  thead th:nth-child(4) {
+  .Item thead td:nth-child(4) {
     width: 35%;
   }
   
-  th, td {
+  .Item  td {
     padding: 20px;
   }
 

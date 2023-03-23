@@ -26,8 +26,25 @@ const Cart = ()=> {
 
     <h1>Cart </h1>
     
+    {
+        cart.length > 0 ? (
+
     <div className="List-Cart"> 
 
+    <table>
+
+    <thead>
+        <tr>
+            <th scope="row"></th>
+            <th scope="row">Name</th>
+            <th scope="row">Description</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+        </tr>
+       
+    </thead>
+
+    </table>
 
       {  cart.map((p,i)=>(
 
@@ -58,7 +75,8 @@ const Cart = ()=> {
       }
 
 
-    </div>
+    </div>) : <h2>Votre Panier est vide</h2>
+    }
 
   </div>
 

@@ -1,5 +1,31 @@
-
-.total{
-
-    margin-left: 85%;
+table{
+  table-layout: fixed;
+  width: 92%;
+  border-collapse: collapse;
 }
+
+ thead td:nth-child(1) {
+  width: 30%;
+}
+
+ thead td:nth-child(2) {
+  width: 20%;
+}
+
+ thead td:nth-child(3) {
+  width: 15%;
+}
+
+ thead td:nth-child(4) {
+  margin-right: 5rem;
+}
+
+  td {
+  padding: 20px;
+}
+ 
+  
+  .total{
+     
+         margin-left: 85%;
+     }
