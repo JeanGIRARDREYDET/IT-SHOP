@@ -22,17 +22,30 @@ const Product = () => {
   
     return (
     <>
-        <Grid container> 
-   
+        <Grid container>
             <Grid item xs={12} lg={6}>
                 <Carrousel product={product} autoplay={true} slides={1} arrows={false}/>
             </Grid>
             <Grid item xs={12} lg={6}>
                 <Card  sx={{ p:2 }}> 
-                    <CardActions className={Styles.buy}>
-                        <Button color="error">{product.price}€</Button>
-                        <Button size="small"><AddShoppingCartIcon  className={Styles.add} /></Button>
-                    </CardActions>
+
+                {product.stock > 0 ? (
+                       <CardActions className={Styles.buy}>
+                       <Button color="error">{product.price}€</Button>
+                       <Button size="small"><AddShoppingCartIcon  className={Styles.add} /></Button>
+                   </CardActions>
+                ) : (<>
+                    <div>Permet de lancer le back et le font en même temps.</div>
+                    <div>Victime de son succès le produit est temporairement indisponible.</div>
+                    <div>Il sera de nouveau disponible trés prochainement</div>
+                    <div>Merci de revenir plus tard.</div>
+                    </>
+                    )
+                }
+                
+
+
+        
                     <CardContent>
                         <h1>{product.name} </h1>
                         <div>Vendeur : {product.brand}</div>
@@ -44,32 +57,11 @@ const Product = () => {
                     </CardContent>
                 </Card>
             </Grid>
-
             <ProductImagesList product={product} />
-            <Grid item xs={12} lg={6}>           
-
-
-
-                <ImageList variant="woven" cols={2} gap={2}  sx={{ width: 1200, height: 1800 }}>
-                        {product.images.map((img:string, index: number) => (
-                            <ImageListItem key={img}>
-                            <img
-                                src={`${image_url+img}?w=164&h=164&fit=crop&auto=format`}
-                                srcSet={`${image_url+img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                                alt={img}
-                                loading="lazy"
-                            />
-                            </ImageListItem>
-                        ))}
-                </ImageList>
-            </Grid>
-
-         
-
         </Grid>
         <div>
-                    <div>categories : {product.categories.map((item:string, index: number) => 
-                                            <div key={index}>{item}-</div>
+                    <div>categories : {product.categories.map((categorie:string, index: number) => 
+                                            <div key={index}>{categorie}-</div>
                                         )}
                                         </div>
   
