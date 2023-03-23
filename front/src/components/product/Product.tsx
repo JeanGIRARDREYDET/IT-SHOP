@@ -35,7 +35,7 @@ const Product = () => {
                        <Button size="small"><AddShoppingCartIcon  className={Styles.add} /></Button>
                    </CardActions>
                 ) : (<>
-                    <div>Permet de lancer le back et le font en même temps.</div>
+                    
                     <div>Victime de son succès le produit est temporairement indisponible.</div>
                     <div>Il sera de nouveau disponible trés prochainement</div>
                     <div>Merci de revenir plus tard.</div>
