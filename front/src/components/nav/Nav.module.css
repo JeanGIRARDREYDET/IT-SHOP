@@ -31,11 +31,11 @@ nav ul li:hover {
 .logo{
   width: 20%;
 }
-.cart-product-number {
+.cartProductNumber {
   position: absolute;
   font-size: 0.6rem;
   color: green;
-  font-weight: 600;
+  font-weight: 800;
   padding: 0;
   margin: 0;
 }
