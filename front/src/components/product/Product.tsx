@@ -61,7 +61,7 @@ const Product = () => {
         </Grid>
         <div>
                     <div>categories : {product.categories.map((categorie:string, index: number) => 
-                                            <div key={index}>{categorie}-</div>
+                                            <div key={"Cat_"+index}>{categorie}-</div>
                                         )}
                                         </div>
   
