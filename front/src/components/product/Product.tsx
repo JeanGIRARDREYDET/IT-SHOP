@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import ProductImagesList from '../productImagesList/productImagesList';
 
 const Product = () => {
     let { id } = useParams();
@@ -43,7 +44,12 @@ const Product = () => {
                     </CardContent>
                 </Card>
             </Grid>
+
+            <ProductImagesList product={product} />
             <Grid item xs={12} lg={6}>           
+
+
+
                 <ImageList variant="woven" cols={2} gap={2}  sx={{ width: 1200, height: 1800 }}>
                         {product.images.map((img:string, index: number) => (
                             <ImageListItem key={img}>
