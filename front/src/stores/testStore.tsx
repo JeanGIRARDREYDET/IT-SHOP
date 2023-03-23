@@ -1,4 +1,5 @@
 import { IProduct, IProductCart } from '../types/product'
+import { ICartProduct } from '../types/user'
 
 type IAction = {
   type: string
@@ -13,13 +14,21 @@ type IState = {
 export const initialCartState = {
   cart: []
 };
+
 const isInCart = (product: IProduct, state:IState):boolean => {
   const { cart } = state;
   console.log(product)
-  const p = cart.find(product => product._id === product._id );
+  return cart.find(product => product._id === product._id )? true: false;
+}
 
-  console.log(p)
-  return !!product
+const getProductIndex = (product: IProduct, state:IState): number => {
+  const { cart } = state;
+  return  cart.findIndex(product => product._id === product._id )
+}
+
+const getProduct = (product: IProduct, state:IState): number => {
+  const { cart } = state;
+  return  cart.findIndex(product => product._id === product._id )
 }
 
 const productToProductCard = (product: IProduct, quantity: number):IProductCart => {
@@ -29,11 +38,24 @@ const productToProductCard = (product: IProduct, quantity: number):IProductCart 
 export const cartReducer = (state: IState, action: IAction) => {
  switch (action.type) {
      case 'addProduct':
-      const quantity = isInCart(action.payload, state)
-     return {
-         ...state,
-         cart: [...state.cart, isInCart(action.payload, state)? productToProductCard() ]
-     };
+      const isProduct = isInCart(action.payload, state)
+      if(isProduct){
+          const index = getProductIndex(action.payload, state)
+          const 
+        return {
+          ...state,
+          cart: [...state.cart,  ]
+        }
+      } else {
+        return {
+          ...state,
+          cart: [...state.cart, {...action.payload, quantity: 1}]
+        }
+      }
+    //  return {
+    //      ...state,
+    //      cart: [...state.cart, isInCart(action.payload, state)? productToProductCard(action.payload, {...isInCart(action.payload, state), quantity : ) ]
+    //  };
      case 'removeProduct':
       return {
         ...state,
