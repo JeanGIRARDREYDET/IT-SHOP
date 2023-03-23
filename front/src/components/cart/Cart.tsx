@@ -1,5 +1,5 @@
 import Styles from './Cart.module.css'
-import { useContext } from 'react'
+import { useContext,useEffect,useState } from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 import CartItem from '../cartItem/CartItem';
 
@@ -9,7 +9,17 @@ type Props = {
 const Cart = ()=> {
   const [{cart}, dispatch] = CartConsumerHook();
 
+  const [prixTotal,changePrix] = useState(0)
 
+  const total = cart.reduce((acc,c)=>acc+ c.price,0
+    
+    )
+  
+
+
+    useEffect(()=>{
+      changePrix(total);
+    }, [])
  return (
 <>
   <div className="Cart"> 
@@ -25,6 +35,8 @@ const Cart = ()=> {
 
             <CartItem product={p} key={i} />
 
+
+
         </div>
 
 
@@ -35,6 +47,10 @@ const Cart = ()=> {
 
 
       }
+
+    <h2> Total: {prixTotal} € </h2>
+
+
     </div>
 
   </div>

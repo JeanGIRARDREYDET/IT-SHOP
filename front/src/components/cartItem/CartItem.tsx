@@ -15,20 +15,24 @@ const CartItem = ({product}:Props) => {
 
     return(
 
+        <>
+        <hr ></hr>
+        
     <table>
-        <hr></hr>
    
     <tbody>
         <tr>
             <th scope="row"><img className={Style.image} src={images} /></th>
             <th scope="row">{product.name.slice(0,20)}</th>
             <th scope="row">{product.description.slice(0,20)}</th>
-            <th>{product.price}</th>
-            <th><button>-</button>{product.length}<button>+</button></th>
+            <th>{product.price} €</th>
+            <th><button>-</button> {0} <button>+</button></th>
         </tr>
        
     </tbody>
-</table>
+
+    </table>
+        </>
 
 
 

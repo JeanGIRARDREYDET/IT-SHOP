@@ -4,11 +4,28 @@
    height: 100px;
 }
 
-table{
-    border-collapse: separate;
-
-    border-spacing: 5px;
-    border-spacing: 1vw;
-    border-spacing: 2em;    
-
-}
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead th:nth-child(1) {
+    width: 30%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 20%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 15%;
+  }
+  
+  thead th:nth-child(4) {
+    width: 35%;
+  }
+  
+  th, td {
+    padding: 20px;
+  }
