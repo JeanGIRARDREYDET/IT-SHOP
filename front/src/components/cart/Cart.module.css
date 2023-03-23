@@ -25,7 +25,15 @@ table{
 }
  
   
-  .total{
+  .total,.ButtonComandez{
      
          margin-left: 85%;
      }
+.ButtonComandez{
+
+background-color: #213547;
+color: white;
+
+margin-bottom: 5rem;
+
+}

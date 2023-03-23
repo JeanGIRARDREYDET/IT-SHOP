@@ -2,6 +2,8 @@ import Style from './Cart.module.css'
 import { useContext,useEffect,useState } from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 import CartItem from '../cartItem/CartItem';
+import Button from '@mui/material/Button';
+
 
 type Props = {
   cartProducts: []
@@ -68,7 +70,13 @@ const Cart = ()=> {
       {
         prixTotal > 0 ?
 
-       <h2 className={Style.total}> Total: {prixTotal.toFixed(2)} € </h2>
+        <div>
+          
+          <h2 className={Style.total}> Total: {prixTotal.toFixed(2)} € </h2>
+
+          <button className={Style.ButtonComandez} > Commandez </button>
+
+          </div>
 
        : ""
 
