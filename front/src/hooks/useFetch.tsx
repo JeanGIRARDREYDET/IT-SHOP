@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import { IProduct } from '../types/product'
 
 const useFetch = async (uri: string) => {
+  console.log(uri)
   const [fetchData, setFetchData] = useState<IProduct[] | IProduct | null>(null)
-  const [error, setError] = useState()
+  const [error, setError] = useState<any>({})
+
   useEffect(() => {
     // declare the data fetching function
     const url = `http://localhost:3000/api/${uri}`
@@ -20,10 +22,12 @@ const useFetch = async (uri: string) => {
       .catch( (err)=>setError(err) );
       
   }, [])
-return{
-  data: fetchData,error
-
-}
+return (
+  {
+    data: fetchData,
+    error
+  }
+  )
   
 }
 export default useFetch

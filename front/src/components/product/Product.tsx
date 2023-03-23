@@ -19,27 +19,18 @@ const Product = () => {
   
     let { id } = useParams();
     console.log(id)
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState<any>({})
     const [error, setError] = useState({})
 
-   
-    useEffect(()=>{
-    try {
-         const {data } = useFetch("products/"+id)
-       
-        setProduct(data)
-        console.log(data)
-
-        if (product.hasOwnProperty("id")){
-            
-            
-            }
-        } catch (err) {
-            setError(err)
-            console.log(err)
-        }
-    }
-    ,[])  
+    useEffect(() => {
+        const url = `http://localhost:3000/api/products/${id}`
+        console.log(url)
+        fetch(url).then(res => res).then(result => {
+            console.log(result)
+            setProduct(result)
+        }).catch(err => setError(err))
+    }, [])  
+    console.log('i am here')
     //const location = useLocation();
 
 
@@ -65,16 +56,18 @@ useEffect(() => {
 */
 
  
-  const image_url="/src/assets/products/"+product._id+"/"
+  // const image_url="/src/assets/products/"+product._id+"/"
     return (
     <>
+     {error}
         <Grid container className={Styles.ficheProduit}>
             <Grid item xs={12} lg={6}>
                 <Carrousel product={product} autoplay={true} slides={1} arrows={false}/>
             </Grid>
             <Grid item xs={12} lg={6}>
+                
                 <Card  sx={{ p:2 }}> 
-
+                        
                 {product.stock > 0 ? (
                        <CardActions className={Styles.buy}>
                        <Button color="error">{product.price}€</Button>

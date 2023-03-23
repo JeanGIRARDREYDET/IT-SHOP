@@ -14,6 +14,7 @@ import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
 import { SessionProvider } from './context/SessionContext'
+import ErrorBoundary from './components/errorBoundaries/ErrorBoundary'
 
 function App() {
   // const [userCart, setUserCart] = useState({userID: '', role: '', cart: []})
@@ -25,7 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={ <Home /> }/>
             <Route path="/products" element={ <Products />}/>
-            <Route path="/product/:id" element={ <Product /> }/>
+            <Route path="/product/:id" element={ <ErrorBoundary><Product /> </ErrorBoundary> } />
             <Route path="/login" element={ <LoginPage /> }/>
             <Route path="/cart" element={ <Cart /> }/>
             <Route path="/*" element={<ErrorPage />} /> 
