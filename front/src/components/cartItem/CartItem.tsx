@@ -35,21 +35,6 @@ const CartItem = ({product}:Props) => {
         </>
 
 
-
-        // <div className={Style.cart}>
-
-        // <Link to={`/product/${product._id}`} state={{ data: product }}>
-        // <img src={images}/>
-        // </Link>
-         
-        //  <p>{product.name.slice(0,20)} </p>
-        //  <p> {product.description.slice(0,20)} </p>
-        //  <p> {product.price}€ </p>
-             
-
-        // </div>
-
-
     )   
 
 }

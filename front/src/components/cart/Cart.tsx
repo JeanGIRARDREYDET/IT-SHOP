@@ -1,4 +1,4 @@
-import Styles from './Cart.module.css'
+import Style from './Cart.module.css'
 import { useContext,useEffect,useState } from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 import CartItem from '../cartItem/CartItem';
@@ -51,9 +51,9 @@ const Cart = ()=> {
       {
         prixTotal > 0 ?
 
-       <h2> Total: {prixTotal} € </h2>
+       <h2 className={Style.total}> Total: {prixTotal.toFixed(2)} € </h2>
 
-       :""
+       : ""
 
       }
 
