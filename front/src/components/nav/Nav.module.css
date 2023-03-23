@@ -5,6 +5,7 @@ nav {
   align-items: center;
   padding: 0 2rem;
   background-color: #ddd;
+
   border-radius: 15px 15px;
 }
 nav ul {
@@ -26,6 +27,12 @@ nav ul li:hover {
   color: #aaa;
   border-left: 1px solid blue;
   border-right: 1px solid blue;
+}
+
+.Link{
+
+    color: #213547;
+
 }
 
 .logo{
