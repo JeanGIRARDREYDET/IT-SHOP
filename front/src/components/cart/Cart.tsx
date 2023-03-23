@@ -48,7 +48,14 @@ const Cart = ()=> {
 
       }
 
-    <h2> Total: {prixTotal} € </h2>
+      {
+        prixTotal > 0 ?
+
+       <h2> Total: {prixTotal} € </h2>
+
+       :""
+
+      }
 
 
     </div>
