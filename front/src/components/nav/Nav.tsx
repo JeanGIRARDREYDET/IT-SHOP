@@ -41,7 +41,7 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 }
 
 const Nav = ({onSearch}: Props) => {
-//   const [{theme}, dispatch] = CartConsumerHook();
+//   const [{cart}, dispatch] = CartConsumerHook();
 //   dispatch({type: 'changeTheme', newTheme: 'blue'
 // });
   useEffect(()=> {
