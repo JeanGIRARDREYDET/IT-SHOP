@@ -13,7 +13,7 @@ import Product from './components/product/Product'
 import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
-
+import { SessionProvider } from './context/SessionContext'
 
 function App() {
   // const [userCart, setUserCart] = useState({userID: '', role: '', cart: []})
