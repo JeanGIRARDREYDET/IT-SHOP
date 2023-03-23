@@ -97,10 +97,10 @@ const [fetchRes, setFetchRes] = useState([])
               </Typography>
             </CardContent>
 
-      <CardActions className={Style.footer}>
-        <Button color="error">{product.price}€</Button>
-        <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
-      </CardActions>
+            <CardActions className={Style.footer}>
+              <Button color="error">{product.price}€</Button>
+              <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
+            </CardActions>
     </Card>
 
 

@@ -19,7 +19,7 @@ const Login = ({onLogin}:Props)=> {
   <h1>Login</h1>
   
     <Box sx={{p: 2}}>
-      
+       
     
       <InputLabel htmlFor="email-login">Email address</InputLabel>
       <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setEmail(event.currentTarget.value)}/>
