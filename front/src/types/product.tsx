@@ -10,3 +10,7 @@ export interface IProduct {
   rating: number;
   createdAt: Date;
 }
+
+export interface IProductCart extends IProduct {
+  quantity: number
+}
