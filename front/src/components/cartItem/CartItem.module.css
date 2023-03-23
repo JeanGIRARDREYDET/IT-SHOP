@@ -1,5 +1,14 @@
-.cart{
+.image{
 
-    display: flex;
-    justify-content: space-evenly;
+   width:100px;
+   height: 100px;
+}
+
+table{
+    border-collapse: separate;
+
+    border-spacing: 5px;
+    border-spacing: 1vw;
+    border-spacing: 2em;    
+
 }

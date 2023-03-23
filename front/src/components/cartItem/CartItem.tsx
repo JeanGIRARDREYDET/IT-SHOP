@@ -15,19 +15,35 @@ const CartItem = ({product}:Props) => {
 
     return(
 
+    <table>
+        <hr></hr>
+   
+    <tbody>
+        <tr>
+            <th scope="row"><img className={Style.image} src={images} /></th>
+            <th scope="row">{product.name.slice(0,20)}</th>
+            <th scope="row">{product.description.slice(0,20)}</th>
+            <th>{product.price}</th>
+            <th><button>-</button>{product.length}<button>+</button></th>
+        </tr>
+       
+    </tbody>
+</table>
 
-        <div className={Style.cart}>
 
-        <Link to={`/product/${product._id}`} state={{ data: product }}>
-        <img src={images}/>
-        </Link>
+
+        // <div className={Style.cart}>
+
+        // <Link to={`/product/${product._id}`} state={{ data: product }}>
+        // <img src={images}/>
+        // </Link>
          
-         <p>{product.name.slice(0,20)} </p>
-         <p> {product.description.slice(0,20)} </p>
-         <p> {product.price}€ </p>
+        //  <p>{product.name.slice(0,20)} </p>
+        //  <p> {product.description.slice(0,20)} </p>
+        //  <p> {product.price}€ </p>
              
 
-        </div>
+        // </div>
 
 
     )   

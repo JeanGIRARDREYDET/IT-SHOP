@@ -2,7 +2,7 @@ import { Link, redirect } from 'react-router-dom';
 import { NavLink, Outlet } from "react-router-dom";
 import ProTip from '../proTip/ProTip';
 import SearchBar from '../searchBar/SearchBar';
-import './Nav.css'
+import Style from'./Nav.module.css'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
@@ -49,7 +49,7 @@ const Nav = ({onSearch}: Props) => {
     <nav >
       <div id="brandshits" className="">
       <NavLink to="/">
-        <img src={Logo} alt=""/>
+        <img className={Style.logo} src={Logo} alt=""/>
         </NavLink>
       </div>
       <div id="searchshits">
