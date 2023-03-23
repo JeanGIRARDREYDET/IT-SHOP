@@ -16,7 +16,7 @@ const ProductImagesList = ({product}:Props)=>  {
           //src/assets/products/${product._id}/
           product.images.map((image:string, index: number) => (
             <Grid item xs={12} lg={6}>  
-              <img  key={index} src={image_url+image} alt={product.name+ "_" + index} />
+              <img  key={"Pil"+index} src={image_url+image} alt={product.name+ "_" + index} />
             </Grid>
           )) 
         }
