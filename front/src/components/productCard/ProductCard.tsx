@@ -7,11 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Style from "./ProductCard.module.css"
 import { Link } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from "react"
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { CartConsumerHook } from '../../context/CartContext';
 
 
 
@@ -37,10 +35,13 @@ type Props = {
 
 const ProductCard = ({product}: Props) => {
 
-const images = `src/assets/products/${product._id}/${product.images[0]}`  
+  const images = `src/assets/products/${product._id}/${product.images[0]}`  
 // const theme = useContext(ThemeContext);
-const [fetchRes, setFetchRes] = useState([])
+  const [fetchRes, setFetchRes] = useState([])
   const [filter, setFilter] = useState({})
+
+  const [{cart}, dispatch] = CartConsumerHook();
+  
   const AddProductToCart = (e: MouseEvent) => {
     // useContext()
     // useLocalStorage('product', product)
@@ -52,6 +53,10 @@ const [fetchRes, setFetchRes] = useState([])
     // const {userID, role, cart, add} = useContext(CartContext)
     e.preventDefault()
     e.stopPropagation()
+
+    dispatch({type: 'addProduct', payload:product
+        });
+
     // userInfos.addProductToCart(product)
     console.log(product);
   

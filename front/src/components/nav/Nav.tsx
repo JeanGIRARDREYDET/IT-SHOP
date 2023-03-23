@@ -41,9 +41,8 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 }
 
 const Nav = ({onSearch}: Props) => {
-//   const [{cart}, dispatch] = CartConsumerHook();
-//   dispatch({type: 'changeTheme', newTheme: 'blue'
-// });
+  const [{cart}, dispatch] = CartConsumerHook();
+
   useEffect(()=> {
   }, [])
   return (
@@ -62,7 +61,7 @@ const Nav = ({onSearch}: Props) => {
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink to="/products" >Products</NavLink>
           <NavLink to="/login"><PersonIcon /></NavLink>
-          <NavLink to="/cart"><ShoppingCartIcon className='flex' /><span className={'cart-product-number'}>{0}</span></NavLink>
+          <NavLink to="/cart"><ShoppingCartIcon className='flex' /><span className={'cart-product-number'}>{cart.length}</span></NavLink>
         </ul>
       </div>
     </nav>
