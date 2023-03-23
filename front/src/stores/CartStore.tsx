@@ -1,4 +1,4 @@
-import { IProduct, IProductCart } from '../types/product'
+import { IProduct } from '../types/product'
 
 type IAction = {
   type: string
@@ -13,20 +13,13 @@ type IState = {
 export const initialCartState = {
   cart: []
 };
-const isInCart = (product: IProduct, cart:IProductCart):boolean => {
-  return true
-}
-
-const productToProductCard = (product: IProduct, quantity: number):IProductCart => {
-  return {...product, quantity}
-}
 
 export const cartReducer = (state: IState, action: IAction) => {
  switch (action.type) {
      case 'addProduct':
      return {
          ...state,
-         cart: [...state.cart, state.cart.find(prod => prod._id === action.payload._id) ]
+         cart: [...state.cart, action.payload]
      };
      case 'removeProduct':
       return {
