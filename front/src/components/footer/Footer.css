@@ -6,9 +6,19 @@
   padding: 0 2rem;
   background-color: #ddd;
   border-radius: 15px 15px;
+  margin-top: 2rem;
 }
 
 #footer ul {
   list-style-type: none;
   color: rgb(33,53,71);
+}
+#footer ul li {
+margin-top: 1rem;
+}
+
+.MessageMerci{
+
+font-size: 2rem;
+
 }
