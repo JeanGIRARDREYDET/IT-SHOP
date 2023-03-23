@@ -10,7 +10,7 @@ import Logo from "../../assets/IT_Shop.png"
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { IProduct } from '../../types/product'
 import {useContext} from 'react'
-import { CartContext } from '../../context/CartContext';
+import { CartConsumerHook } from '../../context/CartContext';
 
 
 // export interface IProduct {
@@ -41,7 +41,9 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 }
 
 const Nav = ({onSearch}: Props) => {
-  const userInfos = useContext(CartContext);
+//   const [{theme}, dispatch] = CartConsumerHook();
+//   dispatch({type: 'changeTheme', newTheme: 'blue'
+// });
   useEffect(()=> {
   }, [])
   return (
