@@ -1,3 +1,16 @@
+
+.ficheProduit{
+  margin-top: 5px;
+
+
+}
+
+
+.footer{
+    height: 5rem;
+    position:relative;
+    top:0
+}
 .footer{
     height: 5rem;
     position:relative;

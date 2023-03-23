@@ -22,7 +22,7 @@ const Product = () => {
   
     return (
     <>
-        <Grid container>
+        <Grid container className={Styles.ficheProduit}>
             <Grid item xs={12} lg={6}>
                 <Carrousel product={product} autoplay={true} slides={1} arrows={false}/>
             </Grid>
