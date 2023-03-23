@@ -1,6 +1,7 @@
 import Styles from './Cart.module.css'
 import { useContext } from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
+import CartItem from '../cartItem/CartItem';
 
 type Props = {
   cartProducts: []
@@ -22,7 +23,7 @@ const Cart = ()=> {
 
         <div> 
 
-            {p.name}
+            <CartItem product={p} key={i} />
 
         </div>
 
