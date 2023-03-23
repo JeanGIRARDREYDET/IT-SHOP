@@ -90,7 +90,7 @@ const CustomAutocomplete = ({onChange}: Props) => {
             endAdornment: (
               <React.Fragment>
                 {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                <Link to={`/product/${''}`}>{params.InputProps.endAdornment}</Link>
+                {params.InputProps.endAdornment}
               </React.Fragment>
             ),
           }}
