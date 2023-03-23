@@ -12,14 +12,60 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ProductImagesList from '../productImagesList/productImagesList';
+import useFetch from '../../hooks/useFetch'
+import { useEffect, useState } from 'react';
 
 const Product = () => {
-    let { id } = useParams();
-    const location = useLocation();
-    const product = location.state?.data;
-    const image_url="/src/assets/products/"+product._id+"/"
-
   
+    let { id } = useParams();
+    console.log(id)
+    const [product, setProduct] = useState({})
+    const [error, setError] = useState({})
+
+   
+    useEffect(()=>{
+    try {
+         const {data } = useFetch("products/"+id)
+       
+        setProduct(data)
+        console.log(data)
+
+        if (product.hasOwnProperty("id")){
+            
+            
+            }
+        } catch (err) {
+            setError(err)
+            console.log(err)
+        }
+    }
+    ,[])  
+    //const location = useLocation();
+
+
+  //  const product = location.state?.data;
+  /*
+  
+  useEffect(async () => {
+  const data = await fetchData();
+}, [fetchData])
+
+
+useEffect(() => {
+  // declare the data fetching function
+  const fetchData = async () => {
+    const data = await fetch('https://yourapi.com');
+  }
+
+  // call the function
+  fetchData()
+    // make sure to catch any error
+    .catch(console.error);
+}, [])
+*/
+
+ 
+  const image_url="/src/assets/products/"+product._id+"/"
     return (
     <>
         <Grid container className={Styles.ficheProduit}>
@@ -42,15 +88,11 @@ const Product = () => {
                     </>
                     )
                 }
-                
-
-
-        
                     <CardContent>
                         <h1>{product.name} </h1>
                         <div>Vendeur : {product.brand}</div>
-                        <div>description : {product.description}</div>
-                        <div>stock : {product.stock}</div>
+                        <div> {product.description}</div>
+                        <div>En stock : {product.stock}</div>
                         <div>rating : {product.rating}</div>
                         <div>description : {product.createdAt}</div>
                         <div>ref : {id}</div>

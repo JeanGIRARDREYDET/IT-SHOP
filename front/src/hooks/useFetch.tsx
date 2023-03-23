@@ -3,19 +3,27 @@ import { IProduct } from '../types/product'
 
 const useFetch = async (uri: string) => {
   const [fetchData, setFetchData] = useState<IProduct[] | IProduct | null>(null)
-  const fetchingData = async () => {
+  const [error, setError] = useState()
+  useEffect(() => {
+    // declare the data fetching function
     const url = `http://localhost:3000/api/${uri}`
-    const res = await fetch(url).then(res => res.json().then(data => data )).catch(err => err)
-    return res
-  } 
-  useEffect( async () =>{
-
-    const res = await fetchingData()
-    setFetchData(res)
+    console.log(url)
+    const fetchData = async () => {
+      const data = await fetch(url);
+      setFetchData(await data.json()) ;
+    }
+  
+    // call the function
+       fetchData()
+   
+      // make sure to catch any error
+      .catch( (err)=>setError(err) );
+      
   }, [])
-  return {
-    data: fetchData,
-    error: {msg: ''}
-  }
+return{
+  data: fetchData,error
+
+}
+  
 }
 export default useFetch
