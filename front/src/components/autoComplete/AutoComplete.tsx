@@ -3,6 +3,7 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { Link } from 'react-router-dom';
 
 
 type IFormattedProduct = {
@@ -76,7 +77,7 @@ const CustomAutocomplete = ({onChange}: Props) => {
         setOpen(false);
       }}
       isOptionEqualToValue={(option, value) => option.name === value.name}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => option.name }
       options={options}
       loading={loading}
       onChange={onChange}
@@ -89,7 +90,7 @@ const CustomAutocomplete = ({onChange}: Props) => {
             endAdornment: (
               <React.Fragment>
                 {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
+                <Link to={`/product/${''}`}>{params.InputProps.endAdornment}</Link>
               </React.Fragment>
             ),
           }}

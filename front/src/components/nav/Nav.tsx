@@ -36,8 +36,9 @@ type Props = {
   onSearch: any
 }
 const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | null) => {
-  console.log(`product/${value?._id}`)
-  return redirect(`/product/${value?._id}`)
+  // console.log(`product/${value?._id}`)
+  window.location.replace(`/product/${value?._id}`);
+  // return redirect(`/product/${value?._id}`)
 }
 
 const Nav = ({onSearch}: Props) => {
