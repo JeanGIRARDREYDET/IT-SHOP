@@ -9,7 +9,6 @@ const useFetch = async (uri: string) => {
     return res
   } 
   useEffect( async () =>{
-
     const res = await fetchingData()
     setFetchData(res)
   }, [])
