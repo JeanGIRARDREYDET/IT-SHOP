@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+
 import { IUser } from '@src/models/User';
 import { UserSchema } from '@src/models/user-schema';
 
@@ -11,7 +11,7 @@ import orm from './MockOrm';
  * Get one user.
  */
 async function getOne(email: string): Promise<IUser | null> {
-  return await UserSchema.find({email: email})
+  return UserSchema.findOne({email: email})
   
 }
 
@@ -19,13 +19,9 @@ async function getOne(email: string): Promise<IUser | null> {
  * See if a user with the given id exists.
  */
 async function persists(id: string): Promise<boolean> {
-  const user = await UserSchema.findById(id)
-  // for (const user of db.users) {
-  //   if (user.id === id) {
-  //     return true;
-  //   }
-  // }
-  return user?true:false;
+  const userres = await UserSchema.findById(id)
+
+  return userres?true:false;
 }
 
 /**

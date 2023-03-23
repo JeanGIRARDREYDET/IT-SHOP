@@ -5,7 +5,7 @@ type Props = {
   cartProducts: []
 }
 const Cart = ()=> {
-  useContext(CartContext)
+
  return (
 <>
   <h1>Cart</h1>

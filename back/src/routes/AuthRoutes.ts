@@ -24,7 +24,7 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
   const user = await AuthService.login(email, password);
   // Setup Admin Cookie
   await SessionUtil.addSessionData(res, {
-    id: user.id,
+    id: user._id,
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname,
