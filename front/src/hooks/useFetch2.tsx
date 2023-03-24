@@ -64,7 +64,8 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
         const data = (await response.json()) as T
         cache.current[url] = data
         if (cancelRequest.current) return
-
+        console.log('AM I IN USEFETCH')
+        console.log(data)
         dispatch({ type: 'fetched', payload: data })
       } catch (error) {
         if (cancelRequest.current) return

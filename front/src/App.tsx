@@ -26,7 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={ <Home /> }/>
             <Route path="/products" element={ <Products />}/>
-            <Route path="/product/:id" element={ <ErrorBoundary><Product /> </ErrorBoundary> } />
+            <Route path="/product/:id" element={ <Product />  } />
             <Route path="/login" element={ <LoginPage /> }/>
             <Route path="/cart" element={ <Cart /> }/>
             <Route path="/*" element={<ErrorPage />} /> 

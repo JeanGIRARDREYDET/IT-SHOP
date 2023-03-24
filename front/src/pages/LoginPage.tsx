@@ -3,10 +3,14 @@ import { useState } from 'react'
 import Login from '../components/login/Login'
 import SignIn from '../components/signin/SignIn'
 import SignInFull from '../components/signInFull/SignInFull'
-import useFetch from '../hooks/useFetch'
+import useFetch from '../hooks/useFetch2'
 
 
 type ILogin = {
+  email: string,
+  password: string
+}
+type ISignIn = {
   email: string,
   password: string
 }
@@ -27,7 +31,7 @@ type IUser = {
 
 type IUserConnection = {
   email: string,
-  password: string
+  pwdHash: string
 }
 
 
@@ -40,12 +44,13 @@ const LoginPage = () => {
     isUserInDatabase(credentials)
   }
   const isUserInDatabase = (credentials: ILogin) => {
-    const fetching = async () => {
-      const {data, err, isLoading} = await useFetch<IUser>(`http://localhost:3000/api/login`, 'POST', credentials)
+    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(credentials)};
+    (async () => {
+      const {error, data } = await useFetch<IUser>(`http://localhost:3000/api/login`, requestOptions)
       console.log(data)
-      console.log(err)
-      console.log(isLoading)
-    }
+      console.log(error)
+      // console.log(isLoading)
+    })()
 
   }
   

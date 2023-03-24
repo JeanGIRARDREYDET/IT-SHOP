@@ -12,30 +12,35 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ProductImagesList from '../productImagesList/productImagesList';
-import useFetch from '../../hooks/useFetch'
+// import useFetch from '../../hooks/useFetch'
+import useFetch from '../../hooks/useFetch2';
 import { useEffect, useState } from 'react';
 import { IProduct } from '../../types/product';
 
 const Product = () => {
-  
-    let { id } = useParams();
-    console.log(id)
+    const { id } = useParams();
+    const [ID, setID] = useState<string>('')
+    const [imageURL, setImageURL] = useState('')
     const [product, setProduct] = useState<IProduct>()
-    const [error, setError] = useState({})
+    const [err, setError] = useState<any>()
     const [isLoading, setIsLoading] = useState(false)
-    
- 
+
     useEffect(() => {
-        const fetching = async () => {
-            const {data, err, loading} = await useFetch<IProduct>(`http://localhost:3000/api/products/${id}`)
+        
+        setID(id? id: '')
+        setImageURL(`/src/assets/products/${ID}/`)
+        // const {data, err, loading} = await useFetch<IProduct>(`http://localhost:3000/api/products/${id}`)
+        const { data, error } = useFetch<IProduct>(`http://localhost:3000/api/products/${ID}`)
+        console.log(ID)
+        console.log(data)
+        if(data){
             console.log(data)
-            if(data){
-                setProduct(product => ({...product, ...data}))
-            } else {
-                setError(err)
-            }
-            console.log(product)
+            setProduct(product => ({...product, ...data}))
+        } else {
+            setError(error)
         }
+        console.log(product)
+
 
     }, [])  
 
@@ -45,10 +50,10 @@ const Product = () => {
   //  const product = location.state?.data;
 
  
-  const image_url="/src/assets/products/"+id+"/"
+  // const image_url="/src/assets/products/"+id+"/"
     return (
     <>
-     {error}
+     {err && (<h1>{err}</h1>)}
         <Grid container className={Styles.ficheProduit}>
             <Grid item xs={12} lg={6}>
                 <Carrousel product={product} autoplay={true} slides={1} arrows={false}/>
