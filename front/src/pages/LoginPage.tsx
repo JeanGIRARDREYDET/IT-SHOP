@@ -4,6 +4,7 @@ import Login from '../components/login/Login'
 import SignIn from '../components/signin/SignIn'
 import SignInFull from '../components/signInFull/SignInFull'
 import useFetch from '../hooks/useFetch2'
+import { useNavigate } from 'react-router-dom';
 
 
 type ILogin = {
@@ -37,6 +38,8 @@ type IUserConnection = {
 
  
 const LoginPage = () => {
+    const navigate = useNavigate();
+
 
   const [isCreated, setIsCreated] = useState(false);
   const [isFullCreated, setIsFullCreated] = useState(false);
@@ -47,7 +50,17 @@ const LoginPage = () => {
   }
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(credentials)};
-     fetch("http://localhost:3000/api/auth/login",requestOptions).then(res=> console.log(res))
+     fetch("http://localhost:3000/api/auth/login",requestOptions).then(res=> {
+      
+      if(res.ok){
+
+        navigate("/products")
+        alert("bienvue !")
+
+      }
+  
+    }
+      )
     // (async () => {
     //   const {error, data } = await useFetch<IUser>(`http://localhost:3000/api/login`, requestOptions)
     //   console.log(data)
