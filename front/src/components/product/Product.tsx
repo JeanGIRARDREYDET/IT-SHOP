@@ -28,7 +28,7 @@ const Product = () => {
     useEffect(() => {
         
         setID(id? id: '')
-        setImageURL(`/src/assets/products/${ID}/`)
+        // setImageURL(`/src/assets/products/${ID}/`)
         // const {data, err, loading} = await useFetch<IProduct>(`http://localhost:3000/api/products/${id}`)
         const { data, error } = useFetch<IProduct>(`http://localhost:3000/api/products/${ID}`)
         console.log(ID)
