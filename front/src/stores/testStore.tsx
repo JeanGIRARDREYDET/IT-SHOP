@@ -42,7 +42,7 @@ export const cartReducer = (state: IState, action: IAction) => {
       if(isProduct){
           const index = getProductIndex(action.payload, state)
           if(index !== -1) {
-            return state.cart[index].quantity++
+            return state.cart[index].quantity += 1
           }
         return {
           ...state,
