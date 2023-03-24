@@ -8,7 +8,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from 'react';
 import Styles from './Product.module.css';
 import Carrousel from '../carousel/Carousel';
-import { useApiGet, TApiResponse } from '../../hooks/useApiGet';
+import { useApi, TApiResponse } from '../../hooks/useApiGet';
 import ProductImagesList from '../productImagesList/productImagesList';
 
 const Product = () => {
@@ -17,8 +17,8 @@ const Product = () => {
     const [product, setProduct] = useState({});
     const [error, setError] = useState({});
 
-    const data: TApiResponse = useApiGet(
-        "http://localhost:3000/api/products/" + id
+    const data: TApiResponse = useApi(
+        "products/" + id
     );
     console.log("Product component mounted, id: ", id); // Ajout d'un console.log pour vérifier le montage du composant et la valeur de l'ID
 
