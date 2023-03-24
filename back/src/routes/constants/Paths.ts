@@ -3,7 +3,7 @@
  */
 
 import { Immutable } from '@src/other/types';
-
+ 
 
 const Paths = {
   Base: '/api',

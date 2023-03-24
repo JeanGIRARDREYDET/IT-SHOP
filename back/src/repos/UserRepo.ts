@@ -11,7 +11,10 @@ import orm from './MockOrm';
  * Get one user.
  */
 async function getOne(email: string): Promise<IUser | null> {
-  return UserSchema.findOne({email: email})
+  const d = await UserSchema.findOne({email: email})
+
+
+  return d
   
 }
 

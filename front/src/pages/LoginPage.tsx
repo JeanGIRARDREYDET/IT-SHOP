@@ -45,12 +45,15 @@ const LoginPage = () => {
   }
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(credentials)};
-    (async () => {
-      const {error, data } = await useFetch<IUser>(`http://localhost:3000/api/login`, requestOptions)
-      console.log(data)
-      console.log(error)
-      // console.log(isLoading)
-    })()
+     fetch("http://localhost:3000/api/auth/login",requestOptions).then(res=> console.log(res))
+    // (async () => {
+    //   const {error, data } = await useFetch<IUser>(`http://localhost:3000/api/login`, requestOptions)
+    //   console.log(data)
+    //   console.log(error)
+    //   // console.log(isLoading)
+    // })()
+
+    
 
   }
   
@@ -67,7 +70,7 @@ const LoginPage = () => {
   }
 
 
-  return (
+  return ( 
     <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
       <Login onLogin={handleLogin}/>
       {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}

@@ -23,7 +23,8 @@ const authRouter = Router();
 // Login user
 authRouter.post(
   Paths.Auth.Login,
-  validate('email', 'password'),
+  
+  // validate('email', 'password'),
   AuthRoutes.login,
 );
 

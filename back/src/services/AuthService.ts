@@ -26,6 +26,7 @@ export const Errors = {
  */
 async function login(email: string, password: string): Promise<IUser> {
   // Fetch user
+
   const user = await UserRepo.getOne(email);
   if (!user) {
     throw new RouteError(
@@ -37,6 +38,7 @@ async function login(email: string, password: string): Promise<IUser> {
   const hash = (user.pwdHash ?? ''),
     pwdPassed = await PwdUtil.compare(password, hash);
   if (!pwdPassed) {
+    console.log("J'ai echoué mdp")
     // If password failed, wait 500ms this will increase security
     await tick(500);
     throw new RouteError(
