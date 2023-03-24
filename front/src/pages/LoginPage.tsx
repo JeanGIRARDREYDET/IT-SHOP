@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Login from '../components/login/Login'
 import SignIn from '../components/signin/SignIn'
 import SignInFull from '../components/signInFull/SignInFull'
-import useFetch from '../hooks/useFetch2'
+import useFetch from '../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
 import { useApi, TApiResponse } from '../hooks/useApiGet'
 

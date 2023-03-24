@@ -8,21 +8,25 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from 'react';
 import Styles from './Product.module.css';
 import Carrousel from '../carousel/Carousel';
-import { useApi, TApiResponse } from '../../hooks/useApiGet';
+// import { useApi, TApiResponse } from '../../hooks/useApiGet';
 import ProductImagesList from '../productImagesList/productImagesList';
+import useFetch from '../../hooks/useFetch';
+import { IProduct } from '../../types/product';
 
 const Product = () => {
     let { id } = useParams();
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState<IProduct>({});
     const [error, setError] = useState({});
-    const data: TApiResponse = useApi(
-        "products/" + id
-    );
+    const {data, err} = useFetch<IProduct>("products/" + id)
+    // const data: TApiResponse = useApi(
+    //     "products/" + id
+    // );
+    // TApiResponses data is an object with data and error keys
     useEffect(() => {
-        if (data.error) {
-            setError(data.error);
-        } else if (data.data) {
-            setProduct(data.data);
+        if (err) {
+            setError(err);
+        } else if (data) {
+            setProduct(data);
         }
     }, [data]); // <- Changement ici, j'ai ajouté `data` comme dépendance
        return (
