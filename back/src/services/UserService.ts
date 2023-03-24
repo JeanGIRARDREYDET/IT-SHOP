@@ -1,9 +1,10 @@
 import UserRepo from '@src/repos/UserRepo';
-import { IUser } from '@src/models/User';
+import { IUser, UserRoles } from '@src/models/User';
 import { RouteError } from '@src/other/classes';
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 
-import getHash from "../util/PwdUtil"
+import PwdUtil from '@src/util/PwdUtil';
+import { IUserSignin } from '../models/User';
 // **** Variables **** //
 
 export const USER_NOT_FOUND_ERR = 'User not found';
@@ -21,8 +22,15 @@ function getAll(): Promise<IUser[]> {
 /**
  * Add one user.
  */
-function addOne(user: IUser): Promise<void> {
-  return UserRepo.add(user); 
+async function  addOne(user: IUserSignin): Promise<void> { 
+  const {firstname, lastname, email, password, phone, date_of_birth, delivery_address, bill_address } = user
+
+  const userPayload:IUser = {firstname, lastname, email, role: UserRoles.Client , pwdHash: await PwdUtil.getHash(password), phone,date_of_birth, delivery_address, bill_address, orders:[], createdAt: new Date()}
+
+  console.log(userPayload)
+  
+
+  return UserRepo.add(userPayload); 
 }
 
 /**

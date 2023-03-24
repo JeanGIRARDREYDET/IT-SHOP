@@ -7,9 +7,9 @@ const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must a string or an object ' +
   'with the appropriate user keys.';
 
 export enum UserRoles {
-  Guest,
-  Client,
-  Admin,
+  Guest = "guest",
+  Client ="client",
+  Admin= "admin",
 }
 export enum OrderStatus {
   PENDING,
@@ -53,6 +53,17 @@ export interface IOrder {
   order_status: IOrderStatus;
 }
 
+export interface IUserSignin{
+  firstname: string;
+  lastname: string;
+  bill_address: string;
+  delivery_address: string;
+  email: string;
+  phone: string;
+  password:string;
+  date_of_birth: Date;
+}
+
 export interface IUser {
   _id?: string;
   firstname: string;
@@ -64,7 +75,6 @@ export interface IUser {
   role?: UserRoles;
   phone: string;
   date_of_birth: Date;
-  cart: ICart;
   orders: IOrder[];
   createdAt: Date
 }

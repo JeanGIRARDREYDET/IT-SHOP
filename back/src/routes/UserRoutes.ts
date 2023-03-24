@@ -1,7 +1,7 @@
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 
 import UserService from '@src/services/UserService';
-import { IUser } from '@src/models/User';
+import { IUser, IUserSignin } from '@src/models/User';
 import { IReq, IRes } from './types/express/misc';
 
 
@@ -19,7 +19,7 @@ async function getAll(_: IReq, res: IRes) {
  * Add one user.
  */
 
-async function add(req: IReq<{user: IUser}>, res: IRes) {
+async function add(req: IReq<{user: IUserSignin}>, res: IRes) {
 
   const { user } = req.body;
   

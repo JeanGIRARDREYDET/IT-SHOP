@@ -39,6 +39,7 @@ type IUserConnection = {
 const LoginPage = () => {
 
   const [isCreated, setIsCreated] = useState(false);
+  const [isFullCreated, setIsFullCreated] = useState(false);
   const [credentials, setCredentials] = useState<ISignIn | null>(null);
 
   const handleLogin = (credentials: ILogin) => {
@@ -70,7 +71,20 @@ const LoginPage = () => {
     
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user: payload})};
 
-    fetch("http://localhost:3000/api/users/add", requestOptions).then(res=> console.log(res))
+    fetch("http://localhost:3000/api/users/add", requestOptions)
+    
+    .then(res=>{
+
+        if(res.ok){
+
+          setIsFullCreated(true)
+          alert("Vous êtes bien enregistré !")
+
+        }
+
+        }
+    
+    )
 
   }
 
@@ -78,8 +92,19 @@ const LoginPage = () => {
   return ( 
     <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
       <Login onLogin={handleLogin}/>
-      {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
-      {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
+      {
+        !isFullCreated ? (
+
+          <>
+
+        {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
+        {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
+        </>
+        
+        ) :""
+
+
+      }
     </Box>
 
   )
