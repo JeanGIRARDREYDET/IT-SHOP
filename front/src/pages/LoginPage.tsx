@@ -4,8 +4,8 @@ import Login from '../components/login/Login'
 import SignIn from '../components/signin/SignIn'
 import SignInFull from '../components/signInFull/SignInFull'
 import useFetch from '../hooks/useFetch2'
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom'
+import { useApi, TApiResponse } from '../hooks/useApiGet'
 
 type ILogin = {
   email: string,
@@ -17,7 +17,6 @@ type ISignIn = {
 }
 
 type IUser = {
-
   firstname: string,
   lastname: string,
   bill_address: string,
@@ -27,7 +26,6 @@ type IUser = {
  //  role?: UserRoles;
   phone: string,
   date_of_birth: Date
-
 }
 
 type IUserConnection = {
@@ -35,12 +33,8 @@ type IUserConnection = {
   pwdHash: string
 }
 
-
- 
 const LoginPage = () => {
-    const navigate = useNavigate();
-
-
+  const navigate = useNavigate();
   const [isCreated, setIsCreated] = useState(false);
   const [isFullCreated, setIsFullCreated] = useState(false);
   const [credentials, setCredentials] = useState<ISignIn | null>(null);
@@ -48,26 +42,16 @@ const LoginPage = () => {
   const handleLogin = (credentials: ILogin) => {
     isUserInDatabase(credentials)
   }
+
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify(credentials)};
-     fetch("http://localhost:3000/api/auth/login",requestOptions).then(res=> {
-      
-      if(res.ok){
-
-        navigate("/products")
-        alert("bienvenue !")
-
-      }
-  
-    }
-      )
-    // (async () => {
-    //   const {error, data } = await useFetch<IUser>(`http://localhost:3000/api/login`, requestOptions)
-    //   console.log(data)
-    //   console.log(error)
-    //   // console.log(isLoading)
-    // })()
  
+    fetch("http://localhost:3000/api/auth/login",requestOptions).then(res=> {
+      if(res.ok){
+          navigate("/products")
+          alert("bienvenue !")
+      }
+    })
   }
   
   const handleSignIn = (userCredentials: ILogin) => {
@@ -75,51 +59,32 @@ const LoginPage = () => {
       setIsCreated(true)
       setCredentials((credentials)=>({...credentials, email: userCredentials.email, password: userCredentials.password}))
     }
-    
   }
   
   const handleSignInFull = (userInfos: IUser) => {
-
     const payload = {...userInfos,...credentials}
-    
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user: payload})};
-
     fetch("http://localhost:3000/api/users/add", requestOptions)
-    
     .then(res=>{
-
         if(res.ok){
-
           setIsFullCreated(true)
           alert("Vous êtes bien enregistré !")
-
         }
-
-        }
-    
-    )
-
+    })
   }
-
 
   return ( 
     <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
       <Login onLogin={handleLogin}/>
       {
         !isFullCreated ? (
-
           <>
-
-        {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
-        {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
-        </>
-        
+            {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
+            {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
+          </>
         ) :""
-
-
       }
     </Box>
-
   )
 }
 export default LoginPage
