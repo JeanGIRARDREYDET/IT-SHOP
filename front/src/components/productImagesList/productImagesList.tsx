@@ -5,18 +5,18 @@ import { IProduct } from '../../types/product';
 import { Grid, Box } from '@mui/material';
 import Styles from './ProductImagesList.module.css';
 type Props = {
-  product:IProduct
+  productImages:IProduct
 }
-const ProductImagesList = ({product}:Props)=>  {
+const ProductImagesList = ({productImages}:Props)=>  {
     // Définition du chemin du produit
-    const image_url="/src/assets/products/"+product._id+"/"
+    const image_url="/src/assets/products/"+productImages._id+"/"
     return (
       <Grid container className={Styles.productimages}> 
         {
           //src/assets/products/${product._id}/
-          product && product.images  && product.images.map((image:string, index: number) => (
+          productImages && productImages.images  && productImages.images.map((image:string, index: number) => (
             <Grid item xs={12} lg={6}  key={"GrPil"+index}>  
-              <img key={"Pil"+index} src={image_url+image} alt={product.name+ "_" + index} />
+              <img key={"Pil"+index} src={image_url+image} alt={productImages.name+ "_" + index} />
             </Grid>
           )) 
         }
