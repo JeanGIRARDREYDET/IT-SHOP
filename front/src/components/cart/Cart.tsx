@@ -3,6 +3,7 @@ import { useContext,useEffect,useState } from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 import CartItem from '../cartItem/CartItem';
 import Button from '@mui/material/Button';
+import { IProductCart } from '../../types/product';
 
 
 type Props = {
@@ -48,7 +49,7 @@ const Cart = ()=> {
 
     </table>
 
-      {  cart.map((p,i)=>(
+      {  cart.map((p:IProductCart, i: number)=>(
 
         <div> 
 

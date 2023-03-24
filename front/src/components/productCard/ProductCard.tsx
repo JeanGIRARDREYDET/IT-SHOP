@@ -39,35 +39,14 @@ const ProductCard = ({product}: Props) => {
 // const theme = useContext(ThemeContext);
   const [fetchRes, setFetchRes] = useState([])
   const [filter, setFilter] = useState({})
-
   const [{cart}, dispatch] = CartConsumerHook();
   
   const AddProductToCart = (e: MouseEvent) => {
-    // useContext()
-    // useLocalStorage('product', product)
-
-    // si on veut ajouter le produit au panier de l'utilisateur
-    // Il faut récupérer l'id de l'utilisateur : on regarde dans le localstorage l'id de l'utilisateur const id = locatorage.id
-    // fetch user.find(id).cart.push(product)
-    // et ensuite requete pour trouver l'utilisateur et lui ajouter à son panier le produit
-    // const {userID, role, cart, add} = useContext(CartContext)
     e.preventDefault()
     e.stopPropagation()
 
-    dispatch({type: 'addProduct', payload:product
-        });
+    dispatch({type: 'addProduct', payload:product});
 
-    // userInfos.addProductToCart(product)
-    console.log(product);
-  
-    
-  
-    // const ProduitPanier =fetchRes.find(p=>p.name===nomProduit)
-  
-    // console.log(ProduitPanier);
-    
-  
-  
   }
   const url = 'http://localhost:3000/api/products'
   useEffect(() => {
@@ -78,41 +57,30 @@ const ProductCard = ({product}: Props) => {
       )
   }, []) 
 
-
-
-
   return ( 
    
-        <Link to={`/product/${product._id}`} state={{ data: product }}>
-
-
-
+    <Link to={`/product/${product._id}`} state={{ data: product }}>
       <Card className={Style.Card} sx={{ width: 345,height:345 }}>
-            <CardMedia
+        <CardMedia
               sx={{ height: 140 }}
               image={images}
               title="green iguana"
-            />
-            <CardContent>
-              <Typography className={Style.title} gutterBottom variant="h5" component="div">
+        />
+        <CardContent>
+          <Typography className={Style.title} gutterBottom variant="h5" component="div">
               {product.name.slice(0,25)}...
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
             {product.description.slice(0,15)}
-              </Typography>
-            </CardContent>
+          </Typography>
+        </CardContent>
 
-            <CardActions className={Style.footer}>
-              <Button color="error">{product.price}€</Button>
-              <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
-            </CardActions>
-    </Card>
-
- 
-    
+        <CardActions className={Style.footer}>
+          <Button color="error">{product.price}€</Button>
+          <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
+        </CardActions>
+      </Card>
     </Link>
-
-
   )
 }
 

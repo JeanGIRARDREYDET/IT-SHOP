@@ -12,7 +12,11 @@ type IState = {
 }
 
 export const initialCartState = {
-  cart: []
+  cart: [
+    {name: 'coca', brand: 'cola', quantity: 2},
+    {name: 'coco', brand: 'lala', quantity: 6},
+    {name: 'tomate', brand: 'fifi', quantity: 2}
+  ]
 };
 
 const isInCart = (product: IProduct, state:IState):boolean => {
@@ -36,17 +40,16 @@ const productToProductCard = (product: IProduct, quantity: number):IProductCart 
 }
 
 export const cartReducer = (state: IState, action: IAction) => {
+
  switch (action.type) {
      case 'addProduct':
-      const isProduct = isInCart(action.payload, state)
-      if(isProduct){
+      // const isProduct = isInCart(action.payload, state)
+      console.log('store ADD')
+      if(getProductIndex(action.payload, state) !== -1){
           const index = getProductIndex(action.payload, state)
-          if(index !== -1) {
-            return state.cart[index].quantity += 1
-          }
+            state.cart[index].quantity += 1
         return {
-          ...state,
-          cart: [...state.cart,  ]
+          ...state
         }
       } else {
         return {
@@ -59,6 +62,7 @@ export const cartReducer = (state: IState, action: IAction) => {
     //      cart: [...state.cart, isInCart(action.payload, state)? productToProductCard(action.payload, {...isInCart(action.payload, state), quantity : ) ]
     //  };
      case 'removeProduct':
+      console.log('store REMOVE')
       return {
         ...state,
         cart: [...state.cart.filter(product => product._id !== action.payload._id)]
