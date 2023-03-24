@@ -13,33 +13,19 @@ import ProductImagesList from '../productImagesList/productImagesList';
 
 const Product = () => {
     let { id } = useParams();
-    console.log(id);
     const [product, setProduct] = useState({});
     const [error, setError] = useState({});
-
     const data: TApiResponse = useApi(
         "products/" + id
     );
-    console.log("Product component mounted, id: ", id); // Ajout d'un console.log pour vérifier le montage du composant et la valeur de l'ID
-
-    if (!data.loading) console.log(data);
-
-    console.log(26);
-    console.log(data);
-
     useEffect(() => {
         if (data.error) {
             setError(data.error);
-            console.log(data.error);
         } else if (data.data) {
             setProduct(data.data);
-            console.log(data.data);
         }
     }, [data]); // <- Changement ici, j'ai ajouté `data` comme dépendance
-   
-    const image_url = "/src/assets/products/" + product._id + "/";
-
-    return (
+       return (
         <>
              <Grid container className={Styles.ficheProduit}>
                 <Grid item xs={12} lg={6}>
@@ -89,5 +75,4 @@ const Product = () => {
         </>
     );
 };
-
 export default Product;
