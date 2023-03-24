@@ -19,31 +19,26 @@ import { IProduct } from '../../types/product';
 
 const Product = () => {
     const { id } = useParams();
-    const [ID, setID] = useState<string>('')
     const [imageURL, setImageURL] = useState('')
     const [product, setProduct] = useState<IProduct>()
     const [err, setError] = useState<any>()
-    const [isLoading, setIsLoading] = useState(false)
-
+    // const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
+        fetch(`http://localhost:3000/api/products/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            setProduct(data)
+        })
+        .catch(err => setError(err))
+    }, [])
+    // const { data, error } = useFetch<IProduct>(`http://localhost:3000/api/products/${id}`)
         
-        setID(id? id: '')
+
         // setImageURL(`/src/assets/products/${ID}/`)
         // const {data, err, loading} = await useFetch<IProduct>(`http://localhost:3000/api/products/${id}`)
-        const { data, error } = useFetch<IProduct>(`http://localhost:3000/api/products/${ID}`)
-        console.log(ID)
-        console.log(data)
-        if(data){
-            console.log(data)
-            setProduct(product => ({...product, ...data}))
-        } else {
-            setError(error)
-        }
-        console.log(product)
 
 
-    }, [])  
-
+    console.log(product)
     //const location = useLocation();
 
 
@@ -56,7 +51,7 @@ const Product = () => {
      {err && (<h1>{err}</h1>)}
         <Grid container className={Styles.ficheProduit}>
             <Grid item xs={12} lg={6}>
-                <Carrousel product={product} autoplay={true} slides={1} arrows={false}/>
+                <Carrousel productCarousel={product} autoplay={true} slides={1} arrows={false}/>
             </Grid>
             <Grid item xs={12} lg={6}>
                 

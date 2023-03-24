@@ -1,5 +1,5 @@
 export interface IProduct {
-  _id?: string;
+  _id?: string | null;
   name: string;
   brand: string;
   description: string;

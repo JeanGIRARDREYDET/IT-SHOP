@@ -9,15 +9,15 @@ import "slick-carousel/slick/slick-theme.css";
 import { IProduct } from '../../types/product';
 
 type Props = {
-  product:IProduct,
+  productCarousel:IProduct,
   slides : number,
   autoplay: boolean,
   arrows:boolean
 }
-const Carrousel = ( { product, slides, autoplay }: Props)=>  {
+const Carrousel = ( { productCarousel, slides, autoplay }: Props)=>  {
     // Définition du chemin du produit
-    console.log(product)
-    const image_url="/src/assets/products/"+product._id+"/"
+    console.log(productCarousel)
+    const image_url="/src/assets/products/"+productCarousel._id+"/"
 
     const settings = {
       dots: true,
@@ -42,9 +42,9 @@ const Carrousel = ( { product, slides, autoplay }: Props)=>  {
 
         {
           //src/assets/products/${product._id}/
-        product.images.map((image:string, index: number) => (
+          productCarousel.images.map((image:string, index: number) => (
    
-            <img  key={"CarImg_"+index} src={image_url+image} alt={product.name+ "_" + index} style={{height:"50%",width:"50%" }}/>
+            <img  key={"CarImg_"+index} src={image_url+image} alt={productCarousel.name+ "_" + index} style={{height:"50%",width:"50%" }}/>
        
          )) }
 
