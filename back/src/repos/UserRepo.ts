@@ -40,6 +40,7 @@ async function getAll(): Promise<IUser[]> {
  */
 async function add(user: IUser): Promise<void> {
   const res = await new UserSchema(user);
+  res.save()
   console.log(res);
 }
 

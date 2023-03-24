@@ -50,8 +50,9 @@ userRouter.get(
 
 // Add one user
 userRouter.post(
+  
   Paths.Users.Add,
-  validate(['user', User.IsUserObj]),
+  // validate(['user', User.IsUserObj]),
   UserRoutes.add,
 );
 
@@ -70,7 +71,9 @@ userRouter.delete(
 );
 
 // Add UserRouter
-apiRouter.use(Paths.Users.Base, adminMw, userRouter);
+
+// adminMw,
+apiRouter.use(Paths.Users.Base, userRouter);
 
 
 //ADD PRODUCT ROUTER

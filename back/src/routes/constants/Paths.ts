@@ -11,6 +11,7 @@ const Paths = {
     Base: '/auth',
     Login: '/login',
     Logout: '/logout',
+    
   },
   Users: {
     Base: '/users',

@@ -35,10 +35,11 @@ type IUserConnection = {
 }
 
 
-
+ 
 const LoginPage = () => {
 
   const [isCreated, setIsCreated] = useState(false);
+  const [credentials, setCredentials] = useState<ISignIn | null>(null);
 
   const handleLogin = (credentials: ILogin) => {
     isUserInDatabase(credentials)
@@ -52,21 +53,25 @@ const LoginPage = () => {
     //   console.log(error)
     //   // console.log(isLoading)
     // })()
-
-    
-
+ 
   }
   
   const handleSignIn = (userCredentials: ILogin) => {
     if(userCredentials.email && userCredentials.password) {
       setIsCreated(true)
-      console.log(userCredentials)
+      setCredentials((credentials)=>({...credentials, email: userCredentials.email, password: userCredentials.password}))
     }
     
   }
   
   const handleSignInFull = (userInfos: IUser) => {
-    console.log(userInfos)
+
+    const payload = {...userInfos,...credentials}
+    
+    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user: payload})};
+
+    fetch("http://localhost:3000/api/users/add", requestOptions).then(res=> console.log(res))
+
   }
 
 

@@ -31,8 +31,13 @@ const SignInFull = ({onSignInFull}:Props)=> {
   const [date_of_birth, setDate_of_birth] = useState('')
 
   const handleSignInFullForm = () => {
+
+    
+
     if (isNotEmpty(firstname) && isNotEmpty(lastname) && isNotEmpty(delivery_address) && isNotEmpty(phone) && isNotEmpty(date_of_birth)) {
+
       onSignInFull({firstname, lastname, bill_address, delivery_address, phone, date_of_birth})
+      
     }  
   }
 
@@ -44,28 +49,28 @@ const SignInFull = ({onSignInFull}:Props)=> {
   <h2>Informations complémentaires </h2>
   
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Prenom</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setFirstname(event.currentTarget.value)}/>
+      <InputLabel htmlFor="firstname-signin">Prenom</InputLabel>
+      <Input id="firstname-signin" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setFirstname(event.currentTarget.value)}/>
     </Box>
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Nom</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setLastname(event.currentTarget.value)}/>
+      <InputLabel htmlFor="lastname-signin">Nom</InputLabel>
+      <Input id="lastname-signin" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setLastname(event.currentTarget.value)}/>
     </Box>
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Adresse de livraison</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setDelivery_address(event.currentTarget.value)}/>
+      <InputLabel htmlFor="adress-signin">Adresse de livraison</InputLabel>
+      <Input id="adress-signin" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setDelivery_address(event.currentTarget.value)}/>
     </Box>
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Adresse de facturation</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setBill_address(event.currentTarget.value)}/>
+      <InputLabel htmlFor="adress2-signin">Adresse de facturation</InputLabel>
+      <Input id="adress2-signin" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setBill_address(event.currentTarget.value)}/>
     </Box>
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Numéro de telephone</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="phone" onKeyUp={(event)=>setPhone(event.currentTarget.value)}/>
+      <InputLabel htmlFor="phone-signin">Numéro de telephone</InputLabel>
+      <Input id="phone-signin" aria-describedby="my-helper-text" type="phone" onKeyUp={(event)=>setPhone(event.currentTarget.value)}/>
     </Box>
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Date de naissance</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="date" onKeyUp={(event)=>setDate_of_birth(event.currentTarget.value)}/>
+      <InputLabel htmlFor="date_of_birth-signin">Date de naissance</InputLabel>
+      <Input id="date_of_birth-signin" aria-describedby="my-helper-text" type="date" onChange={(event)=>setDate_of_birth(event.currentTarget.value)}/>
     </Box>
 
 

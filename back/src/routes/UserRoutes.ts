@@ -18,8 +18,13 @@ async function getAll(_: IReq, res: IRes) {
 /**
  * Add one user.
  */
+
 async function add(req: IReq<{user: IUser}>, res: IRes) {
+
   const { user } = req.body;
+  
+  
+
   await UserService.addOne(user);
   return res.status(HttpStatusCodes.CREATED).end();
 }
