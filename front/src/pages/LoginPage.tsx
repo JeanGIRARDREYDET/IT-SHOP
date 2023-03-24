@@ -55,7 +55,7 @@ const LoginPage = () => {
       if(res.ok){
 
         navigate("/products")
-        alert("bienvue !")
+        alert("bienvenue !")
 
       }
   

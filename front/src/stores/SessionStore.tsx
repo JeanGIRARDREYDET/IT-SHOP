@@ -7,7 +7,7 @@ type IAction = {
 
 export const initialSessionState = {
   userID: '',
-  role: ''
+  role: '' 
 };
 
 export const sessionReducer = (state: any, action: IAction) => {
@@ -19,7 +19,7 @@ export const sessionReducer = (state: any, action: IAction) => {
      };
      case 'setRole':
       return {
-        ...state,
+        ...state, 
         role: action.payload
       }
      default:
