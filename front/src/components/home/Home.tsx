@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import useFetch from '../../hooks/useFetch';
 import { IProduct } from '../../types/product';
@@ -14,14 +15,25 @@ const Home = () => {
   }, [data])
   return (
     <>
-      <h1>HOME </h1>
+      <h1>Bienvenue sur IT-SHOP &#x1F605; </h1>
       <div id="" className="carousel carousel-best"> 
-        <ProductsCarousel items={prods} filter={'rating'} slides={3} autoplay={false} arrows={true} />
+        <Typography component="div" variant="h5" mt={2} mb={2}>
+            Les produits les mieux notés
+        </Typography>
+        <ProductsCarousel items={prods} filter={'bestRatings'} slides={2} autoplay={false} arrows={true} />
       </div>
       <div id="" className="carousel carousel-sells">
-
+        <Typography component="div" variant="h5" mt={2} mb={2}>
+            Les produits les plus vendus
+        </Typography>
+        <ProductsCarousel items={prods} filter={'bestsellers'} slides={3} autoplay={false} arrows={true} />
       </div>
-      <div id="" className="carousel carousel-promotion"> carousel 3</div>
+      <div id="" className="carousel carousel-promotion">
+        <Typography component="div" variant="h5" mt={2} mb={2}>
+            Les promos du moment
+        </Typography>
+        <ProductsCarousel items={prods} filter={'bestdeals'} slides={3} autoplay={false} arrows={true} />
+      </div>
     </>
   ) 
 }
