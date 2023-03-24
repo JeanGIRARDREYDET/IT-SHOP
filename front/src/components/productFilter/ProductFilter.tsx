@@ -74,8 +74,8 @@ const ProductFilter = ({products, onFilter}: Props) => {
   }
 
   const submitFilter = () => {
-    console.log(filter)
-    // onFilter(filter)
+    // console.log(filter)
+    onFilter(filter)
   }
 
   return (
