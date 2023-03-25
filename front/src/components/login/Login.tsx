@@ -18,11 +18,12 @@ const Login = ({onLogin}:Props)=> {
       const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( { email, password } )};
       fetch("http://localhost:3000/api/auth/login", requestOptions).then(res=> {
         if(res.ok){
+          onLogin({email, password})
         } else {
           setLoginError(true)
         }
       })
-      onLogin({email, password})
+  
     }  
   }
   useEffect(() => {
