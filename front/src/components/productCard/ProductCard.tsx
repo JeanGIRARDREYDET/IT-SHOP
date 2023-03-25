@@ -41,11 +41,11 @@ const ProductCard = ({product}: Props) => {
   const [filter, setFilter] = useState({})
   const [{cart}, dispatch] = CartConsumerHook();
   
-  const AddProductToCart = (e: MouseEvent) => {
+  const addProductToCart = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-
-    dispatch({type: 'addProduct', payload:product});
+    console.log(product.name)
+    dispatch({type: 'ADD_TO_CART', payload: product});
 
   }
   const url = 'http://localhost:3000/api/products'
@@ -64,7 +64,7 @@ const ProductCard = ({product}: Props) => {
         <CardMedia
               sx={{ height: 140 }}
               image={images}
-              title="green iguana"
+              title={product.name}
         />
         <CardContent>
           <Typography className={Style.title} gutterBottom variant="h5" component="div">
@@ -77,7 +77,7 @@ const ProductCard = ({product}: Props) => {
 
         <CardActions className={Style.footer}>
           <Button color="error">{product.price}€</Button>
-          <Button size="small"><AddShoppingCartIcon onClick={(e) => AddProductToCart(e)} className={Style.add} /></Button>
+          <Button size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
         </CardActions>
       </Card>
     </Link>

@@ -17,7 +17,6 @@ const Home = () => {
   return (
     <>
       <h1>Bienvenue sur IT-SHOP &#x1F605; </h1>
-      <Test />
       <div id="" className="carousel carousel-best"> 
         <Typography component="div" variant="h5" mt={2} mb={2}>
             Les produits les mieux notés

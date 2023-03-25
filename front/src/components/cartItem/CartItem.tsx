@@ -1,4 +1,4 @@
-import { IProduct } from "../../types/product"
+import { IProduct, IProductCart } from "../../types/product"
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,11 +8,21 @@ import Button from '@mui/material/Button';
 import Style from "./CartItem.module.css"
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-type Props = {product:IProduct}
+import { CartConsumerHook } from "../../context/CartContext";
+type Props = {product:IProductCart}
 
 const CartItem = ({product}:Props) => {
+    const [{cart}, dispatch] = CartConsumerHook();
     const images = `src/assets/products/${product._id}/${product.images[0]}`  
+    
+    const addProductQuantity = () => {
+        dispatch({type: 'ADD_TO_CART', payload: product})
+    }
 
+    const removeProductQuantity = () => {
+        dispatch({type: 'REMOVE_TO_CART', payload: product})
+    }
+    
     return(
 
         <>
@@ -26,7 +36,7 @@ const CartItem = ({product}:Props) => {
             <td scope="row">{product.name.slice(0,20)}</td>
             <td scope="row">{product.description.slice(0,20)}</td>
             <td>{product.price} €</td>
-            <td><button className={Style.ActionQuantities}>-</button> {0} <button className={Style.ActionQuantities}>+</button></td>
+            <td><button className={Style.ActionQuantities} onClick={removeProductQuantity}>-</button> {product.quantity} <button className={Style.ActionQuantities} onClick={addProductQuantity}>+</button></td>
         </tr>
        
     </tbody>

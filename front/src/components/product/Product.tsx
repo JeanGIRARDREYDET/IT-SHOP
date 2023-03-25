@@ -12,12 +12,19 @@ import Carrousel from '../carousel/Carousel';
 import ProductImagesList from '../productImagesList/productImagesList';
 import useFetch from '../../hooks/useFetch';
 import { IProduct } from '../../types/product';
+import { CartConsumerHook } from '../../context/CartContext';
 
 const Product = () => {
     let { id } = useParams();
     const [product, setProduct] = useState<IProduct>({});
     const [error, setError] = useState({});
+    const [{cart}, dispatch] = CartConsumerHook();
     const {data, err} = useFetch<IProduct>("products/" + id)
+
+    const addToCart = () => {
+        console.log('add a product')
+        dispatch({type: 'ADD_TO_CART', payload: product});
+    }
     // const data: TApiResponse = useApi(
     //     "products/" + id
     // );
@@ -40,7 +47,7 @@ const Product = () => {
                         {product.stock > 0 ? (
                             <CardActions className={Styles.buy}>
                                 <Button color="error">{product.price}€</Button>
-                                <Button size="small">
+                                <Button size="small" onClick={addToCart}>
                                     <AddShoppingCartIcon className={Styles.add} />
                                 </Button>
                             </CardActions>

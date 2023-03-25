@@ -14,17 +14,13 @@ const Cart = ()=> {
 
   const [prixTotal,changePrix] = useState(0)
 
-  const total = cart.reduce((acc,c)=>acc+ c.price,0
-    
-    )
+  const total = cart.reduce((acc: number , c: IProductCart)=>acc+ (c.price * c.quantity) , 0 )
   
-
-
-    useEffect(()=>{
+  useEffect(()=>{
       changePrix(total);
-    }, [])
- return (
-<>
+  }, [cart])
+  return (
+    <>
   <div className="Cart"> 
 
     <h1>Cart </h1>
@@ -53,7 +49,7 @@ const Cart = ()=> {
 
         <div> 
 
-            <CartItem product={p} key={i} />
+            <CartItem product={p} key={p._id? p._id + i: i} />
 
 
 
