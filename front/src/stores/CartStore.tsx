@@ -10,33 +10,34 @@ type IAction = {
 type IState = {
   cart: IProductCart[]
 }
-enum ActionTypes {
+export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
   REMOVE_TO_CART = 'REMOVE_TO_CART',
-  RESET_CART = 'RESET_CART'
+  RESET_CART = 'RESET_CART',
+  SET_USER_SESSION = 'SET_USER_SESSION',
+  UNSET_USER_SESSION = 'UNSET_USER_SESSION'
 }
 
 const add = (item: IProductCart): IProductCart => {
-  console.log(item)
   return { ...item, quantity: item.quantity + 1 }
 }
 
 const remove = (item: IProductCart) => {
-  if(item.quantity - 1 === 0) return {}
   return {...item, quantity: item.quantity - 1 }
 }
-// Utils functions :
+
+const isInCart = (payload: IProduct, cart: IProductCart[]) => cart.findIndex(p => p._id === payload._id) !== -1
+const indexInCart = (payload: IProduct, cart: IProductCart[]) => cart.findIndex(p => p._id === payload._id)
 
 const updatedProducts = (products: IProductCart[], payload: IProduct, action: string) => {
-  if(products.findIndex(p => p._id === payload._id) !== -1 ){
-    return products.map(
-      item => {
-        if(item._id === payload._id) {
-          return action === ActionTypes.ADD_TO_CART ? add(item): remove(item) 
-        }
-      }).filter((i) => Object.keys(i).length > 0 ? i : false)
-  } else {
-    return [...products, {...payload, quantity: 1}]
+  if(!isInCart(payload, products)) return [...products, {...payload, quantity: 1}]
+  if (action === ActionTypes.ADD_TO_CART){
+    return products.map(i => i._id === payload._id ? add(i): i)
+  } else if (action === ActionTypes.REMOVE_TO_CART) {
+    if(products[indexInCart(payload, products)].quantity - 1 === 0) return products.filter(p => p._id !== payload._id)
+    return products.map(i => i._id === payload._id ? remove(i): i)
+  } else{
+    return []
   }
 
   // useLocalStorage here ! 
@@ -45,7 +46,8 @@ const updatedProducts = (products: IProductCart[], payload: IProduct, action: st
 }
 
 export const initialCartState = {
-  cart: []
+  cart: [],
+  user: {}
 };
 
 export const cartReducer = (state: IState, action: IAction) => {
@@ -54,18 +56,10 @@ export const cartReducer = (state: IState, action: IAction) => {
   // const [storedValue, setValue] = useLocalStorage<>()
  switch (action.type) {
      case ActionTypes.ADD_TO_CART:
-      console.log("In ADD_PRODUCT")
         return {
           ...state,
-          cart: [...updatedProducts(state.cart, action.payload, action.type)] //cart[...state.cart, {...action.payload, quantity: 1 }]
+          cart: [...updatedProducts(state.cart, action.payload, action.type)]
         };
-      // } else {
-      //   console.log('on more item already in')
-      //   return {
-      //     ...state,
-      //     cart: [...state.cart.map(cartItem => cartItem._id === action.payload._id? cartItem.quantity += 1: cartItem )] // [...state.cart, {...action.payload, quantity: cart[cart.findIndex(i => i._id === action.payload._id)].quantity += 1 }]
-      // };
-      // }
      case ActionTypes.REMOVE_TO_CART:
       return {
         ...state,
@@ -75,6 +69,16 @@ export const cartReducer = (state: IState, action: IAction) => {
         return {
           ...state,
           cart: []
+        }
+      case ActionTypes.SET_USER_SESSION:
+        return {
+          ...state,
+          user : {...action.payload}
+        }
+      case ActionTypes.UNSET_USER_SESSION:
+        return {
+          ...state,
+          user: {}
         }
      default:
      return state;

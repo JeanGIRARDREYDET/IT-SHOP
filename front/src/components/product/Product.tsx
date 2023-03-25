@@ -13,6 +13,7 @@ import ProductImagesList from '../productImagesList/productImagesList';
 import useFetch from '../../hooks/useFetch';
 import { IProduct } from '../../types/product';
 import { CartConsumerHook } from '../../context/CartContext';
+import { ActionTypes } from '../../stores/CartStore';
 
 const Product = () => {
     let { id } = useParams();
@@ -23,7 +24,7 @@ const Product = () => {
 
     const addToCart = () => {
         console.log('add a product')
-        dispatch({type: 'ADD_TO_CART', payload: product});
+        dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
     }
     // const data: TApiResponse = useApi(
     //     "products/" + id

@@ -9,6 +9,7 @@ import Style from "./ProductCard.module.css"
 import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from "react"
+import { ActionTypes } from '../../stores/CartStore';
 import { CartConsumerHook } from '../../context/CartContext';
 
 
@@ -45,7 +46,7 @@ const ProductCard = ({product}: Props) => {
     e.preventDefault()
     e.stopPropagation()
     console.log(product.name)
-    dispatch({type: 'ADD_TO_CART', payload: product});
+    dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
 
   }
   const url = 'http://localhost:3000/api/products'

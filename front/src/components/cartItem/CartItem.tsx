@@ -8,19 +8,20 @@ import Button from '@mui/material/Button';
 import Style from "./CartItem.module.css"
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { ActionTypes } from "../../stores/CartStore";
 import { CartConsumerHook } from "../../context/CartContext";
 type Props = {product:IProductCart}
 
 const CartItem = ({product}:Props) => {
-    const [{cart}, dispatch] = CartConsumerHook();
+    const [, dispatch] = CartConsumerHook();
     const images = `src/assets/products/${product._id}/${product.images[0]}`  
     
     const addProductQuantity = () => {
-        dispatch({type: 'ADD_TO_CART', payload: product})
+        dispatch({type: ActionTypes.ADD_TO_CART, payload: product})
     }
 
     const removeProductQuantity = () => {
-        dispatch({type: 'REMOVE_TO_CART', payload: product})
+        dispatch({type: ActionTypes.REMOVE_TO_CART, payload: product})
     }
     
     return(

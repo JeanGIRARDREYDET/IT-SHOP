@@ -4,7 +4,7 @@ import { CartConsumerHook } from '../../context/CartContext';
 import CartItem from '../cartItem/CartItem';
 import Button from '@mui/material/Button';
 import { IProductCart } from '../../types/product';
-
+import { ActionTypes } from '../../stores/CartStore';
 
 type Props = {
   cartProducts: []
@@ -12,12 +12,15 @@ type Props = {
 const Cart = ()=> {
   const [{cart}, dispatch] = CartConsumerHook();
 
-  const [prixTotal,changePrix] = useState(0)
+  const [prixTotal, changePrix] = useState(0)
+  const [articles_number, setArticles_number] = useState(0)
 
-  const total = cart.reduce((acc: number , c: IProductCart)=>acc+ (c.price * c.quantity) , 0 )
+  const total = cart.reduce((acc: number , c: IProductCart) => acc+ (c.price * c.quantity) , 0 )
+  const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c. quantity, 0 )
   
-  useEffect(()=>{
-      changePrix(total);
+  useEffect( () => {
+    setArticles_number(nbArticles)
+    changePrix(total);
   }, [cart])
   return (
     <>
@@ -26,7 +29,7 @@ const Cart = ()=> {
     <h1>Cart </h1>
     
     {
-        cart.length > 0 ? (
+        cart && cart.length > 0 ? (
 
     <div className="List-Cart"> 
 
@@ -45,7 +48,7 @@ const Cart = ()=> {
 
     </table>
 
-      {  cart.map((p:IProductCart, i: number)=>(
+      {  cart.map((p:IProductCart, i: number) => (
 
         <div> 
 
@@ -65,17 +68,19 @@ const Cart = ()=> {
       }
 
       {
-        prixTotal > 0 ?
+        prixTotal > 0 ? (
 
         <div>
           
-          <h2 className={Style.total}> Total: {prixTotal.toFixed(2)} € </h2>
-
+          <h2 className={Style.total}> Total: { prixTotal.toFixed(2) } € </h2>
+          <h3>produits différents : { cart.length }</h3>
+          <p>Nombre d'articles total : { articles_number } </p>
+          <button className={Style.ButtonComandez} onClick={() => dispatch({type: ActionTypes.RESET_CART})}> Vider le panier </button>
           <button className={Style.ButtonComandez} > Commandez </button>
 
           </div>
 
-       : ""
+         ) : ""
 
       }
 
