@@ -1,25 +1,24 @@
 import { Box, Button, Input, InputLabel } from "@mui/material"
-import { SyntheticEvent, useState } from "react"
+import { useState } from "react"
 import { IProduct } from "../../types/product"
-import ProductForm from "../productForm/ProductForm"
-import SearchBar from "../searchBar/SearchBar"
-
-const UpdateProduct = () => {
-  const [product, setProduct] = useState<IProduct | null>(null)
-  const [isProductForm, setisProductForm] = useState(false)
-
-  const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | null) => {
-    console.log(`${value}`)
-    setProduct(prev => ({...prev, ...value}))
-    setisProductForm(true)
-    // return redirect(`/product/${value?._id}`)
-  }
+type Props = {
+  product: IProduct
+}
+const ProductForm = ({product}: Props) => {
+  const [name, setName] = useState('')
+  const [brand, setBrand] = useState('')
+  const [description, setDescription] = useState('')
+  const [images, setImage] = useState<Array<string>>([])
+  const [categories, setCategories] = useState<Array<string>>([])
+  const [price, setPrice] = useState<number | null>(null)
+  const [stock, setStock] = useState<number | null>(null)
+  const [rating, setRating] = useState<number | null>(null)
 
   const updateProduct = () => {
 
   }
 
-  const prod = {
+  const prodExample = {
     _id: {"$oid": "641208cfc6d56d7d313ba5be"},
     name: "Multiple-Chargeur.",
     brand: "LENCENT",
@@ -32,15 +31,25 @@ const UpdateProduct = () => {
     rating:{"$numberInt":"4"}
   }
   return (
-    <>
-      <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
-        {!product && <h2>{`Modifier un produit`}</h2>}
-        {product &&<h2>{`Modifier ${product?.brand} de la marque ${product?.brand}`}</h2>}
-        <SearchBar onSearch={handleSearch} />
-        {isProductForm && <ProductForm product={product} />}
+    <Box>
+      <Box sx={{p: 2}}>
+        <InputLabel htmlFor="name-product">Nom</InputLabel>
+        <Input id="name-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setName(event.currentTarget.value)} value={product.name} />
       </Box>
-      
-    </>
+      <Box sx={{p: 2}}>
+        <InputLabel htmlFor="brand-product">Marque</InputLabel>
+        <Input id="brand-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setBrand(event.currentTarget.value)} value={product.brand}/>
+      </Box>
+      <Box sx={{p: 2}}>
+        <InputLabel htmlFor="description-product">Description</InputLabel>
+        <Input id="description-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setDescription(event.currentTarget.value)} value={product.description}/>
+      </Box>
+
+
+      <Box sx={{p: 2}}>
+            <Button variant="outlined" onClick={updateProduct} >Modifier ce produit</Button>
+      </Box>
+    </Box>
   )
 }
-export default UpdateProduct
+export default ProductForm

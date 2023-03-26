@@ -34,9 +34,9 @@ const AdminPage = () => {
   return ( 
     <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
       <ButtonGroup>
-        <Button>Ajouter un produit</Button>
-        <Button>Modifier un produit</Button>
-        <Button>Accéder au dashboard</Button>
+        <Button onClick={() => setAction(Action.ADD_PRODUCT)} >Ajouter un produit</Button>
+        <Button onClick={() => setAction(Action.UPDATE_PRODUCT)} >Modifier un produit</Button>
+        <Button onClick={() => setAction(Action.DASHBOARD)} >Accéder au dashboard</Button>
       </ButtonGroup>
       {action === Action.ADD_PRODUCT && <AddProduct />}
       {action === Action.UPDATE_PRODUCT && <UpdateProduct />}

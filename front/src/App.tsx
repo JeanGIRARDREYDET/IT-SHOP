@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Layout from './components/layout/Layout'
 import Home from './components/home/Home'
@@ -13,12 +11,10 @@ import Product from './components/product/Product'
 import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
-import { SessionProvider } from './context/SessionContext'
-import ErrorBoundary from './components/errorBoundaries/ErrorBoundary'
 import AdminPage from './pages/adminPage'
 
 function App() {
-  // const [userCart, setUserCart] = useState({userID: '', role: '', cart: []})
+
   return (
     <div className="App">
       

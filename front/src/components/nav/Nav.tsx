@@ -4,6 +4,7 @@ import ProTip from '../proTip/ProTip';
 import SearchBar from '../searchBar/SearchBar';
 import Style from'./Nav.module.css'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import Logo from "../../assets/IT_Shop.png"
@@ -43,6 +44,7 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 
 const Nav = ({onSearch}: Props) => {
   const [{cart}, dispatch] = CartConsumerHook();
+  const [isAdmin, setIsAdmin] = useState(true)
   const [articles_number, setArticles_number] = useState(0)
   const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c. quantity, 0 )
   useEffect(()=> {
@@ -66,6 +68,7 @@ const Nav = ({onSearch}: Props) => {
         <ul>
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink className={Style.Link} to="/products" >Products</NavLink>
+          { isAdmin && <NavLink className={Style.Link} to="/admin"><AdminPanelSettingsIcon className='flex' /></NavLink> }
           <NavLink className={Style.Link} to="/login"><PersonIcon /></NavLink>
           <NavLink className={Style.Link} to="/cart"><ShoppingCartIcon className='flex' />
             <span className={Style.cartProductNumber}>{articles_number}</span>
