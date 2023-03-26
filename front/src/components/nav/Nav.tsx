@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import Logo from "../../assets/IT_Shop.png"
 import { SyntheticEvent, useEffect, useState } from 'react';
-import { IProduct } from '../../types/product'
+import { IProduct, IProductCart } from '../../types/product'
 import {useContext} from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 
@@ -43,9 +43,14 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
 
 const Nav = ({onSearch}: Props) => {
   const [{cart}, dispatch] = CartConsumerHook();
-
+  const [articles_number, setArticles_number] = useState(0)
+  const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c. quantity, 0 )
   useEffect(()=> {
-  }, [])
+
+    setArticles_number(nbArticles)
+
+  }, [cart])
+
   return (
     <nav >
       <div id="brandshits" className="">
@@ -62,7 +67,9 @@ const Nav = ({onSearch}: Props) => {
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink className={Style.Link} to="/products" >Products</NavLink>
           <NavLink className={Style.Link} to="/login"><PersonIcon /></NavLink>
-          <NavLink className={Style.Link} to="/cart"><ShoppingCartIcon className='flex' /><span className={Style.cartProductNumber}>{cart.length}</span></NavLink>
+          <NavLink className={Style.Link} to="/cart"><ShoppingCartIcon className='flex' />
+            <span className={Style.cartProductNumber}>{articles_number}</span>
+          </NavLink>
         </ul>
       </div>
     </nav>
