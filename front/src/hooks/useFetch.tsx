@@ -56,7 +56,7 @@ function useFetch<T = unknown>(url?: string, options?: RequestInit): State<T> {
       }
 
       try {
-        const response = await fetch("http://localhost:3000/api/" + url, options)
+        const response = await fetch(import.meta.env.VITE_API_URL + url, options)
         if (!response.ok) {
           throw new Error(response.statusText)
         }
