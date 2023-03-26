@@ -12,6 +12,7 @@ import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
 import AdminPage from './pages/AdminPage'
+import CheckOutPage from './pages/CheckOutPage'
 
 //import path from 'path';
 //import dotenv from 'dotenv';
@@ -34,6 +35,7 @@ function App() {
             <Route path="/login" element={ <LoginPage /> } />
             <Route path="/cart" element={ <Cart /> } />
             <Route path="/admin" element={ <AdminPage /> } />
+            <Route path="/checkout" element={ <CheckOutPage /> } />
             <Route path="/*" element={<ErrorPage />} /> 
         </Routes>
         </Layout>

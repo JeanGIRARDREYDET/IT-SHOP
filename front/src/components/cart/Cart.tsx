@@ -5,19 +5,22 @@ import CartItem from '../cartItem/CartItem';
 import Button from '@mui/material/Button';
 import { IProductCart } from '../../types/product';
 import { ActionTypes } from '../../stores/CartStore';
+import { Navigate, useNavigate } from 'react-router';
 
 type Props = {
   cartProducts: []
 }
 const Cart = ()=> {
   const [{cart}, dispatch] = CartConsumerHook();
-
+  const navigate = useNavigate();
   const [prixTotal, changePrix] = useState(0)
   const [articles_number, setArticles_number] = useState(0)
 
   const total = cart.reduce((acc: number , c: IProductCart) => acc+ (c.price * c.quantity) , 0 )
   const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c. quantity, 0 )
-  
+  const onCheckout = () => {
+    navigate('/checkout')
+  }
   useEffect( () => {
     setArticles_number(nbArticles)
     changePrix(total);
@@ -76,7 +79,7 @@ const Cart = ()=> {
           <h3>produits différents : { cart.length }</h3>
           <p>Nombre d'articles total : { articles_number } </p>
           <button className={Style.ButtonClean} onClick={() => dispatch({type: ActionTypes.RESET_CART})}> Vider le panier </button>
-          <button className={Style.ButtonComandez} > Commandez </button>
+          <button className={Style.ButtonComandez} onClick={onCheckout}> Commandez </button>
 
           </div>
 
