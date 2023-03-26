@@ -11,6 +11,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useEffect, useState } from "react"
 import { ActionTypes } from '../../stores/CartStore';
 import { CartConsumerHook } from '../../context/CartContext';
+import { Box, Rating } from '@mui/material';
 
 
 
@@ -74,12 +75,18 @@ const ProductCard = ({product}: Props) => {
           <Typography variant="body2" color="text.secondary">
             {product.description.slice(0,15)}
           </Typography>
+          <Rating
+            name="product-rating"
+            value={product.rating}
+            readOnly
+          />
         </CardContent>
-
-        <CardActions className={Style.footer}>
-          <Button color="error">{product.price}€</Button>
-          <Button size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
-        </CardActions>
+        <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+          <CardActions className={Style.footer}>
+            <Button color="error">{product.price}€</Button>
+            <Button size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
+          </CardActions>
+        </Box>
       </Card>
     </Link>
   )

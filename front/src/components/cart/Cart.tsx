@@ -75,7 +75,7 @@ const Cart = ()=> {
           <h2 className={Style.total}> Total: { prixTotal.toFixed(2) } € </h2>
           <h3>produits différents : { cart.length }</h3>
           <p>Nombre d'articles total : { articles_number } </p>
-          <button className={Style.ButtonComandez} onClick={() => dispatch({type: ActionTypes.RESET_CART})}> Vider le panier </button>
+          <button className={Style.ButtonClean} onClick={() => dispatch({type: ActionTypes.RESET_CART})}> Vider le panier </button>
           <button className={Style.ButtonComandez} > Commandez </button>
 
           </div>

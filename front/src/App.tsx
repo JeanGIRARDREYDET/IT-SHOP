@@ -11,7 +11,7 @@ import Product from './components/product/Product'
 import ErrorPage from './pages/ErrorPage'
 import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
-import AdminPage from './pages/adminPage'
+import AdminPage from './pages/AdminPage'
 
 function App() {
 

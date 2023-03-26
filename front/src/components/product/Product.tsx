@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Grid } from '@mui/material';
+import { Box, Grid, Rating } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -46,12 +46,14 @@ const Product = () => {
                 <Grid item xs={12} lg={6}>
                     <Card sx={{ p: 2 }}>
                         {product.stock > 0 ? (
-                            <CardActions className={Styles.buy}>
-                                <Button color="error">{product.price}€</Button>
-                                <Button size="small" onClick={addToCart}>
-                                    <AddShoppingCartIcon className={Styles.add} />
-                                </Button>
-                            </CardActions>
+                            <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                                <CardActions className={Styles.buy} >
+                                    <Button color="error">{product.price}€</Button>
+                                    <Button size="small" onClick={addToCart}>
+                                        <AddShoppingCartIcon className={Styles.add} />
+                                    </Button>
+                                </CardActions>
+                            </Box>
                         ) : (
                             <>
                                 <div>
@@ -64,6 +66,11 @@ const Product = () => {
                         )}
                         <CardContent>
                             <h1>{product.name} </h1>
+                            <Rating
+                                name="product-rating"
+                                value={product.rating}
+                                readOnly
+                            />
                             <div>Vendeur : {product.brand}</div>
                             <div> {product.description}</div>
                             <div>En stock : {product.stock}</div>
