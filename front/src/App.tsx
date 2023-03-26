@@ -13,6 +13,13 @@ import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
 import AdminPage from './pages/AdminPage'
 
+//import path from 'path';
+//import dotenv from 'dotenv';
+//import { parse } from 'ts-command-line-args';
+
+console.log(import.meta.env.VITE_API_URL);
+
+
 function App() {
 
   return (
@@ -35,5 +42,4 @@ function App() {
     </div>
   )
 }
-
 export default App

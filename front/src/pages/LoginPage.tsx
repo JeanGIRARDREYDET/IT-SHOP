@@ -33,6 +33,8 @@ type IUserConnection = {
   pwdHash: string
 }
 
+//config(); 
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const [isCreated, setIsCreated] = useState(false);
