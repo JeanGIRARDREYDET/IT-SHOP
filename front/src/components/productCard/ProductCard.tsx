@@ -85,8 +85,8 @@ const ProductCard = ({product}: Props) => {
         </CardContent>
         <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
           <CardActions className={Style.footer}>
-            {product.stock === 0 ? (<Button color="error">{'----'}€</Button>): (<Button color="error">{product.price}€</Button>)}
-            <Button size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
+            <Button color="error">{product.stock === 0 ? 'indisponible': product.price + '€'}</Button>
+            <Button disabled={product.stock === 0} size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
           </CardActions>
         </Box>
       </Card>
