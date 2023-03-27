@@ -31,11 +31,13 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
     phone: user.phone,
     date_of_birth: user.date_of_birth,
     role: user.role,
+    bill_address : user.bill_address,
+    delivery_address:user.delivery_address
   });
   // EnvVars.Jwt.Secret : Secret JWT du serveur.
   // EnvVars.Jwt.Exp :
-  let accessToken = jwt.sign({email: user.email, role: user.role}, EnvVars.Jwt.Secret , {expiresIn: EnvVars.Jwt.Exp});   
-  console.log(accessToken); 
+  //let accessToken = jwt.sign({email: user.email, role: user.role}, EnvVars.Jwt.Secret , {expiresIn: EnvVars.Jwt.Exp});   
+  
   // Return
   return res.status(HttpStatusCodes.OK).end();
 }

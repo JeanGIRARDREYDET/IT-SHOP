@@ -48,8 +48,12 @@ const LoginPage = () => {
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(credentials)};
  
-    fetch("http://localhost:3000/api/auth/login", requestOptions).then(res=> {
+    fetch("http://localhost:3000/api/auth/login", requestOptions)
+    .then(data=>data)
+    .then(res=> {
       if(res.ok){
+        
+         console.log(res)
           navigate("/products")
           alert("bienvenue !")
       }

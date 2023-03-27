@@ -43,10 +43,13 @@ async function addSessionData(
     throw new RouteError(HttpStatusCodes.BAD_REQUEST, Errors.ParamFalsey);
   }
   // Setup JWT
-  const jwt = await _sign(data),
-    { Key, Options } = EnvVars.CookieProps;
+ // const jwt = await _sign(data),
+  //  { Key, Options } = EnvVars.CookieProps;
+  const jwt = await _sign(data);
+
   // Return
-  return res.cookie(Key, jwt, Options);
+  //return res.cookie(Key, jwt, Options);
+  return res.header('Authorization', 'Bearer ' + jwt)
 }
 
 /**
