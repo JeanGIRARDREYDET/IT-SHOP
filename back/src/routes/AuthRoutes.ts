@@ -24,7 +24,7 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
   const user = await AuthService.login(email, password);
   // Setup Admin Cookie
 
-   const {response ,data} = await SessionUtil.addSessionData(res, {
+   const response  = await SessionUtil.addSessionData(res, {
     id: user._id,
     email: user.email,
     firstname: user.firstname,
@@ -42,7 +42,7 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
   // Return
  // return res.status(HttpStatusCodes.OK).end();
     
- return response.status(HttpStatusCodes.OK).send(data)
+ return response.status(HttpStatusCodes.OK).send()
 }
 
 /**
