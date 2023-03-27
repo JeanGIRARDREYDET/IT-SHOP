@@ -3,8 +3,8 @@ import SessionUtil from '@src/util/SessionUtil';
 import AuthService from '@src/services/AuthService';
 
 import { IReq, IRes } from './types/express/misc';
-
-
+import EnvVars from '@src/constants/EnvVars';
+import jwt from 'jsonwebtoken';
 // **** Types **** //
 
 interface ILoginReq {
@@ -32,6 +32,10 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
     date_of_birth: user.date_of_birth,
     role: user.role,
   });
+  // EnvVars.Jwt.Secret : Secret JWT du serveur.
+  // EnvVars.Jwt.Exp :
+  let accessToken = jwt.sign({email: user.email, role: user.role}, EnvVars.Jwt.Secret , {expiresIn: EnvVars.Jwt.Exp});   
+  console.log(accessToken); 
   // Return
   return res.status(HttpStatusCodes.OK).end();
 }
