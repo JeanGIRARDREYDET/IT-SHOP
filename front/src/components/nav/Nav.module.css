@@ -35,6 +35,8 @@ nav ul li:hover {
   font-size: 1.1rem;
   font-weight: 600;
   color: #213547;
+  display: flex;
+  align-items: center;
 
 }
 

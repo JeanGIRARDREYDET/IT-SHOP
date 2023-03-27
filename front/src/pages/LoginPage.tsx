@@ -1,12 +1,13 @@
 import { Box } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Login from '../components/login/Login'
 import SignIn from '../components/signin/SignIn'
 import SignInFull from '../components/signInFull/SignInFull'
 import useFetch from '../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
-import { useApi, TApiResponse } from '../hooks/useApiGet'
-import { useCookies } from 'react-cookie';
+import { CartConsumerHook } from '../context/CartContext'
+import { ActionTypes } from '../stores/CartStore'
+import UserInfos from '../components/userInfos/UserInfos'
 
 type ILogin = {
   email: string,
@@ -41,37 +42,35 @@ const LoginPage = () => {
   const [isCreated, setIsCreated] = useState(false);
   const [isFullCreated, setIsFullCreated] = useState(false);
   const [credentials, setCredentials] = useState<ISignIn | null>(null);
+  const [isUserLogged, setIsUserLogged] = useState(false)
+  const [{user}, dispatch] = CartConsumerHook();
 
   const handleLogin = (credentials: ILogin) => {
     isUserInDatabase(credentials)
+    navigate('/')
   }
 
   const isUserInDatabase = (credentials: ILogin) => {
-    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({email:credentials.email,password:credentials.password})};
+    const requestOptions = { 
+      method: 'POST', 
+      headers: { 'Content-Type': 'application/json' }, 
+      body: JSON.stringify({email: credentials.email, password: credentials.password})
+    };
  
  //  const [cookies, setCookie] = useCookies(['token']);
 
     
-    fetch("http://localhost:3000/api/auth/login", requestOptions)
+    fetch(`${import.meta.env.VITE_API_URL}/auth/login`, requestOptions)
     .then(res => {
-      console.log("Response headers:");
-      console.log(res.headers);
-     
-   
-      //setCookie('token', 'name', { path: '/' });
-    
-     // new cookies(req,res).set('access_token', 'accessToken', {httpOnly: true, secure: false });
-    //  const setCookie = res.headers.get("x-access-token");
-      console.log("Set-Cookie value:");
-     // console.log(setCookie);
-      
-      // Handle the response data here
+      if(res.ok) {
+        return res.json()
+      }
+    }).then(user=> {
+      setIsUserLogged(true)
+      return dispatch({type: ActionTypes.SET_USER_SESSION, payload: user});
     })
-    .catch(error => {
-      console.error(error);
-      // Handle the error here
-    });
-  
+    .catch(error => { console.error(error)})
+ 
   }
   
   const handleSignIn = (userCredentials: ILogin) => {
@@ -84,7 +83,7 @@ const LoginPage = () => {
   const handleSignInFull = (userInfos: IUser) => {
     const payload = {...userInfos,...credentials}
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user: payload})};
-    fetch("http://localhost:3000/api/users/add", requestOptions)
+    fetch(`${import.meta.env.VITE_API_URL}/users/add`, requestOptions)
     .then(res=>{
         if(res.ok){
           setIsFullCreated(true)
@@ -92,18 +91,25 @@ const LoginPage = () => {
         }
     })
   }
+  useEffect(() => {
 
+  }, [user])
   return ( 
     <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
-      <Login onLogin={handleLogin} />
-      {
-        !isFullCreated ? (
+      
+      <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+      {!isUserLogged? <Login onLogin={handleLogin} />: <UserInfos user={user} />}
+        {
+        !isUserLogged && !isFullCreated ? (
           <>
             {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
             {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
           </>
         ) :""
-      }
+        }
+      </Box>
+
+      
     </Box>
   )
 }

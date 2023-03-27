@@ -8,10 +8,11 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import Logo from "../../assets/IT_Shop.png"
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { Fragment, SyntheticEvent, useEffect, useState } from 'react';
 import { IProduct, IProductCart } from '../../types/product'
 import {useContext} from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
+import { Button, IconButton, styled, Tooltip, tooltipClasses, Typography } from '@mui/material';
 
 
 // export interface IProduct {
@@ -41,9 +42,20 @@ const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | n
   window.location.replace(`/product/${value?._id}`);
   // return redirect(`/product/${value?._id}`)
 }
+const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: '#f5f5f9',
+    color: 'rgba(0, 0, 0, 0.87)',
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: '1px solid #dadde9',
+  },
+}));
 
 const Nav = ({onSearch}: Props) => {
-  const [{cart}, dispatch] = CartConsumerHook();
+  const [{user, cart}, dispatch] = CartConsumerHook();
   const [isAdmin, setIsAdmin] = useState(true)
   const [articles_number, setArticles_number] = useState(0)
   const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c. quantity, 0 )
@@ -51,7 +63,7 @@ const Nav = ({onSearch}: Props) => {
 
     setArticles_number(nbArticles)
 
-  }, [cart])
+  }, [user, cart])
 
   return (
     <nav className={Style.navigator}>
@@ -69,7 +81,18 @@ const Nav = ({onSearch}: Props) => {
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink className={Style.Link} to="/products" >Products</NavLink>
           { isAdmin && <NavLink className={Style.Link} to="/admin"><AdminPanelSettingsIcon className='flex' /></NavLink> }
-          <NavLink className={Style.Link} to="/login"><PersonIcon /></NavLink>
+          <NavLink className={Style.Link} to="/login">
+
+            <HtmlTooltip
+              title={
+                <Fragment>
+                  <Typography color="inherit">{user.firstname && user.lastname ? `Bonjour ${user.firstname} ${user.lastname}`: ''}</Typography>
+                    <em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}
+                </Fragment>
+              }>
+                  <IconButton><PersonIcon color={user._id? 'success':'inherit'}/></IconButton>
+              </HtmlTooltip>
+          </NavLink>
           <NavLink className={Style.Link} to="/cart"><ShoppingCartIcon className='flex' />
             <span className={Style.cartProductNumber}>{articles_number}</span>
           </NavLink>

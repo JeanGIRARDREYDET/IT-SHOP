@@ -1,5 +1,6 @@
 import useLocalStorage from '../hooks/useLocalStorage'
 import { IProduct, IProductCart } from '../types/product'
+import { IUser } from '../types/user'
 
 type IAction = {
   type: string
@@ -8,7 +9,8 @@ type IAction = {
 }
 
 type IState = {
-  cart: IProductCart[]
+  cart: IProductCart[],
+  user: IUser
 }
 export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
@@ -71,9 +73,10 @@ export const cartReducer = (state: IState, action: IAction) => {
           cart: []
         }
       case ActionTypes.SET_USER_SESSION:
+        console.log(action.payload)
         return {
           ...state,
-          user : {...action.payload}
+          user : {...state.user, ...action.payload}
         }
       case ActionTypes.UNSET_USER_SESSION:
         return {

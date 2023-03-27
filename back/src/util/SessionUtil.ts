@@ -5,6 +5,7 @@ import { RouteError } from '@src/other/classes';
 import jsonwebtoken from 'jsonwebtoken';
 
 import EnvVars from '../constants/EnvVars';
+import { IUser } from '@src/models/User';
 
 
 // **** Variables **** //
@@ -33,9 +34,9 @@ function getSessionData<T>(req: Request): Promise<string | T | undefined> {
 }
 
 
-type Ireturn = {
+type IReturn = {
  response :Response
-
+ data: any
 }
 
 /**
@@ -44,19 +45,15 @@ type Ireturn = {
 async function addSessionData(
   res: Response,
   data: object,
-): Promise<Response> {
+): Promise<IReturn> {
   if (!res || !data) {
     throw new RouteError(HttpStatusCodes.BAD_REQUEST, Errors.ParamFalsey);
   }
-  // Setup JWT
+  // Setup JWT token as cookie in header
  const jwt = await _sign(data),
     { Key, Options } = EnvVars.CookieProps;
-  //const jwt = await _sign(data);
- 
- // res.setHeader()
-  // Return
-  return res.cookie(Key, jwt,Options);
- // return {response : res.setHeader('x-access-token', 'Bearer ' + jwt), data:{...data,token:jwt}}
+
+  return { response: res.cookie(Key, jwt,Options), data};
 }
 
 /**

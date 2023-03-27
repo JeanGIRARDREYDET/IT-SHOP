@@ -53,18 +53,18 @@ const SignIn = ({onSignIn}:Props)=> {
   <h2>Pas encore client ?</h2>
   
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="email-login">Email address</InputLabel>
-      <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setEmail(event.currentTarget.value)}/>
+      <InputLabel htmlFor="email-signin">Email address</InputLabel>
+      <Input id="email-signin" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setEmail(event.currentTarget.value)}/>
     </Box>
 
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="password-login">Password</InputLabel>
-      <Input id="password-login" aria-describedby="my-helper-text" type="password" onKeyUp={(event)=>setPassword(event.currentTarget.value)}/>
+      <InputLabel htmlFor="password-signin">Password</InputLabel>
+      <Input id="password-signin" aria-describedby="my-helper-text" type="password" onKeyUp={(event)=>setPassword(event.currentTarget.value)}/>
     </Box>
 
     <Box sx={{p: 2}}>
-      <InputLabel htmlFor="password-login">Retaper votre Password</InputLabel>
-      <Input id="password-login" aria-describedby="my-helper-text" type="password" onKeyUp={(event)=>setPassword2(event.currentTarget.value)} onBlur={handlePassword}/>
+      <InputLabel htmlFor="password-signin2">Retaper votre Password</InputLabel>
+      <Input id="password-signin2" aria-describedby="my-helper-text" type="password" onKeyUp={(event)=>setPassword2(event.currentTarget.value)} onBlur={handlePassword}/>
     </Box>
 
 

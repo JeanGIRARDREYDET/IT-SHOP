@@ -24,8 +24,6 @@ type Props = {
 }
 const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, arrows } :Props ) => {
 
-  console.log(items);
-  
   // const [{cart}, dispatch] = CartConsumerHook();
 
   
