@@ -85,8 +85,11 @@ const ProductCard = ({product}: Props) => {
         </CardContent>
         <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
           <CardActions className={Style.footer}>
+
             <Button color="error">{product.stock === 0 ? 'indisponible': product.price + '€'}</Button>
-            <Button disabled={product.stock === 0} size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
+            <Button disabled={product.stock === 0} size="small">
+            {product.stock === 0 ? '': <AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} />}
+              </Button>
           </CardActions>
         </Box>
       </Card>

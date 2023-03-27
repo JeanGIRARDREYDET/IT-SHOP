@@ -2,26 +2,21 @@
 
 
 .footer{
-    height: 5rem;
+    height: 2rem;
     position:absolute;
     bottom:0;
-    display: flex;
-    justify-content: space-evenly;
+   
 }
 
-.card{
+.Card{
     border-radius: 1rem;
     cursor: pointer;
     position:relative;
 }
-.card:hover{
-    transform: scale(1.01);
+.Card:hover{
+    transform: scale(1.1);
 }
 
-.slide{
-
-    height: 410px;
-}
 
 .like{
 
