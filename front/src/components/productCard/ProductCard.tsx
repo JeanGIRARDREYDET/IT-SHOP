@@ -64,7 +64,7 @@ const ProductCard = ({product}: Props) => {
   return ( 
    
     <Link to={`/product/${product._id}`} state={{ data: product }}>
-      <Card className={Style.Card} sx={{ width: 345,height:345 }}>
+      <Card className={Style.Card} sx={{ width: 320,height:345 }}>
         <CardMedia
               sx={{ height: 140 }}
               image={images}

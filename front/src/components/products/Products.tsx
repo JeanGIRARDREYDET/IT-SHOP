@@ -68,7 +68,7 @@ const Products = () => {
         <div>
     <h1>Products</h1>
 
-      <Box sx={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
+      <Box sx={{display:"flex", flexDirection:"column", alignItems:"center"}}>
       <ProductFilter  products={prods} onFilter={handleFiltering} />
       <Box sx={ {display: "flex",
     flexWrap: "wrap",
