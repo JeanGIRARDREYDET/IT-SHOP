@@ -1,5 +1,5 @@
 .carousel {
-  height: 550px;
+  height: 450px;
   overflow: hidden;
   border: 2px solid white;
   border-radius: 15px 15px;
@@ -10,8 +10,3 @@
 }
 
 
-
-.slider{
-
-  height: 500px;
-}
