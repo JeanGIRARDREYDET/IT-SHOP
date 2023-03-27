@@ -77,7 +77,7 @@ const Products = () => {
         { globalFilter(prods).map((product, index) => {
           //make the filtering logic here with filter
           return (
-          
+           
               <ProductCard  product={product} key={index}/>
 
             )

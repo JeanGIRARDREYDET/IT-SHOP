@@ -34,12 +34,12 @@ const Carrousel = ({productCarrousel,slides,autoplay}:Props)=>  {
       pauseOnFocus : true,
       swipe:false
     }; 
-    return (
+    return ( 
         <Slider className={Style.slider}   {...settings}>
         {
           //src/assets/products/${product._id}/
           productCarrousel && productCarrousel.images && productCarrousel.images.map((image:string, index: number) => (
-            <img  key={"CarImg_"+index} src={image_url+image} alt={productCarrousel.name+ "_" + index} style={{height:"50%",width:"50%" }}/>
+            <img  key={"CarImg_"+index} src={image_url+image} alt={productCarrousel.name+ "_" + index} className={Style.ImageCaroussel}/>
          )) }
         </Slider>
     );

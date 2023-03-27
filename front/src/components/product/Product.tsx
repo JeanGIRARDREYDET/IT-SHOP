@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Box, Grid, Rating } from '@mui/material';
+import { Box, Grid, Rating, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -38,7 +38,7 @@ const Product = () => {
         }
     }, [data]); // <- Changement ici, j'ai ajouté `data` comme dépendance
        return (
-        <>
+        <> 
              <Grid container className={Styles.ficheProduit}>
                 <Grid item xs={12} lg={6}>
                     <Carrousel productCarrousel={product} autoplay={true} slides={1} arrows={false} />
@@ -48,7 +48,7 @@ const Product = () => {
                         {product.stock > 0 ? (
                             <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
                                 <CardActions className={Styles.buy} >
-                                    <Button color="error">{product.price}€</Button>
+                                    <Typography variant='h2' color="error">{product.price}€</Typography>
                                     <Button size="small" onClick={addToCart}>
                                         <AddShoppingCartIcon className={Styles.add} />
                                     </Button>
@@ -63,7 +63,7 @@ const Product = () => {
                                 <div>Il sera de nouveau disponible trés prochainement</div>
                                 <div>Merci de revenir plus tard.</div>
                             </>
-                        )}
+                        )} 
                         <CardContent>
                             <h1>{product.name} </h1>
                             <Rating
@@ -82,7 +82,7 @@ const Product = () => {
                 </Grid>
                 <ProductImagesList productImages={product} />
             </Grid>
-            <div>
+            {/* <div>
                 <div>
                     categories :{" "}
                     {product.categories &&
@@ -90,7 +90,7 @@ const Product = () => {
                             <div key={"Cat_" + index}>{categorie}-</div>
                         ))}
                 </div>
-            </div> 
+            </div>  */}
         </>
     );
 };

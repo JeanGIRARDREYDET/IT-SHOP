@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import React, { Component } from "react";
 import { IProduct } from '../../types/product';
 import { Grid, Box } from '@mui/material';
-import Styles from './ProductImagesList.module.css';
+import Styles from './productImagesList.module.css';
 type Props = {
   productImages:IProduct
 }
@@ -23,4 +23,4 @@ const ProductImagesList = ({productImages}:Props)=>  {
     </Grid>
     );
   }
-export default ProductImagesList
+export default ProductImagesList 
