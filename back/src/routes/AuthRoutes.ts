@@ -23,7 +23,8 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
   // Login
   const user = await AuthService.login(email, password);
   // Setup Admin Cookie
-  await SessionUtil.addSessionData(res, {
+
+   const {response ,data} = await SessionUtil.addSessionData(res, {
     id: user._id,
     email: user.email,
     firstname: user.firstname,
@@ -39,7 +40,9 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
   //let accessToken = jwt.sign({email: user.email, role: user.role}, EnvVars.Jwt.Secret , {expiresIn: EnvVars.Jwt.Exp});   
   
   // Return
-  return res.status(HttpStatusCodes.OK).end();
+ // return res.status(HttpStatusCodes.OK).end();
+    
+ return response.status(HttpStatusCodes.OK).send(data)
 }
 
 /**

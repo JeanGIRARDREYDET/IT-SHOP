@@ -48,16 +48,26 @@ const LoginPage = () => {
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(credentials)};
  
+
+
+    
     fetch("http://localhost:3000/api/auth/login", requestOptions)
-    .then(data=>data)
-    .then(res=> {
-      if(res.ok){
-        
-         console.log(res)
-          navigate("/products")
-          alert("bienvenue !")
-      }
+    .then(res => {
+      console.log("Response headers:");
+      console.log(res.headers);
+      console.log(res.json());
+      
+      const setCookie = res.headers.get("x-access-token");
+      console.log("Set-Cookie value:");
+      console.log(setCookie);
+      
+      // Handle the response data here
     })
+    .catch(error => {
+      console.error(error);
+      // Handle the error here
+    });
+  
   }
   
   const handleSignIn = (userCredentials: ILogin) => {

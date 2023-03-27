@@ -32,24 +32,32 @@ function getSessionData<T>(req: Request): Promise<string | T | undefined> {
   return _decode(jwt);
 }
 
+
+type Ireturn = {
+ response :Response,
+ data :object
+
+}
+
 /**
  * Add a JWT to the response 
  */
 async function addSessionData(
   res: Response,
-  data: string | object,
-): Promise<Response> {
+  data: object,
+): Promise<Ireturn> {
   if (!res || !data) {
     throw new RouteError(HttpStatusCodes.BAD_REQUEST, Errors.ParamFalsey);
   }
   // Setup JWT
- // const jwt = await _sign(data),
-  //  { Key, Options } = EnvVars.CookieProps;
+ //const jwt = await _sign(data),
+   // { Key, Options } = EnvVars.CookieProps;
   const jwt = await _sign(data);
-
+ 
+ // res.setHeader()
   // Return
-  //return res.cookie(Key, jwt, Options);
-  return res.header('Authorization', 'Bearer ' + jwt)
+  //return res.cookie(Key, jwt);
+  return {response : res.setHeader('x-access-token', 'Bearer ' + jwt), data:{...data,token:jwt}}
 }
 
 /**
