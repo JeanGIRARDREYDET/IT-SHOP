@@ -69,7 +69,7 @@ const ProductCard = ({product}: Props) => {
               sx={{ height: 140 }}
               image={images}
               title={product.name}
-        />
+        /> 
         <CardContent>
           <Typography className={Style.title} gutterBottom variant="h5" component="div">
               {product.name.slice(0,25)}...

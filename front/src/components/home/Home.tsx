@@ -15,22 +15,25 @@ const Home = () => {
       console.log(err)
   }, [data])
   return (
-    <>
+    <> 
       <h1>Bienvenue sur IT-SHOP &#x1F605; </h1>
       <div id="" className="carousel carousel-best"> 
-        <Typography component="div" variant="h5" mt={2} mb={2}>
+        <Typography component="div" variant="h4" mt={2} mb={2}>
             Les produits les mieux notés
         </Typography>
-        <ProductsCarousel items={prods} filter={'bestRatings'} slides={3} autoplay={false} arrows={true} />
+
+        <ProductsCarousel  items={prods} filter={'bestRatings'} slides={3} autoplay={false} arrows={true} />
+
+        
       </div>
       <div id="" className="carousel carousel-sells">
-        <Typography component="div" variant="h5" mt={2} mb={2}>
+        <Typography component="div" variant="h4" mt={2} mb={2}>
             Les produits les plus vendus
         </Typography>
         <ProductsCarousel items={prods} filter={'bestsellers'} slides={3} autoplay={false} arrows={true} />
       </div>
       <div id="" className="carousel carousel-promotion">
-        <Typography component="div" variant="h5" mt={2} mb={2}>
+        <Typography component="div" variant="h4" mt={2} mb={2}>
             Les promos du moment
         </Typography>
         <ProductsCarousel items={prods} filter={'bestdeals'} slides={3} autoplay={false} arrows={true} />

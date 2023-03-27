@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import Styles from 'ProductsCarousel.module.css'
+import Style from './ProductsCarousel.module.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { IProduct } from '../../types/product';
@@ -9,6 +9,8 @@ import { red } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
+import Typography from '@mui/material/Typography';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
@@ -29,32 +31,28 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
     const settings = {
       dots: false,
       infinite: true,
-      speed: 2000,
+      speed: 500,
       slidesToShow: slides,
       slidesToScroll: 1,
       autoplay,
-      autoplaySpeed: 1000,
+      autoplaySpeed: 500,
       centerMode: true,
       vertical: false,
       arrows,
       pauseOnFocus : true,
-      swipe:false,
+      swipe:true,
       adaptiveHeight: true
     };
     return (
-        <Slider {...settings}>
+        <Slider  {...settings}>
         {
           //src/assets/products/${product._id}/
           items && items.filter(i => i.images.length > 0)
           .filter(filtering)
           .map(prod => (
-            <Card sx={{ minWidth: 345 }} key={prod._id}>
+            <Card className={Style.card} sx={{ width: 300, height:300}} key={prod._id}>
               <CardHeader
-                avatar={
-                  <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                  R
-                </Avatar>
-                }
+                
                 action={
                   <IconButton aria-label="settings">
                     <MoreVertIcon />
@@ -65,17 +63,18 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
                 />
                 <CardMedia
                   component='img'
-                  height="194"
+                  sx={{ height: 120 }}
                   image={`/src/assets/products/${prod._id}/${prod.images[0]}`}
                   alt={prod.name}
-                />
-                <CardActions disableSpacing>
+                />,                     
+
+                <CardActions className={Style.footer}>
+                   
+                  <Typography color="error">{prod.price} €</Typography>
                   <IconButton aria-label="add to favorites">
                     <FavoriteIcon />
                   </IconButton>
-                  <IconButton aria-label="share">
-                    <ShareIcon />
-                  </IconButton>
+                 
                 </CardActions>
                 {/* <img  key={"CarImg_"+ prod._id} src={`/src/assets/products/${prod._id}/${prod.images[0]}`} alt={prod.name} width="200" height="100" /> */}
 

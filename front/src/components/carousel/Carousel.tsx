@@ -2,6 +2,8 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
 import React, { Component } from "react";
+import Style from './Carousel.module.css'
+
 import Slider from "react-slick";
 // simport Styles from 'Carousel.module.css'
 import "slick-carousel/slick/slick.css"; 
@@ -13,7 +15,7 @@ type Props = {
   slides : number,
   autoplay: boolean,
   arrows:boolean
-}
+} 
 const Carrousel = ({productCarrousel,slides,autoplay}:Props)=>  {
     // Définition du chemin du produit
     const image_url="/src/assets/products/"+productCarrousel._id+"/"
@@ -31,9 +33,9 @@ const Carrousel = ({productCarrousel,slides,autoplay}:Props)=>  {
       arrows: false,
       pauseOnFocus : true,
       swipe:false
-    };
+    }; 
     return (
-        <Slider {...settings}>
+        <Slider className={Style.slider}   {...settings}>
         {
           //src/assets/products/${product._id}/
           productCarrousel && productCarrousel.images && productCarrousel.images.map((image:string, index: number) => (
