@@ -5,6 +5,7 @@ import { IProduct } from '../../types/product';
 import ProductsCarousel from '../carousel/ProductsCarousel';
 import Test from '../testCustomHook/Test';
 import './Home.css'
+import Loading from '../utils/Loading';
 const Home = () => {
   const [prods, setProds] = useState<IProduct[] | []>([])
   const { data, err } = useFetch<IProduct[]>('/products')
@@ -45,7 +46,7 @@ const Home = () => {
         </div>
         </div>
 
-      ) : ""
+      ) : <Loading />
 
 
     }

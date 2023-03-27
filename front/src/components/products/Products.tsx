@@ -5,6 +5,7 @@ import ProductFilter from "../productFilter/ProductFilter";
 import Style from "./Products.module.css"
 import useFetch from "../../hooks/useFetch";
 import { IProduct } from "../../types/product";
+import Loading from "../utils/Loading";
 
 
 
@@ -58,9 +59,14 @@ const Products = () => {
     if(data)
       setProds(p => [...p, ...data])
   }, [data]) 
-   
+    
   return (
-    <><h1>Products</h1>
+    <>
+    
+    { 
+      prods.length > 0 ? (
+        <div>
+    <h1>Products</h1>
 
       <Box sx={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
       <ProductFilter  products={prods} onFilter={handleFiltering} />
@@ -78,6 +84,8 @@ const Products = () => {
         }) }
         </Box>
       </Box>
+      </div>
+      ):<Loading />}
 
     </>
   )
