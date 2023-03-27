@@ -28,7 +28,7 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
     const filtering = (p: IProduct) => {
       // return filter === 'rating' ? p.rating > 4 : false
       return true
-    } 
+    }  
     const settings = {
       dots: false,
       infinite: true,
@@ -51,7 +51,8 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
           items && items.filter(i => i.images.length > 0)
           .filter(filtering)
           .map(prod => (
-            <Card className={Style.card} sx={{ width: 400, height:400}} key={prod._id}>
+
+            <Card className={Style.card} sx={{ width: 400, height:400, margin: '16px'}} key={prod._id}>
               <CardHeader
             
                 title={prod.name}
@@ -82,6 +83,7 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
                  {/* <img  key={"CarImg_"+ prod._id} src={`/src/assets/products/${prod._id}/${prod.images[0]}`} alt={prod.name} width="200" height="100" /> */}
 
             </Card>
+
           ))
         //   items && productCarrousel.images && productCarrousel.images.map((image:string, index: number) => (
         //     <img  key={"CarImg_"+index} src={image_url+image} alt={productCarrousel.name+ "_" + index} style={{height:"50%",width:"50%" }}/>

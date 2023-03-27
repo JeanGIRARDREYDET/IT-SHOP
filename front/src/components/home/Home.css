@@ -9,9 +9,9 @@
   background-color: #022F5D;
 }
 
-.Product-caroussel{
 
-  display: flex;
-  justify-content: space-evenly;
+
+.slider{
+
+  height: 500px;
 }
-
