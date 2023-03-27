@@ -58,13 +58,16 @@ const Products = () => {
     if(data)
       setProds(p => [...p, ...data])
   }, [data]) 
-  
+   
   return (
     <><h1>Products</h1>
 
-      <Box sx={{}}>
+      <Box sx={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
       <ProductFilter  products={prods} onFilter={handleFiltering} />
-      <div className={Style.ListProducts}>
+      <Box sx={ {display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center", mt:2}
+    }>
         { globalFilter(prods).map((product, index) => {
           //make the filtering logic here with filter
           return (
@@ -73,7 +76,7 @@ const Products = () => {
 
             )
         }) }
-        </div>
+        </Box>
       </Box>
 
     </>

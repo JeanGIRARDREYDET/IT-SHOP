@@ -20,7 +20,7 @@ type Props = {
 //   rating: number;
 //   createdAt: Date;
 // }
-
+ 
 const ProductFilter = ({products, onFilter}: Props) => {
   const [filter, setFilter] = useState({})
   const [category, setCategory] = useState('');

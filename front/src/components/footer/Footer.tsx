@@ -23,7 +23,7 @@ const Footer = () => {
           <li className=""><FacebookTwoToneIcon/>: IT-SHOP</li>
         </ul>
       </div>
-    </div>
+    </div> 
   )
 }
 export default Footer;
