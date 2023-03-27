@@ -16,7 +16,7 @@ const Home = () => {
   }, [data])
   return (
     <> 
-    {
+    { 
       prods.length > 0 ? (
         <div>
 
@@ -29,7 +29,7 @@ const Home = () => {
   
           <ProductsCarousel  items={prods} filter={'bestRatings'} slides={3} autoplay={false} arrows={true} />
   
-          
+           
         </div>
         <div id="" className="carousel carousel-sells">
           <Typography component="div" variant="h4" mt={2} mb={2}>
