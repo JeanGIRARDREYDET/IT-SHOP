@@ -46,8 +46,10 @@ const ProductCard = ({product}: Props) => {
   const addProductToCart = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log(product.name)
-    dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
+    if(product.stock > 0) {
+      dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
+    }
+    
 
   }
   const url = 'http://localhost:3000/api/products'
@@ -83,7 +85,7 @@ const ProductCard = ({product}: Props) => {
         </CardContent>
         <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
           <CardActions className={Style.footer}>
-            <Button color="error">{product.price}€</Button>
+            {product.stock === 0 ? (<Button color="error">{'----'}€</Button>): (<Button color="error">{product.price}€</Button>)}
             <Button size="small"><AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} /></Button>
           </CardActions>
         </Box>
