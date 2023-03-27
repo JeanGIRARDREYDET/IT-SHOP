@@ -54,13 +54,13 @@ const Nav = ({onSearch}: Props) => {
   }, [cart])
 
   return (
-    <nav >
+    <nav className={Style.navigator}>
       <div id="brandshits" className="">
       <NavLink to="/">
         <img className={Style.logo} src={Logo} alt=""/>
         </NavLink>
       </div>
-      <div id="searchshits">
+      <div className={Style.searchshits}>
         <SearchBar onSearch={handleSearch} />
       </div>
       <div></div>

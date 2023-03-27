@@ -66,22 +66,20 @@ const Products = () => {
     { 
       prods.length > 0 ? (
         <div>
-    <h1>Products</h1>
+    
 
       <Box sx={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      <ProductFilter  products={prods} onFilter={handleFiltering} />
-      <Box sx={ {display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center", mt:2}
-    }>
-        { globalFilter(prods).map((product, index) => {
+        <h1>Nos produits</h1>
+        <ProductFilter  products={prods} onFilter={handleFiltering} />
+        <Box sx={ {display: "flex", flexWrap: "wrap", justifyContent: "center", mt:2}} >
+          { globalFilter(prods).map((product, index) => {
           //make the filtering logic here with filter
-          return (
+            return (
            
               <ProductCard  product={product} key={index}/>
 
             )
-        }) }
+          }) }
         </Box>
       </Box>
       </div>

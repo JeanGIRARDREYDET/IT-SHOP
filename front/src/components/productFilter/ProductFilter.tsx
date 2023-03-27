@@ -79,7 +79,7 @@ const ProductFilter = ({products, onFilter}: Props) => {
   }
 
   return (
-    <div className={Styles.nav}>
+    <div className={Styles.nav} >
 
       <Box sx={{width: 150 }}>
         <FormControl fullWidth>
