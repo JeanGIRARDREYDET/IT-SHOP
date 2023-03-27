@@ -38,13 +38,14 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
       autoplay,
       centerMode: true,
       vertical: false,
+
       arrows,
       pauseOnFocus : true,
       swipe:true,
       adaptiveHeight: true
     };
     return (
-        <Slider className={Style.slide}  {...settings}>
+        <Slider   {...settings}>
         { 
           //src/assets/products/${product._id}/
           items && items.filter(i => i.images.length > 0)

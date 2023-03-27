@@ -18,7 +18,7 @@ const Home = () => {
     <> 
     { 
       prods.length > 0 ? (
-        <div>
+        <div className='home'>
 
 
         <h1>Bienvenue sur IT-SHOP &#x1F605; </h1>
@@ -27,7 +27,7 @@ const Home = () => {
               Les produits les mieux notés
           </Typography>
   
-          <ProductsCarousel  items={prods} filter={'bestRatings'} slides={3} autoplay={false} arrows={true} />
+          <ProductsCarousel    items={prods} filter={'bestRatings'} slides={3} autoplay={false} arrows={true} />
   
            
         </div>
