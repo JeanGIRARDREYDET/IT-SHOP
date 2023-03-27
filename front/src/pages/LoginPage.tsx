@@ -47,19 +47,18 @@ const LoginPage = () => {
   }
 
   const isUserInDatabase = (credentials: ILogin) => {
-    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(credentials)};
+    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({email:credentials.email,password:credentials.password})};
  
-   const [cookies, setCookie] = useCookies(['token']);
+ //  const [cookies, setCookie] = useCookies(['token']);
 
     
     fetch("http://localhost:3000/api/auth/login", requestOptions)
     .then(res => {
       console.log("Response headers:");
       console.log(res.headers);
-      console.log(res.json());
+     
    
-    
-      setCookie('token', 'name', { path: '/' });
+      //setCookie('token', 'name', { path: '/' });
     
      // new cookies(req,res).set('access_token', 'accessToken', {httpOnly: true, secure: false });
     //  const setCookie = res.headers.get("x-access-token");

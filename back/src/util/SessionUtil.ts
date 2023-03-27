@@ -34,8 +34,7 @@ function getSessionData<T>(req: Request): Promise<string | T | undefined> {
 
 
 type Ireturn = {
- response :Response,
- data :object
+ response :Response
 
 }
 
@@ -45,19 +44,19 @@ type Ireturn = {
 async function addSessionData(
   res: Response,
   data: object,
-): Promise<Ireturn> {
+): Promise<Response> {
   if (!res || !data) {
     throw new RouteError(HttpStatusCodes.BAD_REQUEST, Errors.ParamFalsey);
   }
   // Setup JWT
- //const jwt = await _sign(data),
-   // { Key, Options } = EnvVars.CookieProps;
-  const jwt = await _sign(data);
+ const jwt = await _sign(data),
+    { Key, Options } = EnvVars.CookieProps;
+  //const jwt = await _sign(data);
  
  // res.setHeader()
   // Return
-  //return res.cookie(Key, jwt);
-  return {response : res.setHeader('x-access-token', 'Bearer ' + jwt), data:{...data,token:jwt}}
+  return res.cookie(Key, jwt,Options);
+ // return {response : res.setHeader('x-access-token', 'Bearer ' + jwt), data:{...data,token:jwt}}
 }
 
 /**
