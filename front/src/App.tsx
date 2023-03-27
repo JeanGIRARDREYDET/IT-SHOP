@@ -13,7 +13,7 @@ import LoginPage from './pages/LoginPage'
 import { CartProvider } from './context/CartContext'
 import AdminPage from './pages/AdminPage'
 import CheckOutPage from './pages/CheckOutPage'
-
+import { CookiesProvider } from "react-cookie";
 //import path from 'path';
 //import dotenv from 'dotenv';
 //import { parse } from 'ts-command-line-args';
@@ -24,6 +24,7 @@ console.log(import.meta.env.VITE_API_URL);
 function App() {
 
   return (
+    <CookiesProvider>
     <div className="App">
       
       <CartProvider>
@@ -40,8 +41,8 @@ function App() {
         </Routes>
         </Layout>
       </CartProvider>
-
     </div>
+    </CookiesProvider>
   )
 }
 export default App

@@ -6,6 +6,7 @@ import SignInFull from '../components/signInFull/SignInFull'
 import useFetch from '../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
 import { useApi, TApiResponse } from '../hooks/useApiGet'
+import { useCookies } from 'react-cookie';
 
 type ILogin = {
   email: string,
@@ -48,7 +49,7 @@ const LoginPage = () => {
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(credentials)};
  
-
+   const [cookies, setCookie] = useCookies(['token']);
 
     
     fetch("http://localhost:3000/api/auth/login", requestOptions)
@@ -56,10 +57,14 @@ const LoginPage = () => {
       console.log("Response headers:");
       console.log(res.headers);
       console.log(res.json());
-      
-      const setCookie = res.headers.get("x-access-token");
+   
+    
+      setCookie('token', 'name', { path: '/' });
+    
+     // new cookies(req,res).set('access_token', 'accessToken', {httpOnly: true, secure: false });
+    //  const setCookie = res.headers.get("x-access-token");
       console.log("Set-Cookie value:");
-      console.log(setCookie);
+     // console.log(setCookie);
       
       // Handle the response data here
     })
