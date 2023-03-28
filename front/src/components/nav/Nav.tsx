@@ -79,7 +79,7 @@ const Nav = ({onSearch}: Props) => {
     if(!user._id && Cookies.get('user')) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
     
     const localcart = getFromLocalStorage().cart.cart
-    if(cart.length===0 && localcart.length>0){
+    if(cart.length===0 && localcart && localcart.length>0){
        localcart.map(product=>{
         dispatch({
         type:ActionTypes.ADD_TO_CART,payload:product
