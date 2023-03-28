@@ -76,7 +76,7 @@ const Nav = ({onSearch}: Props) => {
       // setArticles_number(jerk())
     }
    
-    if(!user._id) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
+    if(!user._id && Cookies.get('user')) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
     
     const localcart = getFromLocalStorage().cart.cart
     if(cart.length===0 && localcart.length>0){
