@@ -15,11 +15,11 @@ const ProductForm = ( { product }: Props) => {
   const [rating, setRating] = useState<number | null>(null)
 
   const updateProduct = () => {
-
+    //fetch products/update
   }
 
   const CreateProduct = () => {
-
+    // fetch /products/add
   }
 
   const prodExample = {

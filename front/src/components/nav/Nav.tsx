@@ -62,6 +62,7 @@ const Nav = ({onSearch}: Props) => {
   useEffect(()=> {
 
     setArticles_number(nbArticles)
+    setIsAdmin(Object.keys(user).length && user.role === 'admin' > 0? true: false)
 
   }, [user, cart])
  

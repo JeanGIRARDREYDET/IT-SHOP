@@ -1,6 +1,8 @@
 import useLocalStorage from '../hooks/useLocalStorage'
 import { IProduct, IProductCart } from '../types/product'
 import { IUser } from '../types/user'
+import localStorageFunctions from '../hooks/useLocalStorageFunctions'
+import useLocalStorageFunctions from '../hooks/useLocalStorageFunctions'
 
 type IAction = {
   type: string
@@ -53,6 +55,7 @@ export const initialCartState = {
 };
 
 export const cartReducer = (state: IState, action: IAction) => {
+ // const {saveToLocalStorage, getFromLocalStorage, local} = useLocalStorageFunctions()
     // Similar to useState but first arg is key to the value in local storage.
   // const [name, setName] = useLocalStorage<string>("name", "Bob");
   // const [storedValue, setValue] = useLocalStorage<>()
@@ -73,7 +76,6 @@ export const cartReducer = (state: IState, action: IAction) => {
           cart: []
         }
       case ActionTypes.SET_USER_SESSION:
-        console.log(action.payload)
         return {
           ...state,
           user : {...state.user, ...action.payload}

@@ -24,9 +24,10 @@ const useLocalStorage = () => {
     }
   }
   
-  const getFromLocalStorage = (key:string) => {
+  const getFromLocalStorage = (key:string): any | null => {
     if (typeof window !== "undefined") {
-      return JSON.parse(window.localStorage.getItem(key)) 
+      const res = window.localStorage.getItem(key)
+      return res 
     }
   }
 
