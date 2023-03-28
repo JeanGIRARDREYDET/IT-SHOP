@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { CartConsumerHook } from '../context/CartContext'
 import { ActionTypes } from '../stores/CartStore'
 import UserInfos from '../components/userInfos/UserInfos'
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
 
 
@@ -71,9 +71,9 @@ const LoginPage = () => {
       }
     }).then(user=> {
 
-      const handleLoginSuccess = (sessionId: string) => {
-        Cookies.set('SESSION_COOKIE_NAME', sessionId, { expires: 7, secure: true, sameSite: 'strict' });
-      };
+      // const handleLoginSuccess = (sessionId: string) => {
+      //   Cookies.set('SESSION_COOKIE_NAME', sessionId, { expires: 7, secure: true, sameSite: 'strict' });
+      // };
 
 
       setIsUserLogged(true)
@@ -92,13 +92,13 @@ const LoginPage = () => {
   
 
   //const cookies = new Cookies(request);
-  const valeurDuCookie = Cookies.get('token', { HttpOnlydd:true });
+  // const valeurDuCookie = Cookies.get('token', { HttpOnlydd:true });
 
 
 
-  console.log("token http")
-  console.log(valeurDuCookie);
-  console.log(Cookies.get('nomDuCookie'))
+  //console.log("token http")
+  //console.log(valeurDuCookie);
+  //console.log(Cookies.get('nomDuCookie'))
 
   const handleSignInFull = (userInfos: IUser) => {
     const payload = {...userInfos,...credentials}

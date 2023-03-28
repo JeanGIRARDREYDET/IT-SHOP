@@ -25,7 +25,7 @@ const ProductForm = ( { product }: Props) => {
     //fetch products/update
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
      
-    const requestOptions = { method: 'PATCH', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
+    const requestOptions = { method: 'PUT', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod}), credentials: 'include'};
     fetch(`${import.meta.env.VITE_API_URL}products/update`, requestOptions)
     .then(res=>{
         if(res.ok){
@@ -42,8 +42,8 @@ const ProductForm = ( { product }: Props) => {
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
     
     
-    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
-    fetch(`${import.meta.env.VITE_API_URL}products/add`, requestOptions)
+    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod}), credentials: 'include'};
+    fetch(`${import.meta.env.VITE_API_URL}/products/add`, requestOptions)
     .then(res=>{
         if(res.ok){
           navigate('/')
