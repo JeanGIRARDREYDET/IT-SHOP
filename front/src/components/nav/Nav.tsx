@@ -120,7 +120,7 @@ const Nav = ({onSearch}: Props) => {
               title={
                 <Fragment>
                   <Typography color="inherit">{user.firstname && user.lastname ? `Bonjour ${user.firstname} ${user.lastname}`: ''}</Typography>
-                    <em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}
+                    {user._id && (<><em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}</>)}
                     {Cookies.get('user') && (<Button onClick={(e) => handleLogout(e)}>{'Se déconnecter '}</Button>)}
                 </Fragment>
               }>
