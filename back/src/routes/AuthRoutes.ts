@@ -35,6 +35,7 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
     bill_address : user.bill_address,
     delivery_address:user.delivery_address
   });
+
   // EnvVars.Jwt.Secret : Secret JWT du serveur.
   // EnvVars.Jwt.Exp :
   //let accessToken = jwt.sign({email: user.email, role: user.role}, EnvVars.Jwt.Secret , {expiresIn: EnvVars.Jwt.Exp});   
