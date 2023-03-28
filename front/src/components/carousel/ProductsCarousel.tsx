@@ -64,8 +64,8 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
           //src/assets/products/${product._id}/
           items && items.filter(i => i.images.length > 0)
           .filter(filtering)
-          .map(prod => (
-            <Link to={`/product/${prod._id}`} state={{ data: prod }}>
+          .map((prod, index) => (
+            <Link to={`/product/${prod._id}`} state={{ data: prod }} key={prod._id + index}>
   
                 <Card className={Style.Card} sx={{ width: 345,height:345 }}>
                     <CardMedia

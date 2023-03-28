@@ -59,7 +59,7 @@ userRouter.post(
 // Update one user
 userRouter.put(
   Paths.Users.Update,
-  validate(['user', User.IsUserObj]),
+  // validate(['user', User.IsUserObj]),
   UserRoutes.update,
 );
 
@@ -104,7 +104,7 @@ productRouter.post(
   ProductRoutes.add, 
 );
 
-productRouter.patch(
+productRouter.put(
   Paths.Products.Update,
   ProductRoutes.update,
 );

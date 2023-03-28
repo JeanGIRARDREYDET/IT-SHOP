@@ -53,7 +53,7 @@ async function add(product: IProduct): Promise<void> {
  */
 async function update(product: IProduct): Promise<any> {
 
-  const res = await ProductSchema.updateOne({name:product.name},{$set:{product}});
+  const res = await ProductSchema.updateOne(product);
 
   
 
