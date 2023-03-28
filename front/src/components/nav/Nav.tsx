@@ -12,7 +12,7 @@ import { Fragment, SyntheticEvent, useEffect, useState } from 'react';
 import { IProduct, IProductCart } from '../../types/product'
 import {useContext} from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
-import { Button, IconButton, styled, Tooltip, tooltipClasses, Typography } from '@mui/material';
+import { Button, IconButton, styled, Tooltip, tooltipClasses, TooltipProps, Typography } from '@mui/material';
 import { getFromLocalStorage } from '../../utils/LocalStorage';
 import Cookies from 'js-cookie';
 import { ActionTypes } from '../../stores/CartStore';
