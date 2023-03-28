@@ -7,7 +7,7 @@ import Styles from './Login.module.css'
 type Props = {
   onLogin: any
 }
-
+ 
 const Login = ({onLogin}:Props)=> {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -34,6 +34,7 @@ const Login = ({onLogin}:Props)=> {
  return (
   <>
   <h1>Login</h1>
+
   
     <Box sx={{p: 2}} className={loginError ? Styles.error: ''}>
        
