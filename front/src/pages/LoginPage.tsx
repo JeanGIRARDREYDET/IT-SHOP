@@ -81,9 +81,30 @@ const LoginPage = () => {
         return res.json()
       }
     }).then(user=> {
+     const {
+      _id,
+      firstname,
+      lastname,
+      bill_address,
+      delivery_address,
+      email,
+      role,
+      phone,
+      date_of_birth,
+      token
+    }=user
+    const userCookie = {_id,
+      firstname,
+      lastname,
+      bill_address,
+      delivery_address,
+      email,
+      role,
+      phone,
+      date_of_birth}
      Cookies.set('SESSION_COOKIE_NAME', genererSessionId(), { expires: 7, secure: true, sameSite: 'strict' });
-     Cookies.set('user',JSON.stringify(user), { expires: 7, secure: true, sameSite: 'strict' });
-     Cookies.set('token',JSON.stringify(user.tocken), { expires: 7, secure: true, sameSite: 'strict' });
+     Cookies.set('user',JSON.stringify(userCookie), { expires: 7, secure: true, sameSite: 'strict' });
+     Cookies.set('token',JSON.stringify(token), { expires: 7, secure: true, sameSite: 'strict' });
   
     
      setIsUserLogged(true)
