@@ -71,8 +71,6 @@ const Nav = ({onSearch}: Props) => {
   } 
   
    
-
-
   useEffect(()=> {
     if(articles_number === 0) {
       // setArticles_number(jerk())
