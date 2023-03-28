@@ -19,11 +19,15 @@ const useLocalStorage = () => {
   const [local, setLocal] = useState<ILocal | null>(null)
 
   const saveToLocalStorage = (action:IPayload) => {
-    localStorage.setItem(action.type, JSON.stringify(action.payload));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(action.type, JSON.stringify(action.payload));
+    }
   }
   
   const getFromLocalStorage = (key:string) => {
-    return localStorage.getItem(key)
+    if (typeof window !== "undefined") {
+      return JSON.parse(window.localStorage.getItem(key)) 
+    }
   }
 
   useEffect(() => {

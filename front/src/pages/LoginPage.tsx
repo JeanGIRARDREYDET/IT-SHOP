@@ -54,7 +54,8 @@ const LoginPage = () => {
     const requestOptions = { 
       method: 'POST', 
       headers: { 'Content-Type': 'application/json' }, 
-      body: JSON.stringify({email: credentials.email, password: credentials.password})
+      body: JSON.stringify({email: credentials.email, password: credentials.password}),
+
     };
  
  //  const [cookies, setCookie] = useCookies(['token']);

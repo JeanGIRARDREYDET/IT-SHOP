@@ -38,7 +38,7 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser(EnvVars.CookieProps.Secret));
-app.use(cors());
+app.use(cors({origin: []}));
 app.options('*', cors()) // include before other routes
 // Show routes called in console during development
 if (EnvVars.NodeEnv === NodeEnvs.Dev) {

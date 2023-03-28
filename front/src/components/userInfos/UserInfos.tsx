@@ -24,8 +24,9 @@ type Props = {
 
 const UserInfos = ({user}: Props) => {
   return (
-    <Box className={Styles.container}>
-      <Box >
+    <Box >
+      <Box className={Styles.container}>
+
         <div className={Styles.grid}>
           <div>Prénom</div>
           <div>{ user.firstname }</div>
@@ -54,6 +55,7 @@ const UserInfos = ({user}: Props) => {
           <div>Date de naissance</div>
           <div>{new Date(user.date_of_birth).toLocaleDateString('fr', {timeZone: "UTC"})}</div>
         </div>
+
 
       </Box>
     </Box>
