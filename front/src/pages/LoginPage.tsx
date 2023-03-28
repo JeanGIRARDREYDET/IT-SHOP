@@ -92,15 +92,14 @@ const LoginPage = () => {
     })
   }
   useEffect(() => {
-
+    setIsUserLogged(Object.keys(user).length > 0)
   }, [user])
   return ( 
     <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}} >
-      
       <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
-      {!isUserLogged? <Login onLogin={handleLogin} />: <UserInfos user={user} />}
+      {!isUserLogged? (<Login onLogin={handleLogin} />): (<UserInfos user={user} />)}
         {
-        !isUserLogged && !isFullCreated ? (
+        (!isUserLogged && !isFullCreated) ? (
           <>
             {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
             {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
