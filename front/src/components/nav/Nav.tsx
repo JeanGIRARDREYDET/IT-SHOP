@@ -13,6 +13,7 @@ import { IProduct, IProductCart } from '../../types/product'
 import {useContext} from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 import { Button, IconButton, styled, Tooltip, tooltipClasses, Typography } from '@mui/material';
+import { getFromLocalStorage } from '../../utils/LocalStorage';
 
 
 // export interface IProduct {
@@ -58,11 +59,20 @@ const Nav = ({onSearch}: Props) => {
   const [{user, cart}, dispatch] = CartConsumerHook();
   const [isAdmin, setIsAdmin] = useState(true)
   const [articles_number, setArticles_number] = useState(0)
-  const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c. quantity, 0 )
+  const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 )
+  const jerk = () => {
+    let num = 0
+    const cart = getFromLocalStorage().cart as IProductCart[]//.map(el => el) //.forEach(el => num += el.quantity)
+    setArticles_number(cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 ))
+    return num
+  } 
+  // console.log(getFromLocalStorage().cart)
   useEffect(()=> {
-
+    if(articles_number === 0) {
+      // setArticles_number(jerk())
+    }
     setArticles_number(nbArticles)
-    setIsAdmin(Object.keys(user).length && user.role === 'admin' > 0? true: false)
+    setIsAdmin(Object.keys(user).length > 0 && user.role === 'admin'? true: false)
 
   }, [user, cart])
  

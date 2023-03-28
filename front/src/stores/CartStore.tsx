@@ -2,7 +2,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 import { IProduct, IProductCart } from '../types/product'
 import { IUser } from '../types/user'
 import localStorageFunctions from '../hooks/useLocalStorageFunctions'
-import useLocalStorageFunctions from '../hooks/useLocalStorageFunctions'
+import{getFromLocalStorage, saveToLocalStorage} from '../utils/LocalStorage'
 
 type IAction = {
   type: string
@@ -50,37 +50,54 @@ const updatedProducts = (products: IProductCart[], payload: IProduct, action: st
 }
 
 export const initialCartState = {
-  cart: [],
-  user: {}
+  cart: getFromLocalStorage()?.cart && getFromLocalStorage()?.cart.length > 0 ? getFromLocalStorage()?.cart: [],
+  user: getFromLocalStorage()?.user && Object.keys(getFromLocalStorage()?.user).length > 0 ? getFromLocalStorage()?.user: {}
 };
 
 export const cartReducer = (state: IState, action: IAction) => {
- // const {saveToLocalStorage, getFromLocalStorage, local} = useLocalStorageFunctions()
+
     // Similar to useState but first arg is key to the value in local storage.
   // const [name, setName] = useLocalStorage<string>("name", "Bob");
   // const [storedValue, setValue] = useLocalStorage<>()
  switch (action.type) {
      case ActionTypes.ADD_TO_CART:
-        return {
+        saveToLocalStorage({type: 'cart', payload: {
           ...state,
           cart: [...updatedProducts(state.cart, action.payload, action.type)]
-        };
+      }})
+        return state.cart
      case ActionTypes.REMOVE_TO_CART:
+      saveToLocalStorage({type: 'cart', payload: {
+        ...state,
+        cart: [...updatedProducts(state.cart, action.payload, action.type)]
+    }})
       return {
         ...state,
         cart: [...updatedProducts(state.cart, action.payload, action.type)]
       }
       case ActionTypes.RESET_CART:
+        saveToLocalStorage({type: 'cart', payload: {
+          ...state,
+          cart: []
+      }})
         return {
           ...state,
           cart: []
         }
       case ActionTypes.SET_USER_SESSION:
+        saveToLocalStorage({type: 'user', payload: {          
+          ...state,
+          user : {...state.user, ...action.payload}}
+        })
         return {
           ...state,
           user : {...state.user, ...action.payload}
         }
       case ActionTypes.UNSET_USER_SESSION:
+        saveToLocalStorage({type: 'user', payload: {          
+          ...state,
+          user : {}}
+        })
         return {
           ...state,
           user: {}

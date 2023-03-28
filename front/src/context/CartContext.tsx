@@ -2,9 +2,13 @@ import { createContext, ReactNode, useContext, useReducer } from 'react';
 import { cartReducer, initialCartState } from '../stores/CartStore';
 // import {cartReducer, initialCartState} from '../stores/testStore'
 import { IProduct } from '../types/product'
+import { getFromLocalStorage } from '../utils/LocalStorage';
+const init = {
+  cart: getFromLocalStorage().cart,
+  //user: getFromLocalStorage().user
+}
 
-
-const CartContext = createContext(initialCartState);
+const CartContext = createContext({...initialCartState, cart: init.cart, user: init.user});
 
 export const CartConsumer = CartContext.Consumer;
 export const CartConsumerHook = () => useContext(CartContext);
@@ -12,6 +16,7 @@ export const CartConsumerHook = () => useContext(CartContext);
 type Props = {
   children: string | JSX.Element | JSX.Element[] | (() => JSX.Element)
 }
+
 export const CartProvider = ({children}: Props) => (
    <CartContext.Provider value={useReducer(cartReducer, initialCartState)}>
        { children }
