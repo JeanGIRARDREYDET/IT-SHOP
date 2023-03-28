@@ -83,6 +83,7 @@ const LoginPage = () => {
     }).then(user=> {
      Cookies.set('SESSION_COOKIE_NAME', genererSessionId(), { expires: 7, secure: true, sameSite: 'strict' });
      Cookies.set('user',JSON.stringify(user), { expires: 7, secure: true, sameSite: 'strict' });
+     Cookies.set('token',JSON.stringify(user.tocken), { expires: 7, secure: true, sameSite: 'strict' });
   
     
      setIsUserLogged(true)
