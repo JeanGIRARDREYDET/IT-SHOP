@@ -70,7 +70,12 @@ const Nav = ({onSearch}: Props) => {
     return num
   } 
   
-   
+  const handleLogout = (e: Event) => {
+    e.preventDefault()
+    e.stopPropagation()
+    dispatch({type: ActionTypes.UNSET_USER_SESSION})
+    Cookies.remove('user')
+  } 
   useEffect(()=> {
     if(articles_number === 0) {
       // setArticles_number(jerk())
@@ -84,6 +89,7 @@ const Nav = ({onSearch}: Props) => {
         dispatch({
         type:ActionTypes.ADD_TO_CART,payload:product
         })
+        
     })
         
     } 
@@ -115,6 +121,7 @@ const Nav = ({onSearch}: Props) => {
                 <Fragment>
                   <Typography color="inherit">{user.firstname && user.lastname ? `Bonjour ${user.firstname} ${user.lastname}`: ''}</Typography>
                     <em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}
+                    {Cookies.get('user') && (<Button onClick={(e) => handleLogout(e)}>{'Se déconnecter '}</Button>)}
                 </Fragment>
               }>
                   <IconButton><PersonIcon color={user._id? 'success':'inherit'}/></IconButton>
