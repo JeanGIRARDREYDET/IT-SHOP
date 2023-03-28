@@ -102,7 +102,7 @@ productRouter.get(
 
 productRouter.post(
   Paths.Products.Add,
-  ProductRoutes.add,
+  ProductRoutes.add, 
 );
 
 productRouter.patch(

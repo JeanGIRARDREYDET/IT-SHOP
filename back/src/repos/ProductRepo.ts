@@ -44,6 +44,7 @@ async function getAll(): Promise<IProduct[]> {
  */
 async function add(product: IProduct): Promise<void> {
   const res = await new ProductSchema(product);
+  res.save()
 }
 
 async function migrate(): Promise<void> {

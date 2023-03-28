@@ -19,7 +19,7 @@ async function getAll(_: IReq, res: IRes) {
 /**
  *  Get one product 
 
- */
+ */ 
 
 async function getOne(req: IReq, res: IRes) {
   const products = await ProductService.getOne(req.params.id? req.params.id: '');
@@ -27,11 +27,12 @@ async function getOne(req: IReq, res: IRes) {
   return res.status(HttpStatusCodes.OK).json(products);
 }
 
-/**
+/** 
  * Add one product.
  */
 async function add(req: IReq<{product: IProduct}>, res: IRes) {
   const { product } = req.body;
+  
   await ProductService.addOne(product);
   return res.status(HttpStatusCodes.CREATED).end();
 }

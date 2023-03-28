@@ -1,18 +1,22 @@
 import { Box, Button, Input, InputLabel } from "@mui/material"
 import { useState } from "react"
 import { IProduct } from "../../types/product"
+import { useNavigate } from 'react-router-dom'
+
 type Props = {
   product: IProduct | null
 }
 const ProductForm = ( { product }: Props) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState('')
   const [brand, setBrand] = useState('')
   const [description, setDescription] = useState('')
   const [images, setImages] = useState<Array<string>>([])
   const [categories, setCategories] = useState<Array<string>>([])
-  const [price, setPrice] = useState<number | null>(null)
-  const [stock, setStock] = useState<number | null>(null)
-  const [rating, setRating] = useState<number | null>(null)
+  const [price, setPrice] = useState<number | null>(0)
+  const [stock, setStock] = useState<number | null>(0)
+  const [rating, setRating] = useState<number | null>(0)
 
   const updateProduct = () => {
     //fetch products/update
@@ -20,6 +24,19 @@ const ProductForm = ( { product }: Props) => {
 
   const CreateProduct = () => {
     // fetch /products/add
+    const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
+    
+    
+    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
+    fetch(`${import.meta.env.VITE_API_URL}products/add`, requestOptions)
+    .then(res=>{
+        if(res.ok){
+          navigate('/')
+          
+          alert("Vous êtes bien enregistré !")
+        }
+    })
+    
   }
 
   const prodExample = {
@@ -40,36 +57,36 @@ const ProductForm = ( { product }: Props) => {
       <Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="name-product">Nom</InputLabel>
-        <Input id="name-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setName(event.currentTarget.value)} value={product?.name ?? '' } />
+        <Input id="name-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setName(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="brand-product">Marque</InputLabel>
-        <Input id="brand-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setBrand(event.currentTarget.value)} value={product?.brand ?? ''}/>
+        <Input id="brand-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setBrand(event.currentTarget.value)}/>
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="description-product">Description</InputLabel>
-        <Input id="description-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setDescription(event.currentTarget.value)} value={product?.description ?? ''}/>
+        <Input id="description-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setDescription(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="images-product">Images</InputLabel>
-        <Input id="images-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setImages(event.currentTarget.value)} value={product?.images?? []}/>
+        <Input id="images-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setImages(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="categories-product">Catégories</InputLabel>
-        <Input id="categories-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setCategories(event.currentTarget.value)} value={product?.categories?? []}/>
+        <Input id="categories-product" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setCategories(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="price-product">Prix</InputLabel>
-        <Input id="price-product" aria-describedby="my-helper-text" type="number" onKeyUp={(event)=>setPrice(event.currentTarget.value)} value={product?.price ?? null}/>
+        <Input id="price-product" aria-describedby="my-helper-text" type="number" onKeyUp={(event)=>setPrice(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="stock-product">Stock</InputLabel>
-        <Input id="stock-product" aria-describedby="my-helper-text" type="number" onKeyUp={(event)=>setStock(event.currentTarget.value)} value={product?.stock ?? null}/>
+        <Input id="stock-product" aria-describedby="my-helper-text" type="number" onKeyUp={(event)=>setStock(event.currentTarget.value)} />
       </Box>
 
 
       <Box sx={{p: 2}}>
-            {product !== null ? (<Button variant="outlined" onClick={updateProduct} >Modifier ce produit</Button>): (<Button variant="outlined" onClick={CreateProduct} >Créer ce produit</Button>)}
+            {product !== null ? (<Button variant="outlined" onClick={updateProduct} >Modifier ce produit</Button>): (<Button variant="outlined" onClick={(event)=>CreateProduct(event)} >Créer ce produit</Button>)}
       </Box>
     </Box>
   )

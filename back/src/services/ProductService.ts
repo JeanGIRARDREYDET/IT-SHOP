@@ -29,6 +29,7 @@ function getOne(id: string): Promise<IProduct | null> {
  * Add one product.
  */
 function addOne(product: IProduct): Promise<void> {
+  
   return ProductRepo.add(product);
 }
 
