@@ -36,20 +36,17 @@ async function add(req: IReq<{product: IProduct}>, res: IRes) {
   await ProductService.addOne(product);
   return res.status(HttpStatusCodes.CREATED).end();
 }
-
+ 
 /**
  * Migrate 
  */
-async function migrate(_: IReq, res: IRes) {
-  await ProductService.migrate();
-  return res.status(HttpStatusCodes.CREATED).end();
-}
 
 /**
  * Update one product.
  */
 async function update(req: IReq<{product: IProduct}>, res: IRes) {
   const { product } = req.body;
+  
   await ProductService.updateOne(product);
   return res.status(HttpStatusCodes.OK).end();
 }
@@ -70,7 +67,6 @@ export default {
   getAll,
   getOne,
   add,
-  migrate,
   update,
   delete: delete_,
 } as const;

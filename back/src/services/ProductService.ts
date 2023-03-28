@@ -36,21 +36,22 @@ function addOne(product: IProduct): Promise<void> {
 /**
  * Migrate.
  */
-function migrate(): Promise<void> {
-  return ProductRepo.migrate();
-}
+// function migrate(): Promise<void> {
+//   return ProductRepo.migrate();
+// }
 
 /**
  * Update one product.
  */
 async function updateOne(product: IProduct): Promise<void> {
-  const persists = await ProductRepo.persists(product.id? product.id.toString(): '');
-  if (!persists) {
-    throw new RouteError(
-      HttpStatusCodes.NOT_FOUND,
-      PRODUCT_NOT_FOUND_ERR,
-    );
-  }
+  
+  // const persists = await ProductRepo.persists(product.id? product.id.toString(): '');
+  // if (!persists) {
+  //   throw new RouteError(
+  //     HttpStatusCodes.NOT_FOUND,
+  //     PRODUCT_NOT_FOUND_ERR,
+  //   );
+  // }
   // Return product
   return ProductRepo.update(product);
 }
@@ -77,7 +78,6 @@ export default {
   getAll,
   getOne,
   addOne,
-  migrate,
   updateOne,
   delete: _delete,
 } as const;

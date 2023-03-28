@@ -95,10 +95,9 @@ productRouter.get(
 //   ProductRoutes.
 // )
 
-productRouter.get(
-  Paths.Products.Migrate,
-  ProductRoutes.migrate,
-);
+// productRouter.get(
+//   Paths.Products.Migrate,
+// );
 
 productRouter.post(
   Paths.Products.Add,

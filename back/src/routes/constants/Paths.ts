@@ -19,12 +19,11 @@ const Paths = {
     Add: '/add',
     Update: '/update',
     Delete: '/delete/:id',
-  },
+  },  
   Products: {
     Base: '/products',
     Get: '',
     GetOne: '/:id',
-    Migrate: '/migrate/all',
     Add: '/add',
     Update: '/update',
     Delete: '/delete/:id',
