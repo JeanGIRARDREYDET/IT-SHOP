@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import { CartConsumerHook } from '../context/CartContext'
 import { ActionTypes } from '../stores/CartStore'
 import UserInfos from '../components/userInfos/UserInfos'
+import Cookies from 'js-cookie';
+
+
 
 type ILogin = {
   email: string,
@@ -59,7 +62,7 @@ const LoginPage = () => {
     };
  
  //  const [cookies, setCookie] = useCookies(['token']);
-
+ //Cookies.set('nomDuCookie', 'valeurDuCookie');
     
     fetch(`${import.meta.env.VITE_API_URL}/auth/login`, requestOptions)
     .then(res => {
@@ -67,6 +70,12 @@ const LoginPage = () => {
         return res.json()
       }
     }).then(user=> {
+
+      const handleLoginSuccess = (sessionId: string) => {
+        Cookies.set('SESSION_COOKIE_NAME', sessionId, { expires: 7, secure: true, sameSite: 'strict' });
+      };
+
+
       setIsUserLogged(true)
       return dispatch({type: ActionTypes.SET_USER_SESSION, payload: user});
     })
@@ -81,9 +90,21 @@ const LoginPage = () => {
     }
   }
   
+
+  //const cookies = new Cookies(request);
+  const valeurDuCookie = Cookies.get('token', { HttpOnlydd:true });
+
+
+
+  console.log("token http")
+  console.log(valeurDuCookie);
+  console.log(Cookies.get('nomDuCookie'))
+
   const handleSignInFull = (userInfos: IUser) => {
     const payload = {...userInfos,...credentials}
-    const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({user: payload})};
+    const requestOptions = { method: 'POST',
+     headers: { 'Content-Type': 'application/json', 'Authorization':'token'}, 
+     body: JSON.stringify({user: payload})};
     fetch(`${import.meta.env.VITE_API_URL}/users/add`, requestOptions)
     .then(res=>{
         if(res.ok){
