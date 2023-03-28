@@ -42,6 +42,8 @@ const Product = () => {
              <Grid container className={Styles.ficheProduit}>
                 <Grid item xs={12} lg={6}>
                     <Carrousel productCarrousel={product} autoplay={true} slides={1} arrows={false} />
+                    <ProductImagesList productImages={product} />
+
                 </Grid>
                 <Grid item xs={12} lg={6}>
                     <Card sx={{ p: 2 }}>
@@ -80,7 +82,6 @@ const Product = () => {
                         </CardContent>
                     </Card>
                 </Grid>
-                <ProductImagesList productImages={product} />
             </Grid>
             {/* <div>
                 <div>
@@ -90,7 +91,7 @@ const Product = () => {
                             <div key={"Cat_" + index}>{categorie}-</div>
                         ))}
                 </div>
-            </div>  */}
+            </div>  */} 
         </>
     );
 };
