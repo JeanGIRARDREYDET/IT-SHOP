@@ -14,7 +14,9 @@ import {useContext} from 'react'
 import { CartConsumerHook } from '../../context/CartContext';
 import { Button, IconButton, styled, Tooltip, tooltipClasses, Typography } from '@mui/material';
 import { getFromLocalStorage } from '../../utils/LocalStorage';
-
+import Cookies from 'js-cookie';
+import { ActionTypes } from '../../stores/CartStore';
+import Product from '../product/Product';
 
 // export interface IProduct {
 //   _id?: object | undefined;
@@ -58,6 +60,7 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 const Nav = ({onSearch}: Props) => {
   const [{user, cart}, dispatch] = CartConsumerHook();
   const [isAdmin, setIsAdmin] = useState(true)
+  
   const [articles_number, setArticles_number] = useState(0)
   const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 )
   const jerk = () => {
@@ -66,11 +69,26 @@ const Nav = ({onSearch}: Props) => {
     setArticles_number(cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 ))
     return num
   } 
-  // console.log(getFromLocalStorage().cart)
+  
+   
+
+
   useEffect(()=> {
     if(articles_number === 0) {
       // setArticles_number(jerk())
     }
+   
+    if(!user._id) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
+    
+    const localcart = getFromLocalStorage().cart.cart
+    if(cart.length===0 && localcart.length>0){
+       localcart.map(product=>{
+        dispatch({
+        type:ActionTypes.ADD_TO_CART,payload:product
+        })
+    })
+        
+    } 
     setArticles_number(nbArticles)
     setIsAdmin(Object.keys(user).length > 0 && user.role === 'admin'? true: false)
 

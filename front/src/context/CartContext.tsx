@@ -5,7 +5,7 @@ import { IProduct } from '../types/product'
 import { getFromLocalStorage } from '../utils/LocalStorage';
 const init = {
   cart: getFromLocalStorage().cart,
-  //user: getFromLocalStorage().user
+  user: getFromLocalStorage().user
 }
 
 const CartContext = createContext({...initialCartState, cart: init.cart, user: init.user});
