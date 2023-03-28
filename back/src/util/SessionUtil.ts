@@ -53,7 +53,7 @@ async function addSessionData(
  const jwt = await _sign(data),
     { Key, Options } = EnvVars.CookieProps;
 
-  return { response: res.cookie(Key, jwt,Options), data};
+  return { response: res.cookie(Key, jwt,Options), data:{...data, token:jwt}};
 }
 
 /**
