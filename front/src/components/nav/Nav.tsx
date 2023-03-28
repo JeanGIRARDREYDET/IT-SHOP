@@ -64,7 +64,7 @@ const Nav = ({onSearch}: Props) => {
     setArticles_number(nbArticles)
 
   }, [user, cart])
-
+ 
   return (
     <nav className={Style.navigator}>
       <div id="brandshits" className="">

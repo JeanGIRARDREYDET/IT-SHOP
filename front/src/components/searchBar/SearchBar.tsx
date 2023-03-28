@@ -22,7 +22,7 @@ export interface IProduct {
   rating: number;
   createdAt: Date;
 }
-
+ 
 
 const SearchBar = ({onSearch}: Props) => {
   
@@ -33,9 +33,10 @@ const SearchBar = ({onSearch}: Props) => {
           >
 
             
-      <CustomAutocomplete onChange={onSearch} /><span><SearchIcon sx={{p: 2}} /></span>
+      <CustomAutocomplete onChange={onSearch} />
     
-
+ 
+      <span><SearchIcon sx={{p: 2}} /></span>
       {/* <button className={Style.SearchIcone} onClick={handle}> 
       <SearchIcon  />
       </button> */}
