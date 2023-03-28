@@ -47,7 +47,7 @@ const LoginPage = () => {
 
   const handleLogin = (credentials: ILogin) => {
     isUserInDatabase(credentials)
-    navigate('/')
+    // navigate('/')
   }
 
   const isUserInDatabase = (credentials: ILogin) => {

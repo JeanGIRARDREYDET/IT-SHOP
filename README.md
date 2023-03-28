@@ -20,7 +20,7 @@ mise en place d'un IPayment object
 (stripe pour les moyen de paiements)
 !!! style du site à travailler absolument
 
-partie admin : gérer lupdate et l'ajout de produit dans la base de données
+partie admin : gérer l'update et l'ajout de produit dans la base de données
 
 
 
