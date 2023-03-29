@@ -69,6 +69,8 @@ const Nav = ({onSearch}: Props) => {
     e.stopPropagation()
     dispatch({type: ActionTypes.UNSET_USER_SESSION})
     Cookies.remove('user')
+    Cookies.remove('token')
+    Cookies.remove('SESSION_COOKIE_NAME')
   } 
   useEffect(()=> {
 
