@@ -14,13 +14,15 @@ const Login = ({onLogin}:Props)=> {
   const [loginError, setLoginError] = useState(false)
   // const {data, err} = useFetch<unKnown>('/auth/')
   const handleLoginForm = () => {
-    if (email !== "" && password !== "") {
+    if (email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) && password !== "") {
       const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify( { email, password } )};
       fetch("http://localhost:3000/api/auth/login", requestOptions).then(res=> {
         if(res.ok){
           onLogin({email, password})
           alert("vous revoila !")
         } else {
+
+          
           setLoginError(true)
           console.log("error !");
           

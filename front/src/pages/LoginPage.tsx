@@ -153,10 +153,10 @@ const LoginPage = () => {
       {!isUserLogged? (<Login onLogin={handleLogin} />): (<UserInfos user={user} />)}
         {
         (!isUserLogged && !isFullCreated) ? (
-          <>
+          <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly',flexDirection: "column"}}>
             {!isCreated && ( <SignIn onSignIn={handleSignIn} /> )}
             {isCreated && ( <SignInFull onSignInFull={handleSignInFull} /> )}
-          </>
+          </Box>
         ) :""
         }
 
