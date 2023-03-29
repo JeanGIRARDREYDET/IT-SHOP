@@ -90,8 +90,7 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
                       <CardActions className={Style.footer}>
                          
 
-                        <Button color="error">{prod.stock === 0 ? 'indisponible': prod.price + '€'}</Button>
-                        <Button >{prod.stock === 0 ? '': <FavoriteBorderTwoToneIcon className={Style.like}/>}</Button>
+                        <Button color="error">{prod.stock === 0 ? 'indisponible': "prix: " + prod.price + '€'}</Button>
                         <Button disabled={prod.stock === 0} size="small">
                         {/* {prod.stock === 0 ? '': <AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} />} */}
                           </Button>

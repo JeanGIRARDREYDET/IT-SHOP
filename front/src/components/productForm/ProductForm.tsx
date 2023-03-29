@@ -35,7 +35,7 @@ const ProductForm = ( { product }: Props) => {
         }
     })
     
-  }
+  } 
 
   const CreateProduct = () => {
     // fetch /products/add
