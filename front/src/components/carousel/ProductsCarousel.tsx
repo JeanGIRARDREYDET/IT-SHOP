@@ -41,8 +41,8 @@ const ProductsCarrousel = ( { items , filter='bestRatings', slides, autoplay, ar
     // Définition du chemin du produit
     // const image_url=`/src/assets/products/${prod._id}/`
     const filtering = (p: IProduct) => {
-      // return filter === 'rating' ? p.rating > 4 : false
-      return true
+      return filter === 'bestRatings' ? p.rating > 3 : false
+      // return true
     }  
     const settings = {
       dots: false,
