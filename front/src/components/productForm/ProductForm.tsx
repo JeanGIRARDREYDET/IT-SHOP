@@ -2,6 +2,7 @@ import { Box, Button, Input, InputLabel } from "@mui/material"
 import { useState } from "react"
 import { IProduct } from "../../types/product"
 import { useNavigate } from 'react-router-dom'
+import Style from "./productForm.module.css"
 
 type Props = {
   product: IProduct | null
@@ -42,6 +43,7 @@ const ProductForm = ( { product }: Props) => {
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
     
     
+
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
     fetch(`${import.meta.env.VITE_API_URL}/products/add`, requestOptions)
     .then(res=>{
@@ -69,7 +71,7 @@ const ProductForm = ( { product }: Props) => {
 
   
   return (
-      <Box>
+      <div className={Style.productForm}>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="name-product">Nom</InputLabel>
         <Input id="name-product" aria-describedby="my-helper-text" type="text" defaultValue={product?.name} onChange={(event)=>{setName(event.currentTarget.value)
@@ -88,7 +90,7 @@ const ProductForm = ( { product }: Props) => {
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="images-product">Images</InputLabel>
-        <Input id="images-product" aria-describedby="my-helper-text" type="text" defaultValue ={product?.images} onKeyUp={(event)=>{setImages(event.currentTarget.value);
+        <Input id="images-product" aria-describedby="my-helper-text" type="text" placeholder="https://" defaultValue ={product?.images} onKeyUp={(event)=>{setImages(event.currentTarget.value);
         }}  />
       </Box>
       <Box sx={{p: 2}}>
@@ -108,7 +110,7 @@ const ProductForm = ( { product }: Props) => {
       <Box sx={{p: 2}}>
             {product !== null ? (<Button variant="outlined" onClick={updateProduct} >Modifier ce produit</Button>): (<Button variant="outlined" onClick={(event)=>CreateProduct()} >Créer ce produit</Button>)}
       </Box>
-    </Box>
+    </div>
   )
 }
 export default ProductForm
