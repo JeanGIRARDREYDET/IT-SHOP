@@ -23,7 +23,7 @@ const CheckOutPage = () => {
         <Button onClick={() => setPaiementMethod('paypal')}>Paypal</Button>
       </ButtonGroup>}
       {paiementMethod === 'cb' && paiementInfos === null && <CbForm onCBFill={handlePaiement} />}
-      {<CartRecap />}
+      {<CartRecap paiementInfos={paiementInfos} />}
       {/* choix du moyen, de paiement => select ou autre direct sur la page sur la page*/ } 
       {/*enregistrement des données bancaires  => composant dédié */ }
       {/* choix des adresses de livraison et ou facturation composant dédié p e*/ }

@@ -4,7 +4,12 @@ import { IProductCart } from '../../types/product';
 import { CartConsumerHook } from '../../context/CartContext'
 import Styles from './CartRecap.module.css'
 import { useNavigate } from 'react-router-dom';
-const CartRecap = () => {
+import { IPaiement } from '../../types/user';
+type Props = {
+  paiementInfos:IPaiement
+}
+
+const CartRecap = ({paiementInfos}: Props) => {
  const navigate = useNavigate()
   const[{cart, user},] = CartConsumerHook();
   const [productCart, setproductCart] = useState([])
@@ -17,7 +22,7 @@ const CartRecap = () => {
       const checkout = {
         cart,
         delivery: user.delivery_address,
-        paiement: user.paiement
+        paiement: paiementInfos
       }
       console.log(checkout)
     }
