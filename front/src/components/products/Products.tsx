@@ -20,16 +20,8 @@ const Products = () => {
   }
 
   const filtering = (p: IProduct) => {
-    // const filtres = Object.keys(filter).filter(key => filter[key] !== "" || filter[key] !== [])
-     const completeFilterExample= {
-        brand: "dzzdzd",
-        category: "automobile",
-        name: "zddz",
-        priceRange: [ 3841, 6113 ],
-        rating: 4
-      }
-      // const filteringreturnexample = el.Age >=15 && el.RollNumber <= 200 && el.Marks >= 80 ;
-    console.log(filter.name)
+
+
     return filter.name !== "" ? new RegExp(filter.name, 'i').test(p.name): true
         //&& filter.brand !== ""? new RegExp(filter.brand, 'i').test(p.brand): false
         //&& filter.category !== "" ? p.categories.includes(filter.category): false

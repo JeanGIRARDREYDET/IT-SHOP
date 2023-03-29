@@ -23,7 +23,6 @@ const Product = () => {
     const {data, err} = useFetch<IProduct>("products/" + id)
 
     const addToCart = () => {
-        console.log('add a product')
         dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
     }
     // const data: TApiResponse = useApi(
