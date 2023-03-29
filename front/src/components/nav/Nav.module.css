@@ -13,6 +13,7 @@ nav ul {
   width: 50%;
   gap: 1rem;
   list-style-type: none;
+  margin :0;
 }
 nav ul li {
   border-radius: 8px;
@@ -82,7 +83,7 @@ nav ul li:hover {
   .navshits {
     display: flex;
     justify-content: center;
-    align-item:center;
+    align-items:center;
     margin: 0 auto;
   }
  }
