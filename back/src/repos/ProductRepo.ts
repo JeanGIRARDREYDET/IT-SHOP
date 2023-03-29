@@ -62,13 +62,6 @@ async function update(product: IProduct): Promise<any> {
 async function delete_(id: string): Promise<void> {
   const res = await ProductSchema.deleteOne({id});
   console.log(res);
-  // const db = await orm.openDb();
-  // for (let i = 0; i < db.products.length; i++) {
-  //   if (db.products[i].id === id) {
-  //     db.products.splice(i, 1);
-  //     return orm.saveDb(db);
-  //   }
-  // }
 }
 
 

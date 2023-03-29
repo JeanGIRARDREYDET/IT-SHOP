@@ -39,6 +39,12 @@ type IReturn = {
  data: any
 }
 
+async function getSessionDataClient<T>(req: Request): Promise<string | T | undefined> {
+  const { Key } = EnvVars.CookieProps,
+    jwt = req.signedCookies[Key];
+  return _decode(jwt);
+}
+
 /**
  * Add a JWT to the response 
  */
@@ -95,5 +101,6 @@ function _decode<T>(jwt: string): Promise<string | undefined | T> {
 export default {
   addSessionData,
   getSessionData,
+  getSessionDataClient,
   clearCookie,
 } as const;
