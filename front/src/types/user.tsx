@@ -28,7 +28,6 @@ export interface ICart {
 }
 
 export interface IPaiement {
-  userID: string
   card_name: string;
   card_number: number;
   cvc: number;

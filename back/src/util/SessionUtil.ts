@@ -52,7 +52,7 @@ async function addSessionData(
   // Setup JWT token as cookie in header
  const jwt = await _sign(data),
     { Key, Options } = EnvVars.CookieProps;
-
+    // res.cookie(Key, jwt,Options)
   return { response: res.cookie(Key, jwt,Options), data:{...data, token:jwt}};
 }
 

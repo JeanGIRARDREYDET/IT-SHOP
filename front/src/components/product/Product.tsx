@@ -22,10 +22,14 @@ const Product = () => {
     const [{cart}, dispatch] = CartConsumerHook();
     const {data, err} = useFetch<IProduct>("products/" + id)
 
+<<<<<<< HEAD
     const addToCart = (e) => {
         e.preventDefault()
         e.stopPropagation()
         console.log('add a product')
+=======
+    const addToCart = () => {
+>>>>>>> 71e74ef7d9234ea270d0e7e79aba7fde876c2342
         dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
     }
     // const data: TApiResponse = useApi(

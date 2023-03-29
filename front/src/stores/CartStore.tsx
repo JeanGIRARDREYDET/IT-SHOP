@@ -65,7 +65,10 @@ export const cartReducer = (state: IState, action: IAction) => {
           ...state,
           cart: [...updatedProducts(state.cart, action.payload, action.type)]
       }})
-        return state.cart
+        return {
+          ...state,
+          cart: [...updatedProducts(state.cart, action.payload, action.type)]
+        }
      case ActionTypes.REMOVE_TO_CART:
       saveToLocalStorage({type: 'cart', payload: {
         ...state,

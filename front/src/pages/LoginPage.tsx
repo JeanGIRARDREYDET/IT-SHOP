@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { CartConsumerHook } from '../context/CartContext'
 import { ActionTypes } from '../stores/CartStore'
 import UserInfos from '../components/userInfos/UserInfos'
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 
 
@@ -53,13 +53,24 @@ const LoginPage = () => {
     // navigate('/')
   }
  
+  function genererSessionId(): string {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const longueur = 20;
+    let resultat = '';
+    for (let i = 0; i < longueur; i++) {
+      resultat += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return resultat;
+  }
+
+
   const isUserInDatabase = (credentials: ILogin) => {
     const requestOptions = { 
       method: 'POST', 
       headers: { 'Content-Type': 'application/json' }, 
       body: JSON.stringify({email: credentials.email, password: credentials.password}),
-      credentials: 'include'
-    };
+      // credentials: 'include'
+  };
  
  //  const [cookies, setCookie] = useCookies(['token']);
  //Cookies.set('nomDuCookie', 'valeurDuCookie');
@@ -70,13 +81,33 @@ const LoginPage = () => {
         return res.json()
       }
     }).then(user=> {
-
-      // const handleLoginSuccess = (sessionId: string) => {
-      //   Cookies.set('SESSION_COOKIE_NAME', sessionId, { expires: 7, secure: true, sameSite: 'strict' });
-      // };
-
-
-      setIsUserLogged(true)
+     const {
+      _id,
+      firstname,
+      lastname,
+      bill_address,
+      delivery_address,
+      email,
+      role,
+      phone,
+      date_of_birth,
+      token
+    }=user
+    const userCookie = {_id,
+      firstname,
+      lastname,
+      bill_address,
+      delivery_address,
+      email,
+      role,
+      phone,
+      date_of_birth}
+     Cookies.set('SESSION_COOKIE_NAME', genererSessionId(), { expires: 7, secure: true, sameSite: 'strict' });
+     Cookies.set('user',JSON.stringify(userCookie), { expires: 7, secure: true, sameSite: 'strict' });
+     Cookies.set('token',JSON.stringify(token), { expires: 7, secure: true, sameSite: 'strict' });
+  
+    
+     setIsUserLogged(true)
       return dispatch({type: ActionTypes.SET_USER_SESSION, payload: user});
     })
     .catch(error => { console.error(error)})
