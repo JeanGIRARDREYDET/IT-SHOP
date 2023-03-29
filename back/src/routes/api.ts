@@ -101,16 +101,19 @@ productRouter.get(
 
 productRouter.post(
   Paths.Products.Add,
+  // adminMw,
   ProductRoutes.add, 
 );
 
 productRouter.put(
   Paths.Products.Update,
+  // adminMw,
   ProductRoutes.update,
 );
 
 productRouter.delete(
   Paths.Products.Delete,
+  // adminMw,
   ProductRoutes.delete,
 );
 

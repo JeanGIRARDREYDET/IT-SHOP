@@ -43,7 +43,7 @@ app.use(cookieParser(EnvVars.CookieProps.Secret));
 //   credentials : true,
 // }));
 app.use(cors())
-// app.use(cors())
+
 app.options('*', cors()) // include before other routes
 // Show routes called in console during development
 if (EnvVars.NodeEnv === NodeEnvs.Dev) {
