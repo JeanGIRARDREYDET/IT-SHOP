@@ -78,9 +78,7 @@ const Nav = ({onSearch}: Props) => {
       const ConfirmeCookieMessage="Ce site utilise des cookies pour améliorer votre expérience de navigation. "+
       "Les cookies sont de petits fichiers texte qui sont stockés sur votre ordinateur par ce site web. Nous "+
       "utilisons des cookies pour nous aider à analyser l'utilisation du site et à améliorer votre expérience de "+
-      "navigation.\n\nEn cliquant sur \"OK\", vous consentez à l'utilisation de tous les cookies. Si vous préférez "+
-      "limiter l'utilisation des cookies, vous pouvez cliquer sur \n\"Personnaliser\" pour sélectionner les types de "+
-      "cookies que vous souhaitez autoriser."
+      "navigation.\n\nEn cliquant sur \"OK\", vous consentez à l'utilisation de tous les cookies."
       confirm(ConfirmeCookieMessage) ? Cookies.set('cookiesAcceptes','true') : Cookies.set('cookiesAcceptes','false')
     
    }
