@@ -22,14 +22,9 @@ const Product = () => {
     const [{cart}, dispatch] = CartConsumerHook();
     const {data, err} = useFetch<IProduct>("products/" + id)
 
-<<<<<<< HEAD
-    const addToCart = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        console.log('add a product')
-=======
+    
+
     const addToCart = () => {
->>>>>>> 71e74ef7d9234ea270d0e7e79aba7fde876c2342
         dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
     }
     // const data: TApiResponse = useApi(
@@ -43,35 +38,17 @@ const Product = () => {
             setProduct(data);
         }
     }, [data]); // <- Changement ici, j'ai ajouté `data` comme dépendance
+    console.log(product.images)
+
        return (
+
         <> 
              <Grid container className={Styles.ficheProduit}>
-                <Grid item xs={12} lg={6}>
-                 
-                    <ProductImagesList productImages={product} />
-                    <Carrousel productCarrousel={product} autoplay={true} slides={1} arrows={false} />
-                </Grid>
+               
                 <Grid item xs={12} lg={6}>
                     <Card sx={{ p: 2 }}>
-                        {product.stock > 0 ? (
-                            <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
-                                <CardActions className={Styles.buy} >
-                                    <Typography variant='h2' color="error">{product.price}€</Typography>
-                                    <Button size="small" onClick={(e) => addToCart(e)}>
-                                    <AddShoppingCartIcon onClick={(e) => addToCart(e)} className={Style.add} />
-                                    </Button>
-                                </CardActions>
-                            </Box>
-                        ) : (
-                            <>
-                                <div>
-                                    Victime de son succès le produit est temporairement
-                                    indisponible.
-                                </div>
-                                <div>Il sera de nouveau disponible trés prochainement</div>
-                                <div>Merci de revenir plus tard.</div>
-                            </>
-                        )} 
+                       
+                       
                         <CardContent>
                             <h1>{product.name} </h1>
                             <Rating
@@ -79,27 +56,50 @@ const Product = () => {
                                 value={product.rating}
                                 readOnly
                             />
-                            <div>Vendeur : {product.brand}</div>
+                            {product.stock > 0 ? (
+                            <Box sx={{display: 'flex'}}>
+                                <CardActions className={Styles.buy} >
+                                    <Typography variant='h4' color="error">{product.price}€</Typography>
+                                    <Button  sx={{m: 2}} size="small"  onClick={() => addToCart}>
+                                              Ajoutez au Paniez                                    
+                                    </Button>
+                                
+                                </CardActions>
+                            </Box>
+                        ) : (
+                            <>
+                                <div>
+                                <Typography variant='h4' color="error"> 
+                                Victime de son succès le produit est temporairement indisponible.
+                                    </Typography>
+                                </div>
+                                <div>Il sera de nouveau disponible trés prochainement</div>
+                                <div>Merci de revenir plus tard.</div>
+                            </>
+                        )} 
+                            
+                            <h2>En stock : {product.stock}</h2>
+
+                            <h2>Vendeur : {product.brand}</h2>
+                            <h2>Description:</h2>
                             <div> {product.description}</div>
-                            <div>En stock : {product.stock}</div>
-                            <div>rating : {product.rating}</div>
-                            <div>description : {product.createdAt}</div>
-                            <div>ref : {id}</div>
                         </CardContent>
                     </Card>
                     
+                    
                 </Grid>
+
+              
+                <Grid item xs={12} lg={6}>
+                 
+                 <ProductImagesList productImages={product} />
+               </Grid>
+
+                             
+
                 
             </Grid>
-            {/* <div>
-                <div>
-                    categories :{" "}
-                    {product.categories &&
-                        product.categories.map((categorie: string, index: number) => (
-                            <div key={"Cat_" + index}>{categorie}-</div>
-                        ))}
-                </div>
-            </div>  */} 
+           
         </>
     );
 };

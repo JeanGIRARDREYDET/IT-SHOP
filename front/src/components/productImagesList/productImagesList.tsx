@@ -10,13 +10,13 @@ type Props = {
   productImages:IProduct
 }
 const ProductImagesList = ({productImages}:Props)=>  {
-  const [nombre, setnombre] = useState(0)
+  const [PositionImage, setPositionImage] = useState(0)
 
 
   // fonction qui change la grande image
     const ChangeImage = (index: number) => {
 
-      setnombre(index)
+      setPositionImage(index)
     }
 
 
@@ -27,9 +27,9 @@ const ProductImagesList = ({productImages}:Props)=>  {
         {
            productImages && productImages.images  && productImages.images.map((image:string,index:Number) => (
             
-              (nombre === index) ? (
+              (PositionImage === index) ? (
               
-                <img className={Styles.GrandeImage} key={"Pil"+nombre} src={image_url+image} alt={productImages.name+ "_" + nombre} />
+                <img className={Styles.GrandeImage} key={"Pil"+PositionImage} src={image_url+image} alt={productImages.name+ "_" + PositionImage} />
               ) : ""           
               
             ))

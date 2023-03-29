@@ -1,7 +1,8 @@
 
 .ficheProduit{
-  margin-top: .7rem;
+  margin-top: 2rem;
  
+  margin-bottom: 2rem;
 
 }
 
@@ -10,25 +11,10 @@
     position:relative;
     top:0
 }
-.footer{
-    height: 5rem;
-    position:relative;
-    top:0
-} 
-.add{
-    cursor: pointer;
-    border: 1px solid black;
-    padding: 0.1rem;
-    text-align: right;
 
-}
-.buy{
+
+/* .buy{
  margin-right: 0.1em;
 
 }
- 
-.Ajoutez{
-
-    margin-left: 1rem;
-    border: 1pc solid black;
-}
+  */
