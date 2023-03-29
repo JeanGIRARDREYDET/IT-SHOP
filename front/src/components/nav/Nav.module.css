@@ -62,6 +62,12 @@ nav ul li:hover {
     display: flex;
     flex-wrap: wrap;
   }
+  .navshits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
  }
  @media (max-width: 710px) {
   .navigator {
@@ -72,6 +78,12 @@ nav ul li:hover {
   }
   .searchshits {
     justify-content: center;
+  }
+  .navshits {
+    display: flex;
+    justify-content: center;
+    align-item:center;
+    margin: 0 auto;
   }
  }
 
