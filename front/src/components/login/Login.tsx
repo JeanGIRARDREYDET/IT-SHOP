@@ -24,12 +24,15 @@ const Login = ({onLogin}:Props)=> {
 
           
           setLoginError(true)
-          console.log("error !");
           
         }
       })
   
     }  
+    else {
+
+      setLoginError(true)
+    }
   }
   useEffect(() => {
     setLoginError(false)
