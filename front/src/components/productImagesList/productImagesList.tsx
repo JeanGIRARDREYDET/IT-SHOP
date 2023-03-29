@@ -19,9 +19,6 @@ const ProductImagesList = ({productImages}:Props)=>  {
       setPositionImage(index)
     }
 
-    console.log(productImages.images);
-    
-
     // Définition du chemin du produit
     const image_url="/src/assets/products/"+productImages._id+"/"
     return (
