@@ -26,6 +26,9 @@ const ProductForm = ( { product }: Props) => {
     //fetch products/update
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
      
+    
+    
+
     const requestOptions = { method: 'PUT', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
     fetch(`${import.meta.env.VITE_API_URL}products/update`, requestOptions)
     .then(res=>{
@@ -41,6 +44,13 @@ const ProductForm = ( { product }: Props) => {
   const CreateProduct = () => {
     // fetch /products/add
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
+  
+    const transformeStringToArray = images.split(",")
+
+
+    prod.images = transformeStringToArray
+    
+    prod.rating = 1
     
     
 
