@@ -25,6 +25,8 @@ const Product = () => {
     
 
     const addToCart = () => {
+
+        
         dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
     }
     // const data: TApiResponse = useApi(
@@ -38,7 +40,6 @@ const Product = () => {
             setProduct(data);
         }
     }, [data]); // <- Changement ici, j'ai ajouté `data` comme dépendance
-    console.log(product.images)
 
        return (
 
@@ -60,7 +61,7 @@ const Product = () => {
                             <Box sx={{display: 'flex'}}>
                                 <CardActions className={Styles.buy} >
                                     <Typography variant='h4' color="error">{product.price}€</Typography>
-                                    <Button  sx={{m: 2}} size="small"  onClick={() => addToCart}>
+                                    <Button  sx={{m: 2}} size="small"  onClick={() => addToCart()}>
                                               Ajoutez au Paniez                                    
                                     </Button>
                                 
