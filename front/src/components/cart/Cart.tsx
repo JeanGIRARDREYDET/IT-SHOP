@@ -52,24 +52,9 @@ const Cart = ()=> {
     </table>
 
       {  cart.map((p:IProductCart, i: number) => (
-
-        <div> 
-
-            <CartItem product={p} key={p._id? p._id + i: i} />
-
-
-
-        </div>
-
-
-
-
+            <CartItem product={p} key={p._id+ 'cart-item'} />
       ))
-
-
-
       }
-
       {
         prixTotal > 0 ? (
 
