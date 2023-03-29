@@ -63,12 +63,6 @@ const Nav = ({onSearch}: Props) => {
   
   const [articles_number, setArticles_number] = useState(0)
   const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 )
-  const jerk = () => {
-    let num = 0
-    const cart = getFromLocalStorage().cart as IProductCart[]//.map(el => el) //.forEach(el => num += el.quantity)
-    setArticles_number(cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 ))
-    return num
-  } 
   
   const handleLogout = (e: Event) => {
     e.preventDefault()
@@ -77,10 +71,7 @@ const Nav = ({onSearch}: Props) => {
     Cookies.remove('user')
   } 
   useEffect(()=> {
-    if(articles_number === 0) {
-      // setArticles_number(jerk())
-    }
-   
+
     if(!user._id && Cookies.get('user')) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
     
     const localcart = getFromLocalStorage().cart.cart
