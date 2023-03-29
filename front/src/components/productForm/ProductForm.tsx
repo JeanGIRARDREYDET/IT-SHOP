@@ -1,5 +1,5 @@
 import { Box, Button, Input, InputLabel } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { IProduct } from "../../types/product"
 import { useNavigate } from 'react-router-dom'
 import Style from "./productForm.module.css"
@@ -16,17 +16,26 @@ const ProductForm = ( { product }: Props) => {
   const [name, setName] = useState( product!==null? product.name :'')
   const [brand, setBrand] = useState(product!==null? product.brand :'')
   const [description, setDescription] = useState(product!==null? product.description :'')
-  const [images, setImages] = useState<Array<string>>([])
+  const [images, setImages] = useState<string>('')
   const [categories, setCategories] = useState<Array<string>>([])
   const [price, setPrice] = useState<number | null>( product!==null? product.price : 0)
   const [stock, setStock] = useState<number | null>(product!==null? product.stock :0)
   const [rating, setRating] = useState<number | null>(product!==null? product.rating :0)
-
+  
   const updateProduct = () => {
     //fetch products/update
+
+
+
+
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
      
     
+    console.log(name)
+      const transformeStringToArray = images.split(",")
+ 
+
+    prod.images = transformeStringToArray
     
 
     const requestOptions = { method: 'PUT', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
@@ -46,12 +55,12 @@ const ProductForm = ( { product }: Props) => {
     const prod = {name, brand, description, images, categories, price, stock, rating,createdAt:new Date().toDateString()} 
   
     const transformeStringToArray = images.split(",")
-
+ console.log(transformeStringToArray)
 
     prod.images = transformeStringToArray
     
     prod.rating = 1
-    
+  
     
 
     const requestOptions = { method: 'POST', headers: { 'Content-Type': 'application/json'}, body: JSON.stringify({product: prod})};
@@ -78,7 +87,11 @@ const ProductForm = ( { product }: Props) => {
     createdAt:{"$date":{"$numberLong":"1642963210000"}},
     rating:{"$numberInt":"4"}
   }
+ useEffect(()=>{
 
+
+
+ },[product])
   
   return (
       <div className={Style.productForm}>
