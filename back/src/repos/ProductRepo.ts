@@ -52,13 +52,8 @@ async function add(product: IProduct): Promise<void> {
  * Update a product.
  */
 async function update(product: IProduct): Promise<any> {
-
-  const res = await ProductSchema.updateOne(product);
-
-  
-
-   return res
-
+  const res = await ProductSchema.findByIdAndUpdate({_id:product._id}, product, {new: true});
+  return res
 }
 
 /**

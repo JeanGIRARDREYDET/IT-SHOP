@@ -11,7 +11,7 @@ type Props = {
 const ProductForm = ( { product }: Props) => {
 
   const navigate = useNavigate();
-
+  const [id, setID] = useState('')
   const [name, setName] = useState('')
   const [brand, setBrand] = useState('')
   const [description, setDescription] = useState('')
@@ -23,6 +23,7 @@ const ProductForm = ( { product }: Props) => {
   // const [prod, setprod] = useState<IProduct | null>(null)
   const updateProduct = () => {
     const prod = {
+      _id: id,
       name, 
       brand, 
       description, 
@@ -74,7 +75,7 @@ const ProductForm = ( { product }: Props) => {
   }
 
  useEffect(()=>{
-  //setProduct({...product})
+  setID(product? product._id: '')
   setName(product? product.name: '')
   setBrand(product? product.brand: '')
   setDescription(product? product.description : '')

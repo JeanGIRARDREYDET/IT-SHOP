@@ -46,7 +46,8 @@ async function add(req: IReq<{product: IProduct}>, res: IRes) {
  */
 async function update(req: IReq<{product: IProduct}>, res: IRes) {
   const { product } = req.body;
-  console.error(product)
+  console.log('updating')
+  console.log(product)
   await ProductService.updateOne(product);
   return res.status(HttpStatusCodes.OK).end();
 }

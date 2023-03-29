@@ -92,8 +92,9 @@ const LoginPage = () => {
       phone,
       date_of_birth,
       token
-    }=user
-    const userCookie = {_id,
+    } = user
+    const userCookie = {
+      _id,
       firstname,
       lastname,
       bill_address,
