@@ -81,7 +81,7 @@ const ProductCard = ({product}: Props) => {
             name="product-rating"
             value={product.rating}
             readOnly
-          />
+          /> 
         </CardContent>
         <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
           <CardActions className={Style.footer}>
@@ -94,7 +94,7 @@ const ProductCard = ({product}: Props) => {
         </Box>
       </Card>
     </Link>
-  )
+  ) 
 }
 
 export default ProductCard

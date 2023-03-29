@@ -3,7 +3,7 @@ import Style from './Footer.module.css'
 import LocalPhoneTwoToneIcon from '@mui/icons-material/LocalPhoneTwoTone';
 import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
 import MailOutlineTwoToneIcon from '@mui/icons-material/MailOutlineTwoTone';
-
+ 
 const Footer = () => {
   return (
     <div id={Style.footer}>

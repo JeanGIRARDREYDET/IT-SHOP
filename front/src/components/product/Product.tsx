@@ -14,7 +14,7 @@ import useFetch from '../../hooks/useFetch';
 import { IProduct } from '../../types/product';
 import { CartConsumerHook } from '../../context/CartContext';
 import { ActionTypes } from '../../stores/CartStore';
-
+ 
 const Product = () => {
     let { id } = useParams();
     const [product, setProduct] = useState<IProduct>({});
@@ -22,7 +22,9 @@ const Product = () => {
     const [{cart}, dispatch] = CartConsumerHook();
     const {data, err} = useFetch<IProduct>("products/" + id)
 
-    const addToCart = () => {
+    const addToCart = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
         console.log('add a product')
         dispatch({type: ActionTypes.ADD_TO_CART, payload: product});
     }
@@ -41,9 +43,9 @@ const Product = () => {
         <> 
              <Grid container className={Styles.ficheProduit}>
                 <Grid item xs={12} lg={6}>
-                    <Carrousel productCarrousel={product} autoplay={true} slides={1} arrows={false} />
+                 
                     <ProductImagesList productImages={product} />
-
+                    <Carrousel productCarrousel={product} autoplay={true} slides={1} arrows={false} />
                 </Grid>
                 <Grid item xs={12} lg={6}>
                     <Card sx={{ p: 2 }}>
@@ -51,8 +53,8 @@ const Product = () => {
                             <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
                                 <CardActions className={Styles.buy} >
                                     <Typography variant='h2' color="error">{product.price}€</Typography>
-                                    <Button size="small" onClick={addToCart}>
-                                        <AddShoppingCartIcon className={Styles.add} />
+                                    <Button size="small" onClick={(e) => addToCart(e)}>
+                                    <AddShoppingCartIcon onClick={(e) => addToCart(e)} className={Style.add} />
                                     </Button>
                                 </CardActions>
                             </Box>
@@ -81,7 +83,9 @@ const Product = () => {
                             <div>ref : {id}</div>
                         </CardContent>
                     </Card>
+                    
                 </Grid>
+                
             </Grid>
             {/* <div>
                 <div>
