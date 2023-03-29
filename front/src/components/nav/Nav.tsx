@@ -73,6 +73,16 @@ const Nav = ({onSearch}: Props) => {
     Cookies.remove('SESSION_COOKIE_NAME')
   } 
   useEffect(()=> {
+    const cookiesAcceptes = Cookies.get('cookiesAcceptes')
+    if(!cookiesAcceptes) {
+      const ConfirmeCookieMessage="Ce site utilise des cookies pour améliorer votre expérience de navigation. "+
+      "Les cookies sont de petits fichiers texte qui sont stockés sur votre ordinateur par ce site web. Nous "+
+      "utilisons des cookies pour nous aider à analyser l'utilisation du site et à améliorer votre expérience de "+
+      "navigation.\n\nEn cliquant sur \"OK\", vous consentez à l'utilisation de tous les cookies."
+      confirm(ConfirmeCookieMessage) ? Cookies.set('cookiesAcceptes','true') : Cookies.set('cookiesAcceptes','false')
+    
+   }
+
 
     if(!user._id && Cookies.get('user')) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
     
