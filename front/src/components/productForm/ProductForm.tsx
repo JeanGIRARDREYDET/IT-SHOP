@@ -17,9 +17,9 @@ const ProductForm = ( { product }: Props) => {
   const [description, setDescription] = useState('')
   const [images, setImages] = useState<Array<string>>([])
   const [categories, setCategories] = useState<Array<string>>([])
-  const [price, setPrice] = useState<number | null>(null)
-  const [stock, setStock] = useState<number | null>(null)
-  const [rating, setRating] = useState<number | null>(null)
+  const [price, setPrice] = useState<number | null>(0)
+  const [stock, setStock] = useState<number | null>(0)
+  const [rating, setRating] = useState<number | null>(0)
   // const [prod, setprod] = useState<IProduct | null>(null)
   const updateProduct = () => {
     const prod = {
@@ -91,32 +91,32 @@ const ProductForm = ( { product }: Props) => {
       <div className={Style.productForm}>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="name-product">Nom</InputLabel>
-        <Input id="name-product" aria-describedby="my-helper-text" type="text" value={name} defaultValue={name} onChange={(event)=>{setName(event.currentTarget.value)}} />
+        <Input id="name-product" aria-describedby="my-helper-text" type="text" value={name} onChange={(event)=>{setName(event.currentTarget.value)}} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="brand-product">Marque</InputLabel>
-        <Input id="brand-product" aria-describedby="my-helper-text" type="text" value={brand} defaultValue={brand} onChange={(event)=>setBrand(event.currentTarget.value)} />
+        <Input id="brand-product" aria-describedby="my-helper-text" type="text" value={brand} onChange={(event)=>setBrand(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="description-product">Description</InputLabel>
-        <Input id="description-product" aria-describedby="my-helper-text" type="text" defaultValue={description} onChange={(event)=>setDescription(event.currentTarget.value)} value={description} />
+        <Input id="description-product" aria-describedby="my-helper-text" type="text" onChange={(event)=>setDescription(event.currentTarget.value)} value={description} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="images-product">Images</InputLabel>
-        <Input id="images-product" aria-describedby="my-helper-text" type="text" defaultValue={images} placeholder="https://" value={images} onChange={(event)=>{setImages(event.currentTarget.value);
+        <Input id="images-product" aria-describedby="my-helper-text" type="text"  placeholder="https://" value={images} onChange={(event)=>{setImages(event.currentTarget.value);
         }}  />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="categories-product">Catégories</InputLabel>
-        <Input id="categories-product" aria-describedby="my-helper-text" type="text" defaultValue={categories} value ={categories} onChange={(event)=>setCategories(event.currentTarget.value)} />
+        <Input id="categories-product" aria-describedby="my-helper-text" type="text" value ={categories} onChange={(event)=>setCategories(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="price-product">Prix</InputLabel>
-        <Input id="price-product" aria-describedby="my-helper-text" type="number" defaultValue={price} value={price} onChange={(event)=>setPrice(event.currentTarget.value)} />
+        <Input id="price-product" aria-describedby="my-helper-text" type="number" value={price} onChange={(event)=>setPrice(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="stock-product">Stock</InputLabel>
-        <Input id="stock-product" value ={stock} aria-describedby="my-helper-text" defaultValue={stock} type="number" onChange={(event)=>setStock(event.currentTarget.value)} />
+        <Input id="stock-product" value ={stock} aria-describedby="my-helper-text" type="number" onChange={(event)=>setStock(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
             {product !== null ? (<Button variant="outlined" onClick={updateProduct} >Modifier ce produit</Button>): (<Button variant="outlined" onClick={(event)=>createProduct()} >Créer ce produit</Button>)}
