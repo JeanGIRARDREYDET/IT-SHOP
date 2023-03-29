@@ -19,8 +19,11 @@ const Login = ({onLogin}:Props)=> {
       fetch("http://localhost:3000/api/auth/login", requestOptions).then(res=> {
         if(res.ok){
           onLogin({email, password})
+          alert("vous revoila !")
         } else {
           setLoginError(true)
+          console.log("error !");
+          
         }
       })
   
@@ -29,21 +32,23 @@ const Login = ({onLogin}:Props)=> {
   useEffect(() => {
     setLoginError(false)
   
+    
   }, [email, password])
   
  return (
   <div className={Styles.Login}>
   <h1>Login</h1>
 
+    {loginError ? <h2 className={Styles.TitreError}>Authentification incorrect</h2> : ""}
   
-    <Box sx={{p: 2}} className={loginError ? Styles.error: ''}>
+    <Box sx={{p: 2}} className={loginError ? Styles.errorEmail: ''}>
         
     
       <InputLabel htmlFor="email-login">Email address</InputLabel>
       <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setEmail(event.currentTarget.value)}/>
 
     </Box>
-    <Box sx={{p: 2}} className={loginError? Styles.error: ''}>
+    <Box sx={{p: 2}} className={loginError? Styles.errorPassword: ''}>
       <InputLabel htmlFor="password-login">Password</InputLabel>
       <Input id="password-login" aria-describedby="my-helper-text" type="password" onKeyUp={(event)=>setPassword(event.currentTarget.value)}/>
 
