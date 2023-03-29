@@ -19,7 +19,7 @@
 
 }
 .grid {
-  
+
 }
 .header {
   display: grid;
@@ -33,7 +33,7 @@
 .row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-
+  padding: .5rem 0;
   border-bottom: 1px dotted gray;
 }
 .total {
@@ -45,7 +45,7 @@
 }
 .total div {
   text-align: center;
-  width: 10vw;
+  width: 20vw;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }

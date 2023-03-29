@@ -10,7 +10,13 @@ const CartRecap = () => {
   const [productCart, setproductCart] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const price:number = cart.reduce((acc, p) => acc + (p.price * p.quantity), 0)
-  
+  const handleCheckout = () => {
+    const checkout = {
+      cart,
+      delivery: user.delivery_address,
+      paiement: user.paiement
+  }
+  console.log(checkout)
   useEffect(() => {
 
   setTotalPrice(price)
@@ -58,6 +64,9 @@ const CartRecap = () => {
         <Box className={Styles.total}>
               <div>Prix de la commande</div>
               <div>{totalPrice}€</div>
+        </Box>
+        <Box>
+          <Button variant="contained" sx={{fontSize: '1.5rem'}} onClick={()=> handleCheckout}>Passer la commande</Button>
         </Box>
     </Box>
 
