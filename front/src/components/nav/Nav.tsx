@@ -111,11 +111,11 @@ const Nav = ({onSearch}: Props) => {
       <div className={Style.searchshits}>
         <SearchBar onSearch={handleSearch} />
       </div>
-      <div></div>
+      
       <div id="navshits" className="">
         <ul>
           { /*  or <li> via children ?  ADD ROUTER */ }
-          <NavLink className={Style.Link} to="/products" >Products</NavLink>
+          <NavLink className={Style.Link} to="/products" >Produits</NavLink>
           { isAdmin && <NavLink className={Style.Link} to="/admin"><AdminPanelSettingsIcon className='flex' /></NavLink> }
           <NavLink className={Style.Link} to="/login">
 
