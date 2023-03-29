@@ -15,28 +15,40 @@ const CartRecap = ({paiementInfos}: Props) => {
   const [productCart, setproductCart] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [isValidCheckout, setIsValidCheckout] = useState(false)
+
   const price:number = cart.reduce((acc, p) => acc + (p.price * p.quantity), 0)
+  const isValid = () => user.delivery_address && cart && paiementInfos
   const handleCheckout = () => {
-    if(user.delivery_address && cart && user.paiement) {
-      setIsValidCheckout(true)
-      const checkout = {
-        cart,
-        delivery: user.delivery_address,
-        paiement: paiementInfos
-      }
+    const checkout = {
+      cart,
+      delivery: user.delivery_address,
+      paiement: paiementInfos
+    }
+    if(user.delivery_address && cart && paiementInfos) {
+
+      // setIsValidCheckout(true)
+
       console.log(checkout)
     }
     else {
-      setIsValidCheckout(false)
+      console.log(checkout)
+      // setIsValidCheckout(false)
     }
 
     
   }
   useEffect(() => {
-
+    if(isValid()){
+      console.log('isvalid')
+      setIsValidCheckout(true)
+    }
+    else{
+      console.log('is not valid')
+      setIsValidCheckout(false)
+    }
   setTotalPrice(price)
 
-  }, [cart])
+  }, [cart, paiementInfos, user, isValidCheckout])
   
   return (
     <Box className={Styles.container}>

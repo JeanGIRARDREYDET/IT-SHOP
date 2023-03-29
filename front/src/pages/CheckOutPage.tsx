@@ -1,5 +1,5 @@
 import { Box, Button, ButtonGroup } from "@mui/material"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartRecap from "../components/cartRecap/CartRecap";
 import CbForm from '../components/cbForm/CbForm'
 import { CartConsumerHook } from "../context/CartContext";
@@ -13,6 +13,9 @@ const CheckOutPage = () => {
   const handlePaiement = (value: IPaiement) => {
     setPaiementInfos(paiementInfos=> ({...paiementInfos, ...value}))
   }
+  useEffect(() => {
+
+  }, [paiementInfos]) 
   return (
     <>
     
