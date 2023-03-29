@@ -48,50 +48,8 @@ async function adminMw(
   }
 }
 
-async function adminMw(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  // Get session data
-  const sessionData = await SessionUtil.getSessionData<TSessionData>(req);
-  // Set session data to locals
-  if (
-    typeof sessionData === 'object' &&
-    sessionData?.role === UserRoles.Admin
-  ) {
-    res.locals.sessionUser = sessionData;
-    return next();
-  // Return an unauth error if user is not an admin
-  } else {
-    return res
-      .status(HttpStatusCodes.UNAUTHORIZED)
-      .json({ error: USER_UNAUTHORIZED_ERR });
-  }
-}
 
-async function jwtAuth(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-    // Get session data
-    const sessionData = await SessionUtil.getSessionDataClient<TSessionData>(req);
-    // Set session data to locals
-    if (
-      typeof sessionData === 'object' &&
-      sessionData?.role === UserRoles.Admin
-    ) {
-      res.locals.sessionUser = sessionData;
-      return next();
-    // Return an unauth error if user is not an admin
-    } else {
-      return res
-        .status(HttpStatusCodes.UNAUTHORIZED)
-        .json({ error: USER_UNAUTHORIZED_ERR });
-    }
-}
 
 // **** Export Default **** //
 
-export {adminMw, jwtAuth};
+export default adminMw;

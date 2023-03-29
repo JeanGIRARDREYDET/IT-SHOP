@@ -27,11 +27,9 @@ const ProductImagesList = ({productImages}:Props)=>  {
         {
           productImages && productImages.images && productImages.images.length > 0 ?
           (
-            <>
-
-        
-        {
-           productImages && productImages.images  && productImages.images.map((image:string,index:Number) => (
+            <> 
+            {
+              productImages && productImages.images  && productImages.images.map((image:string, index:Number) => (
             
               (PositionImage === index) ? (
               
@@ -39,8 +37,7 @@ const ProductImagesList = ({productImages}:Props)=>  {
               ) : ""           
               
             ))
-        }
-
+          }
 
       <Grid container className={Styles.productimages}> 
 

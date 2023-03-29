@@ -103,9 +103,9 @@ const LoginPage = () => {
       role,
       phone,
       date_of_birth}
-     Cookies.set('SESSION_COOKIE_NAME', genererSessionId(), { expires: 7, secure: true, sameSite: 'strict' });
-     Cookies.set('user',JSON.stringify(userCookie), { expires: 7, secure: true, sameSite: 'strict' });
-     Cookies.set('token',JSON.stringify(token), { expires: 7, secure: true, sameSite: 'strict' });
+     Cookies.set('SESSION_COOKIE_NAME', genererSessionId(), { expires: 7, secure: true, sameSite: 'strict' }); //strict
+     Cookies.set('user',JSON.stringify(userCookie), { expires: 7, secure: true, sameSite: 'strict' }); // strict
+     Cookies.set('token',JSON.stringify(token), { expires: 7, secure: true, sameSite: 'strict' }); //strict
   
     
      setIsUserLogged(true)

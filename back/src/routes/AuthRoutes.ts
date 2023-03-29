@@ -3,8 +3,7 @@ import SessionUtil from '@src/util/SessionUtil';
 import AuthService from '@src/services/AuthService';
 
 import { IReq, IRes } from './types/express/misc';
-import EnvVars from '@src/constants/EnvVars';
-import jwt from 'jsonwebtoken';
+
 // **** Types **** //
 
 interface ILoginReq {
