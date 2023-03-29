@@ -15,8 +15,8 @@ const CartRecap = () => {
       cart,
       delivery: user.delivery_address,
       paiement: user.paiement
+    }
   }
-  console.log(checkout)
   useEffect(() => {
 
   setTotalPrice(price)
@@ -66,10 +66,9 @@ const CartRecap = () => {
               <div>{totalPrice}€</div>
         </Box>
         <Box>
-          <Button variant="contained" sx={{fontSize: '1.5rem'}} onClick={()=> handleCheckout}>Passer la commande</Button>
+          <Button variant="contained" sx={{fontSize: '1.5rem'}} onClick={()=> handleCheckout()}>Passer la commande</Button>
         </Box>
     </Box>
-
   )
 }
 export default CartRecap
