@@ -148,8 +148,8 @@ const LoginPage = () => {
     setIsUserLogged(Object.keys(user).length > 0)
   }, [user])
   return ( 
-    <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column',}} >
-      <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+  
+      <Box sx={{p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly'}}>
       {!isUserLogged? (<Login onLogin={handleLogin} />): (<UserInfos user={user} />)}
         {
         (!isUserLogged && !isFullCreated) ? (
@@ -159,7 +159,6 @@ const LoginPage = () => {
           </>
         ) :""
         }
-      </Box>
 
       
     </Box>

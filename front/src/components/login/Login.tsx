@@ -32,12 +32,12 @@ const Login = ({onLogin}:Props)=> {
   }, [email, password])
   
  return (
-  <>
+  <div className={Styles.Login}>
   <h1>Login</h1>
 
   
     <Box sx={{p: 2}} className={loginError ? Styles.error: ''}>
-       
+        
     
       <InputLabel htmlFor="email-login">Email address</InputLabel>
       <Input id="email-login" aria-describedby="my-helper-text" type="text" onKeyUp={(event)=>setEmail(event.currentTarget.value)}/>
@@ -52,8 +52,8 @@ const Login = ({onLogin}:Props)=> {
       <Button variant="outlined" onClick={handleLoginForm} >Se connecter</Button>
     </Box>
       
-  </>
+  </div>
 
  )
 }
-export default Login
+export default Login 

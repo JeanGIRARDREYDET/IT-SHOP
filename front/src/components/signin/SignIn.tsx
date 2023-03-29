@@ -21,7 +21,7 @@ type Props = {
 //   createdAt: Date
 // }
  
- 
+  
 const SignIn = ({onSignIn}:Props)=> {
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
@@ -49,8 +49,8 @@ const SignIn = ({onSignIn}:Props)=> {
   }
 
  return (
-  <>
-  <h2>Pas encore client ?</h2>
+  <div className={Styles.PasEncoreClient}>
+  <h1>Pas encore client ?</h1>
   
     <Box sx={{p: 2}}>
       <InputLabel htmlFor="email-signin">Email address</InputLabel>
@@ -72,7 +72,7 @@ const SignIn = ({onSignIn}:Props)=> {
       <Button variant="outlined" onClick={handleSignInForm} >Creer un compte</Button>
     </Box>
       
-  </>
+  </div>
 
  )
 }
