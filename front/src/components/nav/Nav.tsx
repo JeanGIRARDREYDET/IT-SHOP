@@ -17,6 +17,7 @@ import { getFromLocalStorage } from '../../utils/LocalStorage';
 import Cookies from 'js-cookie';
 import { ActionTypes } from '../../stores/CartStore';
 import Product from '../product/Product';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 // export interface IProduct {
 //   _id?: object | undefined;
@@ -124,7 +125,8 @@ const Nav = ({onSearch}: Props) => {
                 <Fragment>
                   <Typography color="inherit">{user.firstname && user.lastname ? `Bonjour ${user.firstname} ${user.lastname}`: ''}</Typography>
                     {user._id && (<><em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}</>)}
-                    {Cookies.get('user') && (<Button onClick={(e) => handleLogout(e)}>{'Se déconnecter '}</Button>)}
+                    {Cookies.get('user') && (<Button onClick={(e) => handleLogout(e)}><LogoutIcon className='flex' /></Button>)}
+                    
                 </Fragment>
               }>
                   <IconButton><PersonIcon color={user._id? 'success':'inherit'}/></IconButton>
