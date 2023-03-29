@@ -22,7 +22,7 @@ const Product = () => {
     const [{cart}, dispatch] = CartConsumerHook();
     const {data, err} = useFetch<IProduct>("products/" + id)
 
-    
+     
 
     const addToCart = () => {
 
@@ -41,12 +41,14 @@ const Product = () => {
         }
     }, [data]); // <- Changement ici, j'ai ajouté `data` comme dépendance
 
+    
+    
        return (
 
         <> 
              <Grid container className={Styles.ficheProduit}>
                
-                <Grid item xs={12} lg={6}>
+                <Grid className={product.images && product.images.length > 0 ? " " : Styles.productDecription} item xs={12} lg={ product.images && product.images.length > 0 ? 6 : 12}>
                     <Card sx={{ p: 2 }}>
                        
                        
@@ -58,8 +60,8 @@ const Product = () => {
                                 readOnly
                             />
                             {product.stock > 0 ? (
-                            <Box sx={{display: 'flex'}}>
-                                <CardActions className={Styles.buy} >
+                            <Box className={product.images && product.images.length > 0 ? " " : Styles.buy} sx={{display: 'flex'}}>
+                                <CardActions  >
                                     <Typography variant='h4' color="error">{product.price}€</Typography>
                                     <Button  sx={{m: 2}} size="small"  onClick={() => addToCart()}>
                                               Ajoutez au Paniez                                    
@@ -71,8 +73,8 @@ const Product = () => {
                             <>
                                 <div>
                                 <Typography variant='h4' color="error"> 
-                                Victime de son succès le produit est temporairement indisponible.
-                                    </Typography>
+                                        Victime de son succès le produit est        temporairement indisponible.
+                                </Typography>
                                 </div>
                                 <div>Il sera de nouveau disponible trés prochainement</div>
                                 <div>Merci de revenir plus tard.</div>
@@ -90,12 +92,13 @@ const Product = () => {
                     
                 </Grid>
 
-              
+     
+
                 <Grid item xs={12} lg={6}>
                  
                  <ProductImagesList productImages={product} />
                </Grid>
-
+                
                              
 
                 

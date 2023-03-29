@@ -19,11 +19,20 @@ const ProductImagesList = ({productImages}:Props)=>  {
       setPositionImage(index)
     }
 
+    console.log(productImages.images);
+    
 
     // Définition du chemin du produit
     const image_url="/src/assets/products/"+productImages._id+"/"
     return (
       <div className='Product-Detail'>
+
+        {
+          productImages && productImages.images && productImages.images.length > 0 ?
+          (
+            <>
+
+        
         {
            productImages && productImages.images  && productImages.images.map((image:string,index:Number) => (
             
@@ -47,8 +56,11 @@ const ProductImagesList = ({productImages}:Props)=>  {
             </Grid>
           )) 
         }
-    </Grid>
+    </Grid></>
+          ) : ""
+}
     </div>
+      
     );
   }
 export default ProductImagesList  

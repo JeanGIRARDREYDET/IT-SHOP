@@ -13,8 +13,12 @@
 }
 
 
-/* .buy{
- margin-right: 0.1em;
-
+.buy{
+justify-content: center;
 }
-  */
+ 
+
+  .productDecription{
+
+    text-align: center;
+  }
