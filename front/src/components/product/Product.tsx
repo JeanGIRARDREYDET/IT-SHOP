@@ -56,7 +56,7 @@ const Product = () => {
                             <h1>{product.name} </h1>
                             <Rating
                                 name="product-rating"
-                                value={product.rating}
+                                value={product.rating? product.rating: 0}
                                 readOnly
                             />
                             {product.stock > 0 ? (
