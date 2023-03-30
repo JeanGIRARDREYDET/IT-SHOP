@@ -45,6 +45,7 @@ nav ul li:hover {
 
 .logo{
   width: 70px;
+  filter: opacity(1) drop-shadow(0 0 0 white);
 }
 .cartProductNumber {
   position: absolute;
