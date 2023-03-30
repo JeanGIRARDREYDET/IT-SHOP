@@ -3,11 +3,18 @@
     cursor: pointer;
 }
 
-/* .input1{
+ .input1{
 
-    background-color: blue;
+    background-color: var(--secondary-color);;
 
-    border: 2px solid black;
+    border: 2px solid var(--secondary-color);;
     display: flex;
-} */
+} 
+.input1 .MuiAutocomplete-root{
+
+    background-color: var(--secondary-color);;
+
+    border: 2px solid var(--secondary-color);;
+    display: flex;
+} 
 
