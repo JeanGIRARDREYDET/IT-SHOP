@@ -22,12 +22,12 @@ const ProductImagesList = ({productImages}:Props)=>  {
     // Définition du chemin du produit
     const image_url="/src/assets/products/"+productImages._id+"/"
     return (
-      <div className='Product-Detail'>
+      <div className={Styles.ProductDetail}>
 
         { 
           productImages && productImages.images && productImages.images.length > 0 ?
           (
-            <> 
+            <div className={Styles.Images}> 
             {
               productImages && productImages.images  && productImages.images.map((image:string, index:Number) => (
             
@@ -50,7 +50,7 @@ const ProductImagesList = ({productImages}:Props)=>  {
             </Grid>
           )) 
         }
-    </Grid></>
+    </Grid></div>
           ) : ""
 }
     </div>
