@@ -14,7 +14,7 @@ const Products = () => {
   const [filter, setFilter] = useState({name: '', brand: '', category: '', rating: -1, priceRange: []})
 
   const {data, err} = useFetch<IProduct[] | []>('/products')
-
+  
   const handleFiltering = (filter: any) => {
     setFilter(f => ({...f, ...filter}))
   }
@@ -37,19 +37,25 @@ const Products = () => {
     }
   }
   const globalFilter = (ps: IProduct[]):IProduct[] | [] => {
+
+    console.log(filter)
+
     const fn = filter.name !== '' ? ps.filter(p => regName(p.name)) : ps
     const fb = filter.brand !== '' ? fn.filter(p => regBrand(p.brand)) : fn
     const fr = filter.rating !== -1 ? fb.filter(p => p.rating >= filter.rating) : fb
     const fc = filter.category !== '' ? fr.filter(p => p.categories.includes(filter.category)) : fr
     const fp = filter.priceRange.length === 2 ? fc.filter(p => p.price > filter.priceRange[0] && p.price < filter.priceRange[1]) : fc
-    return fp
+    console.log(fp.length)
+    return [...new Set(fp)]
   }
 
   useEffect(() => {
     if(err)
       console.log(err)
-    if(data)
+    if(data){
+
       setProds(p => [...p, ...data])
+    }
   }, [data]) 
     
   return (
@@ -58,8 +64,6 @@ const Products = () => {
     { 
       prods.length > 0 ? (
         <div>
-    
-
       <Box sx={{display:"flex", flexDirection:"column", alignItems:"center"}}>
         <h1>Nos produits</h1>
         <ProductFilter  products={prods} onFilter={handleFiltering} />

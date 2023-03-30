@@ -49,7 +49,7 @@ const ProductFilter = ({products, onFilter}: Props) => {
 
   const handleSelect = (e: SelectChangeEvent) => {
     setCategory(e.target.value as string);
-    setFilter({...filter, category: e.target.value})
+    setFilter({...filter, category: e.target.value === 'toutes' ? '': e.target.value})
 
   }
 
@@ -74,7 +74,6 @@ const ProductFilter = ({products, onFilter}: Props) => {
   }
 
   const submitFilter = () => {
-    //console.log(filter)
     onFilter(filter)
   }
 
@@ -97,6 +96,7 @@ const ProductFilter = ({products, onFilter}: Props) => {
         <FormControl fullWidth>
           <InputLabel id="category-select-label">Categories</InputLabel>
           <Select value={category} label="Categorie" onChange={handleSelect} >
+            <MenuItem value={'toutes'} key={'no category'}>{'toutes'}</MenuItem>
             {categories.map((category, index) => (
               <MenuItem value={category} key={category+index}>{category}</MenuItem>
             ))}
@@ -133,21 +133,3 @@ const ProductFilter = ({products, onFilter}: Props) => {
   )
 }
 export default ProductFilter
-
-{/*
-mui example
-<FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={age}
-    label="Age"
-    onChange={handleChange}
-  >
-    <MenuItem value={10}>Ten</MenuItem>
-    <MenuItem value={20}>Twenty</MenuItem>
-    <MenuItem value={30}>Thirty</MenuItem>
-  </Select>
-</FormControl>
-*/}
