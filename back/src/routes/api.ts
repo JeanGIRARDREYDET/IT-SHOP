@@ -2,7 +2,7 @@
 import { Router } from 'express';
 import jetValidator from 'jet-validator';
 
-import adminMw from './middleware/adminMw';
+import {guestMw, clientMw, adminMw} from './middleware/authMw';
 import Paths from './constants/Paths';
 import User from '@src/models/User';
 import AuthRoutes from './AuthRoutes';
