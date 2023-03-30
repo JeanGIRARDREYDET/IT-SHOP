@@ -2,7 +2,7 @@
 
   margin-top: 1rem;
   margin-left:25%;
-
+  margin-bottom:5rem;
 
   
   }
@@ -26,11 +26,10 @@
 
   .GrandeImage{
 
-    border: 1px solid black;
 
-    width: 35rem;
-    height: 35rem;
+    width: 100%;
+    height: auto;
   }
   .productDetail {
-
+    
   }

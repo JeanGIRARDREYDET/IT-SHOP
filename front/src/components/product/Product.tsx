@@ -46,10 +46,10 @@ const Product = () => {
        return (
 
         <> 
-             <Grid container className={Styles.ficheProduit}>
+             <Grid container className={Styles.ficheProduit} spacing={3} sx={{mt:1, mb: 7}}>
                
                 <Grid className={product.images && product.images.length > 0 ? " " : Styles.productDecription} item xs={12} lg={ product.images && product.images.length > 0 ? 6 : 12}>
-                    <Card sx={{ p: 2 }}>
+                    <Card sx={{ p: 2, height: '100%' }}>
                        
                        
                         <CardContent>
@@ -94,8 +94,10 @@ const Product = () => {
 
      
 
-                <Grid item xs={12} lg={6} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+                <Grid item xs={12} lg={6} >
+                <Card sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', height: '100%' }}>
                  <ProductImagesList productImages={product} />
+                 </Card>
                </Grid>
                 
                              
