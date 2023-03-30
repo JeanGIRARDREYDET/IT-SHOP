@@ -24,7 +24,7 @@ const ProductImagesList = ({productImages}:Props)=>  {
     return (
       <div className='Product-Detail'>
 
-        {
+        { 
           productImages && productImages.images && productImages.images.length > 0 ?
           (
             <> 
