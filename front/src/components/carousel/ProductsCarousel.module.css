@@ -1,0 +1,22 @@
+
+.footer{
+    height: 2rem;
+    position:absolute;
+    bottom:0;
+   
+}
+
+.Card{
+    border-radius: 1rem;
+    cursor: pointer;
+    position:relative;
+}
+.Card:hover{
+    transform: scale(1.1);
+}
+
+
+.like{
+
+    color:#022F5D
+}

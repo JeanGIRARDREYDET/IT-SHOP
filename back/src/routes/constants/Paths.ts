@@ -3,7 +3,7 @@
  */
 
 import { Immutable } from '@src/other/types';
-
+ 
 
 const Paths = {
   Base: '/api',
@@ -11,6 +11,7 @@ const Paths = {
     Base: '/auth',
     Login: '/login',
     Logout: '/logout',
+    
   },
   Users: {
     Base: '/users',
@@ -18,12 +19,11 @@ const Paths = {
     Add: '/add',
     Update: '/update',
     Delete: '/delete/:id',
-  },
+  },  
   Products: {
     Base: '/products',
-    Get: '/all',
+    Get: '',
     GetOne: '/:id',
-    Migrate: '/migrate/all',
     Add: '/add',
     Update: '/update',
     Delete: '/delete/:id',

@@ -1,0 +1,45 @@
+.Card{
+    margin: 1rem;
+    cursor: pointer;
+    position:relative;
+}
+.Card:hover{
+    transform: scale(1.1);
+}
+
+.images{
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+.title{
+    font-size: 1rem;
+    color: #012040;
+}
+ 
+
+.footer{
+    height: 5rem;
+    position:absolute;
+    bottom:0
+}
+
+.price{
+    color:#E22828;
+    display: inline;
+}
+
+.add{
+    color: #213547;
+
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 0.1rem;
+}
+
+.add:hover{
+    transform: scale(1.5);
+}

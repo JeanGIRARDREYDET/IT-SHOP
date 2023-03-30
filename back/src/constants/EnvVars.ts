@@ -14,7 +14,7 @@ export default {
   POST_MONGO_URL_MANUEL: (process.env.POST_MONGO_URL_MANUEL ?? ''),
   DATABASE: 'shop',
   CookieProps: {
-    Key: 'ExpressGeneratorTs',
+    Key: 'token',
     Secret: (process.env.COOKIE_SECRET ?? ''),
     // Casing to match express cookie options
     Options: {
@@ -23,7 +23,7 @@ export default {
       path: (process.env.COOKIE_PATH ?? ''),
       maxAge: Number(process.env.COOKIE_EXP ?? 0),
       domain: (process.env.COOKIE_DOMAIN ?? ''),
-      secure: (process.env.SECURE_COOKIE === 'true'),
+      secure: (process.env.SECURE_COOKIE === 'false'),
     },
   },
   Jwt: {

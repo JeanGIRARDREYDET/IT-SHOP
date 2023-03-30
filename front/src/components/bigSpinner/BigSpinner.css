@@ -1,0 +1,13 @@
+#big-spinner {
+  animation: rotate-icon 2s infinite linear;
+}
+
+
+@keyframes rotate-icon {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

@@ -1,0 +1,12 @@
+.errorEmail::after {
+  content: "veuiller vérifier votre email";
+  color: #DA5050; 
+}
+.errorPassword::after {
+  content: "veuiller vérifier votre mot de passe";
+  color: #DA5050; 
+}
+
+.TitreError{
+  color: #DA5050;
+}

@@ -5,6 +5,7 @@ import { RouteError } from '@src/other/classes';
 import jsonwebtoken from 'jsonwebtoken';
 
 import EnvVars from '../constants/EnvVars';
+import { IUser } from '@src/models/User';
 
 
 // **** Variables **** //
@@ -32,21 +33,33 @@ function getSessionData<T>(req: Request): Promise<string | T | undefined> {
   return _decode(jwt);
 }
 
+
+type IReturn = {
+ response :Response
+ data: any
+}
+
+async function getSessionDataClient<T>(req: Request): Promise<string | T | undefined> {
+  const { Key } = EnvVars.CookieProps,
+    jwt = req.signedCookies[Key];
+  return _decode(jwt);
+}
+
 /**
  * Add a JWT to the response 
  */
 async function addSessionData(
   res: Response,
-  data: string | object,
-): Promise<Response> {
+  data: object,
+): Promise<IReturn> {
   if (!res || !data) {
     throw new RouteError(HttpStatusCodes.BAD_REQUEST, Errors.ParamFalsey);
   }
-  // Setup JWT
-  const jwt = await _sign(data),
+  // Setup JWT token as cookie in header
+ const jwt = await _sign(data),
     { Key, Options } = EnvVars.CookieProps;
-  // Return
-  return res.cookie(Key, jwt, Options);
+    // res.cookie(Key, jwt,Options)
+  return { response: res.cookie(Key, jwt,Options), data:{...data, token:jwt}};
 }
 
 /**
@@ -88,5 +101,6 @@ function _decode<T>(jwt: string): Promise<string | undefined | T> {
 export default {
   addSessionData,
   getSessionData,
+  getSessionDataClient,
   clearCookie,
 } as const;

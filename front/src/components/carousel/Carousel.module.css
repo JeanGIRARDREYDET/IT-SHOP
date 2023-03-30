@@ -1,0 +1,21 @@
+.slick-slide {
+    height: 100vh;
+  }
+  .slick-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+
+.slider{
+  width: 90%;
+}
+
+.ImageCaroussel{
+
+  width: 400px;
+  height: 400px;
+  margin: 1rem;
+}

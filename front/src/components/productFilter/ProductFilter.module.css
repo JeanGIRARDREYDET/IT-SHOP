@@ -1,0 +1,20 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: .5rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #019DEB;
+  border-radius: 15px 15px;
+  width: 95%;
+} 
+@media (max-width: 950px) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .nav div {
+    margin-top: .3rem;
+    margin-bottom: .3rem;
+  }
+ }

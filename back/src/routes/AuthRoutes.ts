@@ -4,14 +4,13 @@ import AuthService from '@src/services/AuthService';
 
 import { IReq, IRes } from './types/express/misc';
 
-
 // **** Types **** //
 
 interface ILoginReq {
   email: string;
   password: string;
 }
-
+  
 
 // **** Functions **** //
 
@@ -23,17 +22,27 @@ async function login(req: IReq<ILoginReq>, res: IRes) {
   // Login
   const user = await AuthService.login(email, password);
   // Setup Admin Cookie
-  await SessionUtil.addSessionData(res, {
-    id: user.id,
+
+   const {response, data}  = await SessionUtil.addSessionData(res, {
+    _id: user._id,
     email: user.email,
     firstname: user.firstname,
     lastname: user.lastname,
     phone: user.phone,
     date_of_birth: user.date_of_birth,
     role: user.role,
+    bill_address : user.bill_address,
+    delivery_address:user.delivery_address
   });
+
+  // EnvVars.Jwt.Secret : Secret JWT du serveur.
+  // EnvVars.Jwt.Exp :
+  //let accessToken = jwt.sign({email: user.email, role: user.role}, EnvVars.Jwt.Secret , {expiresIn: EnvVars.Jwt.Exp});   
+  
   // Return
-  return res.status(HttpStatusCodes.OK).end();
+ // return res.status(HttpStatusCodes.OK).end();
+    
+ return response.status(HttpStatusCodes.OK).send(data)
 }
 
 /**

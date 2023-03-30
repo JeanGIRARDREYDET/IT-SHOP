@@ -1,7 +1,8 @@
+
 import { Router } from 'express';
 import jetValidator from 'jet-validator';
 
-import adminMw from './middleware/adminMw';
+import {guestMw, clientMw, adminMw} from './middleware/authMw';
 import Paths from './constants/Paths';
 import User from '@src/models/User';
 import AuthRoutes from './AuthRoutes';
@@ -22,7 +23,8 @@ const authRouter = Router();
 // Login user
 authRouter.post(
   Paths.Auth.Login,
-  validate('email', 'password'),
+  
+  // validate('email', 'password'),
   AuthRoutes.login,
 );
 
@@ -48,15 +50,16 @@ userRouter.get(
 
 // Add one user
 userRouter.post(
+  
   Paths.Users.Add,
-  validate(['user', User.IsUserObj]),
+  // validate(['user', User.IsUserObj]),
   UserRoutes.add,
 );
 
 // Update one user
 userRouter.put(
   Paths.Users.Update,
-  validate(['user', User.IsUserObj]),
+  // validate(['user', User.IsUserObj]),
   UserRoutes.update,
 );
 
@@ -68,7 +71,9 @@ userRouter.delete(
 );
 
 // Add UserRouter
-apiRouter.use(Paths.Users.Base, adminMw, userRouter);
+
+// adminMw,
+apiRouter.use(Paths.Users.Base, userRouter);
 
 
 //ADD PRODUCT ROUTER
@@ -85,23 +90,30 @@ productRouter.get(
   ProductRoutes.getOne,
 );
 
-productRouter.get(
-  Paths.Products.Migrate,
-  ProductRoutes.migrate,
-)
+// productRouter.get(
+//   Paths.Products.getMany,
+//   ProductRoutes.
+// )
+
+// productRouter.get(
+//   Paths.Products.Migrate,
+// );
 
 productRouter.post(
   Paths.Products.Add,
-  ProductRoutes.add,
+  // adminMw,
+  ProductRoutes.add, 
 );
 
-productRouter.patch(
+productRouter.put(
   Paths.Products.Update,
+  // adminMw,
   ProductRoutes.update,
 );
 
 productRouter.delete(
   Paths.Products.Delete,
+  // adminMw,
   ProductRoutes.delete,
 );
 

@@ -1,4 +1,4 @@
-import { Schema, model, connect } from 'mongoose';
+
 import { IUser } from '@src/models/User';
 import { UserSchema } from '@src/models/user-schema';
 
@@ -11,70 +11,57 @@ import orm from './MockOrm';
  * Get one user.
  */
 async function getOne(email: string): Promise<IUser | null> {
-  const db = await orm.openDb();
-  for (const user of db.users) {
-    if (user.email === email) {
-      return user;
-    }
-  }
-  return null;
+  const d = await UserSchema.findOne({email: email})
+
+
+  return d
+  
 }
 
 /**
  * See if a user with the given id exists.
  */
 async function persists(id: string): Promise<boolean> {
-  const db = await orm.openDb();
-  // for (const user of db.users) {
-  //   if (user.id === id) {
-  //     return true;
-  //   }
-  // }
-  return false;
+  const userres = await UserSchema.findById(id)
+
+  return userres?true:false;
 }
 
 /**
  * Get all users.
  */
 async function getAll(): Promise<IUser[]> {
-  const db = await orm.openDb();
-  return db.users;
+  const users = await UserSchema.find();
+  return users;
 }
 
 /**
  * Add one user.
  */
 async function add(user: IUser): Promise<void> {
-  const db = await orm.openDb();
-  db.users.push(user);
-  return orm.saveDb(db);
+  const res = await new UserSchema(user);
+  res.save()
+  console.log(res);
+}
+
+async function addOrder(): Promise<void> {
+  
 }
 
 /**
  * Update a user.
  */
 async function update(user: IUser): Promise<void> {
-  const db = await orm.openDb();
-  for (let i = 0; i < db.users.length; i++) {
-    if (db.users[i].id === user.id) {
-      db.users[i] = user;
-      return orm.saveDb(db);
-    }
-  }
+  const res = await UserSchema.updateOne(user);
+  console.log(res);
 }
 
 /**
  * Delete one user.
  */
 async function delete_(id: string): Promise<void> {
-  const db = await orm.openDb();
-  // for (let i = 0; i < db.users.length; i++) {
-  //   if (db.users[i].id === id) {
-  //     db.users.splice(i, 1);
-  //     return orm.saveDb(db);
-  //   }
-  // }
-
+  const res = await UserSchema.deleteOne({id: id})
+  console.log(res);
 }
 
 

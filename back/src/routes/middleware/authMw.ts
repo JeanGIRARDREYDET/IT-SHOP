@@ -42,7 +42,50 @@ async function adminMw(
     return next();
   // Return an unauth error if user is not an admin
   } else {
+    return res
+      .status(HttpStatusCodes.UNAUTHORIZED)
+      .json({ error: USER_UNAUTHORIZED_ERR });
+  }
+}
+
+async function clientMw(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  // Get session data
+  const sessionData = await SessionUtil.getSessionData<TSessionData>(req);
+  // Set session data to locals
+  if (
+    typeof sessionData === 'object' &&
+    sessionData?.role === UserRoles.Client
+  ) {
+    res.locals.sessionUser = sessionData;
     return next();
+  // Return an unauth error if user is not an admin
+  } else {
+    return res
+      .status(HttpStatusCodes.UNAUTHORIZED)
+      .json({ error: USER_UNAUTHORIZED_ERR });
+  }
+}
+
+async function guestMw(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  // Get session data
+  const sessionData = await SessionUtil.getSessionData<TSessionData>(req);
+  // Set session data to locals
+  if (
+    typeof sessionData === 'object' &&
+    sessionData?.role === UserRoles.Guest
+  ) {
+    res.locals.sessionUser = sessionData;
+    return next();
+  // Return an unauth error if user is not an admin
+  } else {
     return res
       .status(HttpStatusCodes.UNAUTHORIZED)
       .json({ error: USER_UNAUTHORIZED_ERR });
@@ -50,6 +93,7 @@ async function adminMw(
 }
 
 
+
 // **** Export Default **** //
 
-export default adminMw;
+export {guestMw, clientMw, adminMw};

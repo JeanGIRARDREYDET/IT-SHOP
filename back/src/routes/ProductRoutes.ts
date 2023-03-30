@@ -11,6 +11,7 @@ import { IReq, IRes } from './types/express/misc';
  * Get all products.
  */
 async function getAll(_: IReq, res: IRes) {
+  console.log('API PRODUCTS')
   const products = await ProductService.getAll();
 
   return res.status(HttpStatusCodes.OK).json(products);
@@ -18,7 +19,7 @@ async function getAll(_: IReq, res: IRes) {
 /**
  *  Get one product 
 
- */
+ */ 
 
 async function getOne(req: IReq, res: IRes) {
   const products = await ProductService.getOne(req.params.id? req.params.id: '');
@@ -26,28 +27,27 @@ async function getOne(req: IReq, res: IRes) {
   return res.status(HttpStatusCodes.OK).json(products);
 }
 
-/**
+/** 
  * Add one product.
  */
 async function add(req: IReq<{product: IProduct}>, res: IRes) {
   const { product } = req.body;
+  
   await ProductService.addOne(product);
   return res.status(HttpStatusCodes.CREATED).end();
 }
-
+ 
 /**
  * Migrate 
  */
-async function migrate(_: IReq, res: IRes) {
-  await ProductService.migrate();
-  return res.status(HttpStatusCodes.CREATED).end();
-}
 
 /**
  * Update one product.
  */
 async function update(req: IReq<{product: IProduct}>, res: IRes) {
   const { product } = req.body;
+  console.log('updating')
+  console.log(product)
   await ProductService.updateOne(product);
   return res.status(HttpStatusCodes.OK).end();
 }
@@ -68,7 +68,6 @@ export default {
   getAll,
   getOne,
   add,
-  migrate,
   update,
   delete: delete_,
 } as const;

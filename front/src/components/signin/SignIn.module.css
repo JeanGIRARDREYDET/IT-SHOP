@@ -1,0 +1,14 @@
+.TitreError{
+    color: #DA5050;
+  }
+
+  .errorPassword::after {
+    content: "mot de passe différents";
+    color: #DA5050; 
+  }
+  
+  .errorEmail::after {
+    content: "Veuillez entrez un email correct";
+    color: #DA5050; 
+  }
+  

@@ -26,6 +26,7 @@ export const Errors = {
  */
 async function login(email: string, password: string): Promise<IUser> {
   // Fetch user
+
   const user = await UserRepo.getOne(email);
   if (!user) {
     throw new RouteError(

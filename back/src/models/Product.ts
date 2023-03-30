@@ -7,7 +7,7 @@
 
 
 export interface IProduct {
-  id?: object | undefined;
+  _id?: object | undefined;
   name: string;
   brand: string;
   description: string;

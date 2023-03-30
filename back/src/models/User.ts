@@ -7,9 +7,9 @@ const INVALID_CONSTRUCTOR_PARAM = 'nameOrObj arg must a string or an object ' +
   'with the appropriate user keys.';
 
 export enum UserRoles {
-  Guest,
-  Client,
-  Admin,
+  Guest = "guest",
+  Client ="client",
+  Admin= "admin",
 }
 export enum OrderStatus {
   PENDING,
@@ -53,8 +53,19 @@ export interface IOrder {
   order_status: IOrderStatus;
 }
 
+export interface IUserSignin{
+  firstname: string;
+  lastname: string;
+  bill_address: string;
+  delivery_address: string;
+  email: string;
+  phone: string;
+  password:string;
+  date_of_birth: Date;
+}
+
 export interface IUser {
-  id: string;
+  _id?: string;
   firstname: string;
   lastname: string;
   bill_address: string;
@@ -64,7 +75,6 @@ export interface IUser {
   role?: UserRoles;
   phone: string;
   date_of_birth: Date;
-  cart: ICart;
   orders: IOrder[];
   createdAt: Date
 }
@@ -89,11 +99,11 @@ class User implements IUser {
   public role?: UserRoles;
   public pwdHash?: string;
   public phone: string;
+  public date_of_birth: Date;
   public bill_address: string;
+  public orders: IOrder[];
   public delivery_address: string;
   public cart: ICart;
-  public orders: IOrder[];
-  public date_of_birth: Date;
   public createdAt: Date;
   constructor(
 
@@ -104,12 +114,13 @@ class User implements IUser {
     date_of_birth: Date,
     email: string,
     bill_address: string,
+    orders: IOrder[],
     delivery_address: string,
     cart: ICart,
-    orders: IOrder[],
+    createdAt: Date,
+    id?: string,
     role?: UserRoles,
     pwdHash?: string,
-    id?: string,
   ) {
 
     this.id = (id?? '');
@@ -120,13 +131,12 @@ class User implements IUser {
     this.role = (role ?? UserRoles.Guest);
     this.pwdHash = (pwdHash ?? '');
     this.phone = phone;
-    this.bill_address = bill_address;
-    this.delivery_address = delivery_address;
-    this.cart = cart;
-    this.orders = orders;
     this.date_of_birth = date_of_birth;
-    this.createdAt = new Date();
-
+    this.bill_address = bill_address,
+    this.orders = orders,
+    this.delivery_address = delivery_address,
+    this.cart = cart,
+    this.createdAt = createdAt
 
     // throw new Error(INVALID_CONSTRUCTOR_PARAM);
 

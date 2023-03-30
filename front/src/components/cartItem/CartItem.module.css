@@ -1,0 +1,37 @@
+.image{
+
+   width:100px;
+   height: 100px;
+}
+
+
+.Item {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+  }
+   
+  .Item thead td:nth-child(1) {
+    width: 30%;
+  }
+  
+  .Item thead td:nth-child(2) {
+    width: 20%;
+  }
+  
+  .Item thead td:nth-child(3) {
+    width: 15%;
+  }
+  
+  .Item thead td:nth-child(4) {
+    width: 35%;
+  }
+  
+  .Item  td {
+    padding: 20px;
+  }
+
+  .ActionQuantities{
+  color: #213547;
+  margin: 0 .5rem;
+  }

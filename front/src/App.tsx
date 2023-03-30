@@ -1,35 +1,48 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Layout from './components/layout/Layout'
+import Home from './components/home/Home'
+import BigSpinner from './components/bigSpinner/BigSpinner'
+import { Routes, Route, Navigate } from "react-router-dom";
+import Products from './components/products/Products'
+import Login from './components/login/Login'
+import Cart from './components/cart/Cart'
+import Product from './components/product/Product'
+import ErrorPage from './pages/ErrorPage'
+import LoginPage from './pages/LoginPage'
+import { CartProvider } from './context/CartContext'
+import AdminPage from './pages/AdminPage'
+import CheckOutPage from './pages/CheckOutPage'
+import { CookiesProvider } from "react-cookie";
+//import path from 'path';
+//import dotenv from 'dotenv';
+//import { parse } from 'ts-command-line-args';
+
+console.log(import.meta.env.VITE_API_URL);
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
+    <CookiesProvider>
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+      <CartProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={ <Home /> }/>
+            <Route path="/products" element={ <Products /> } />
+            <Route path="/product/:id" element={ <Product />  } />
+            <Route path="/login" element={ <LoginPage /> } />
+            <Route path="/cart" element={ <Cart /> } />
+            <Route path="/admin" element={ <AdminPage /> } />
+            <Route path="/checkout" element={ <CheckOutPage /> } />
+            <Route path="/*" element={<ErrorPage />} /> 
+        </Routes>
+        </Layout>
+      </CartProvider>
     </div>
+    </CookiesProvider>
   )
 }
-
 export default App
