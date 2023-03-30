@@ -9,7 +9,7 @@ const UpdateProduct = () => {
   const [isProductForm, setisProductForm] = useState(false)
 
   const handleSearch = (event: SyntheticEvent<Element, Event>, value: IProduct | null) => {
-    setProduct(prev => ({...prev,...value}))
+    setProduct((prev: IProduct | null ) => ({...prev,...value}))
     setisProductForm(true)
     // return redirect(`/product/${value?._id}`)
   }
