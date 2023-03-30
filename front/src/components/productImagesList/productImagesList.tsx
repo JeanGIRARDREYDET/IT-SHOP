@@ -22,7 +22,7 @@ const ProductImagesList = ({productImages}:Props)=>  {
     // Définition du chemin du produit
     const image_url="/src/assets/products/"+productImages._id+"/"
     return (
-      <div className={Styles.ProductDetail}>
+      <div className={Styles.productDetail}>
 
         { 
           productImages && productImages.images && productImages.images.length > 0 ?

@@ -94,8 +94,7 @@ const Product = () => {
 
      
 
-                <Grid item xs={12} lg={6}>
-                 
+                <Grid item xs={12} lg={6} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
                  <ProductImagesList productImages={product} />
                </Grid>
                 
