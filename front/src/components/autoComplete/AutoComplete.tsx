@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Link } from 'react-router-dom';
-
+import Styles from './AutoComplete.module.css';
 
 type IFormattedProduct = {
   _id: any,
@@ -85,11 +85,12 @@ const CustomAutocomplete = ({onChange}: Props) => {
         <TextField
           {...params}
           label="Rechercher un produit"
+          className={Styles.search}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null }
+                {loading ? <CircularProgress color="secondary" size={20} /> : null }
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),

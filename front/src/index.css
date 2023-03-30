@@ -5,6 +5,12 @@
 
   /* color-scheme: light dark; */
   color: #213547;
+  --primary-color: #022F5D;
+  --secondary-color:#F6F4F4;
+  --terciary-color: #EEE8E8;
+  --quadtry-color:#019DEB;
+  --pentry-color: #E71616;
+
   background-color: rgba(229, 223, 223, 0.3);
 
   font-synthesis: none;
@@ -52,3 +58,19 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+header .MuiAutocomplete-root label{
+
+  color : var(--secondary-color)!important;
+  background-color: var(--primary-color);
+
+}
+
+header  .MuiAutocomplete-root div {
+
+  color : var(--secondary-color)!important;
+  border-color: var(--secondary-color)!important;
+  border-style: double;
+
+}
+
+
