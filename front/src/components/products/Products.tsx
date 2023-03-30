@@ -42,7 +42,7 @@ const Products = () => {
     const fr = filter.rating !== -1 ? fb.filter(p => p.rating >= filter.rating) : fb
     const fc = filter.category !== '' ? fr.filter(p => p.categories.includes(filter.category)) : fr
     const fp = filter.priceRange.length === 2 ? fc.filter(p => p.price > filter.priceRange[0] && p.price < filter.priceRange[1]) : fc
-    return [...new Set(fp)]
+    return [...new Set(fp.map(JSON.stringify))].map(JSON.parse)
   }
 
   useEffect(() => {
