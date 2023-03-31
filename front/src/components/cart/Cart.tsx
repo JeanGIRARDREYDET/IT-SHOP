@@ -11,6 +11,7 @@ type Props = {
   cartProducts: []
 }
 const Cart = ()=> {
+  // @ts-ignore
   const [{cart}, dispatch] = CartConsumerHook();
   const navigate = useNavigate();
   const [prixTotal, changePrix] = useState(0)

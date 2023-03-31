@@ -62,9 +62,9 @@ const SignIn = ({onSignIn}:Props)=> {
   const isSamePassword = () => {
     return password === password2
   }
-
-  const handlePassword = (e: FocusEvent) => {
-    const password2 = e.target.value
+  // @ts-ignore 
+  const handlePassword = (e: FocusEvent<HTMLInputElement>) => {
+    const password2 = e.target ? (e.target as HTMLInputElement).value : '';
     console.log(password2)
   }
 

@@ -10,13 +10,14 @@ type Props = {
 }
 
 const CartRecap = ({paiementInfos}: Props) => {
- const navigate = useNavigate()
+  const navigate = useNavigate()
+  // @ts-ignore
   const[{cart, user},] = CartConsumerHook();
   const [productCart, setproductCart] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [isValidCheckout, setIsValidCheckout] = useState(false)
 
-  const price:number = cart.reduce((acc, p) => acc + (p.price * p.quantity), 0)
+  const price:number = cart.reduce((acc: number, p:IProductCart) => acc + (p.price * p.quantity), 0)
   const isValid = () => user.delivery_address && cart && paiementInfos
   const handleCheckout = () => {
     const checkout = {
@@ -65,7 +66,7 @@ const CartRecap = ({paiementInfos}: Props) => {
             <Box className={Styles.item}>prix total</Box>
           </div>
 
-        {cart.map(product => (
+        {cart.map((product: IProductCart) => (
           <div className={Styles.row} key={product._id}>
 
             <Grid item xs={6}>

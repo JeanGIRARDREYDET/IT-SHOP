@@ -4,13 +4,13 @@ import { IUser } from '../types/user'
 import localStorageFunctions from '../hooks/useLocalStorageFunctions'
 import{getFromLocalStorage, saveToLocalStorage} from '../utils/LocalStorage'
 
-type IAction = {
+export type IAction = {
   type: string
   payload: IProduct,
 
 }
 
-type IState = {
+export type IState = {
   cart: IProductCart[],
   user: IUser
 }
@@ -50,14 +50,12 @@ const updatedProducts = (products: IProductCart[], payload: IProduct, action: st
 }
 
 export const initialCartState = {
-  cart: getFromLocalStorage()?.cart && getFromLocalStorage()?.cart.length > 0 ? getFromLocalStorage()?.cart: [],
-  user: getFromLocalStorage()?.user && Object.keys(getFromLocalStorage()?.user).length > 0 ? getFromLocalStorage()?.user: {}
+  cart: [],
+  user: null
 };
 
 export const cartReducer = (state: IState, action: IAction) => {
 
-    // Similar to useState but first arg is key to the value in local storage.
-  // const [name, setName] = useLocalStorage<string>("name", "Bob");
   // const [storedValue, setValue] = useLocalStorage<>()
  switch (action.type) {
      case ActionTypes.ADD_TO_CART:

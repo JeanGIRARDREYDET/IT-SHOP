@@ -6,15 +6,17 @@ type IPayload = {
   type: string
   payload: any 
 }
-type ILocalStorage = {
-  user: IUser | any,
-  cart: IProductCart[] | []
-}
-
-type ILocal = {
-  cart: IProductCart[] | null,
+type ILocalStorageUser = {
   user: IUser | null
 }
+type ILocalStorageCart = {
+  cart: IProductCart[] | []
+}
+type ILocalStorage = {
+  user: ILocalStorageUser ,
+  cart: ILocalStorageCart 
+}
+
 
 // Sauvegarder le panier dans le localStorage
 
@@ -32,14 +34,14 @@ const saveToLocalStorage = (action:IPayload) => {
 const getFromLocalStorage = (): ILocalStorage => {
     if (typeof window !== "undefined") {
       return ({
-        user: forceTypeString('user').hasOwnProperty('_id') ? JSON.parse(forceTypeString('user')): {},
+        user: forceTypeString('user').hasOwnProperty('_id') ? JSON.parse(forceTypeString('user')): null,
         cart: forceTypeString('cart').length > 0 ? JSON.parse(forceTypeString('cart')): []
       })
     } else {
       return (
         {
-          user: {},
-          cart: []
+          user: {user: null},
+          cart: {cart: []}
         }
       )
     }

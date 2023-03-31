@@ -41,8 +41,9 @@ const ProductCard = ({product}: Props) => {
 // const theme = useContext(ThemeContext);
   const [fetchRes, setFetchRes] = useState([])
   const [filter, setFilter] = useState({})
+  // @ts-ignore
   const [{cart}, dispatch] = CartConsumerHook();
-  
+  // @ts-ignore 
   const addProductToCart = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
@@ -55,7 +56,7 @@ const ProductCard = ({product}: Props) => {
   const url = 'http://localhost:3000/api/products'
   useEffect(() => {
     fetch(url).then(res => res.json()).then(result => {
-     // console.table(result)
+      // @ts-ignore
       setFetchRes(prev => [...prev, ...result])
     }
       )
@@ -88,6 +89,7 @@ const ProductCard = ({product}: Props) => {
 
             <Button color="error">{product.stock === 0 ? 'indisponible': product.price + '€'}</Button>
             <Button disabled={product.stock === 0} size="small">
+              {/* @ts-ignore */}
             {product.stock === 0 ? '': <AddShoppingCartIcon onClick={(e) => addProductToCart(e)} className={Style.add} />}
               </Button>
           </CardActions>

@@ -42,6 +42,7 @@ const Products = () => {
     const fr = filter.rating !== -1 ? fb.filter(p => p.rating >= filter.rating) : fb
     const fc = filter.category !== '' ? fr.filter(p => p.categories.includes(filter.category)) : fr
     const fp = filter.priceRange.length === 2 ? fc.filter(p => p.price > filter.priceRange[0] && p.price < filter.priceRange[1]) : fc
+    // @ts-ignore
     return [...new Set(fp.map(JSON.stringify))].map(JSON.parse)
   }
 
@@ -49,8 +50,8 @@ const Products = () => {
     if(err)
       console.log(err)
     if(data){
-
-      setProds(p => [...p, ...data])
+      // @ts-ignore
+      setProds((prods) => [...prods, ...data])
     }
   }, [data]) 
     
@@ -64,14 +65,8 @@ const Products = () => {
         <h1>Nos produits</h1>
         <ProductFilter  products={prods} onFilter={handleFiltering} />
         <Box sx={ {display: "flex", flexWrap: "wrap", justifyContent: "center", mt:2}} >
-          { globalFilter(prods).map((product, index) => {
-          //make the filtering logic here with filter
-            return (
-           
-              <ProductCard  product={product} key={index}/>
-
-            )
-          }) }
+          {/* @ts-ignore */}
+          { globalFilter(prods).map((product, index) => product && <ProductCard  product={product} key={index}/>) }
         </Box>
       </Box>
       </div>

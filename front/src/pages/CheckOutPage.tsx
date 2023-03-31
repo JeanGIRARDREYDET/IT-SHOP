@@ -6,6 +6,7 @@ import { CartConsumerHook } from "../context/CartContext";
 import { IPaiement } from "../types/user";
 
 const CheckOutPage = () => {
+  //@ts-ignore
   const [{user, cart}, dispatch] = CartConsumerHook();
   const [paiementMethod, setPaiementMethod] = useState('')
   const [paiementInfos, setPaiementInfos] = useState<IPaiement | null>(null)
@@ -25,8 +26,8 @@ const CheckOutPage = () => {
         <Button onClick={() => setPaiementMethod('cb')}>CB</Button>
         <Button onClick={() => setPaiementMethod('paypal')}>Paypal</Button>
       </ButtonGroup>}
-      {paiementMethod === 'cb' && paiementInfos === null && <CbForm onCBFill={handlePaiement} />}
-      {<CartRecap paiementInfos={paiementInfos} />}
+      {paiementMethod === 'cb' && !paiementInfos && <CbForm onCBFill={handlePaiement} />}
+      {paiementInfos && <CartRecap paiementInfos={paiementInfos} />}
       {/* choix du moyen, de paiement => select ou autre direct sur la page sur la page*/ } 
       {/*enregistrement des données bancaires  => composant dédié */ }
       {/* choix des adresses de livraison et ou facturation composant dédié p e*/ }

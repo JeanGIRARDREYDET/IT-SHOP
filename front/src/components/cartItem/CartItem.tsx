@@ -13,6 +13,7 @@ import { CartConsumerHook } from "../../context/CartContext";
 type Props = {product:IProductCart}
 
 const CartItem = ({product}:Props) => {
+    // @ts-ignore
     const [, dispatch] = CartConsumerHook();
     const images = `src/assets/products/${product._id}/${product.images[0]}`  
     

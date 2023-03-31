@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, Input, InputLabel, MenuItem, Select, SelectChangeEvent, Slider } from '@mui/material';
-import { useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, useState } from 'react';
 import { IProduct } from '../../types/product'
 import Styles from './ProductFilter.module.css'
 
@@ -28,7 +28,8 @@ const ProductFilter = ({products, onFilter}: Props) => {
   const [brand, setBrand] = useState('');
   const [rating, setRating] = useState(0);
   const categoriesRaw = products.map(product => [...product.categories])
-  const categoriesFlat = categoriesRaw.reduce((acc, currentCategory) => {
+  // @ts-ignore
+  const categoriesFlat = categoriesRaw.reduce((acc, currentCategory: string) => {
     if(currentCategory) return acc.concat(currentCategory)}, [])
   const categories = [...new Set(categoriesFlat.filter(cat => cat !== ''))]
   // FOR PRICE RANGE DATA --------------------------
@@ -37,7 +38,9 @@ const ProductFilter = ({products, onFilter}: Props) => {
       return product.price
     }
   )
+  // @ts-ignore
   const minPrice = Math.min(...rawPrices)
+  // @ts-ignore
   const maxPrice = Math.max(...rawPrices)
 
   const [price, setPrice] = useState<Number[]>([minPrice, maxPrice])
@@ -53,18 +56,18 @@ const ProductFilter = ({products, onFilter}: Props) => {
 
   }
 
-  const handleName = (e: KeyboardEvent) => {
+  const handleName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value as string)
     setFilter({...filter, name: e.target.value})
   }
 
-  const handleBrand = (e: KeyboardEvent) => {
+  const handleBrand = (e: ChangeEvent<HTMLInputElement>) => {
     setBrand(e.target.value)
-    setFilter({...filter, brand: e.target.value})
+    setFilter({...filter, brand: e.target.value as string})
   }
 
-  const handleRating = (e: SelectChangeEvent) => {
-    setRating(e.target.value)
+  const handleRating = (e: SelectChangeEvent<HTMLInputElement>) => {
+    setRating(+e.target.value)
     setFilter({...filter, rating: e.target.value})
   }
 
@@ -83,13 +86,13 @@ const ProductFilter = ({products, onFilter}: Props) => {
       <Box sx={{width: 150 }}>
         <FormControl fullWidth>
           <InputLabel id="name-input-label">Name</InputLabel>
-          <Input onKeyUp={handleName} placeholder="Name" />
+          <Input onChange={handleName} placeholder="Name" />
         </FormControl>
       </Box>
       <Box sx={{width: 150 }}>
         <FormControl fullWidth>
           <InputLabel id="brand-input-label">Brand</InputLabel>
-          <Input onKeyUp={handleBrand} placeholder="Brand" />
+          <Input onChange={handleBrand} placeholder="Brand" />
         </FormControl>
       </Box>
       <Box sx={{width: 150 }}>
@@ -106,6 +109,7 @@ const ProductFilter = ({products, onFilter}: Props) => {
       <Box sx={{width: 150 }}>
         <FormControl fullWidth>
           <InputLabel id="rating-select-label">Rating</InputLabel>
+          {/* @ts-ignore */}
           <Select value={rating} label="Rating" onChange={handleRating} >
             {ratings.map((rating, index) => (
               <MenuItem value={rating} key={rating+index}>{rating}</MenuItem>
@@ -116,6 +120,7 @@ const ProductFilter = ({products, onFilter}: Props) => {
       <Box sx={{ width: 200 }}>
         <FormControl fullWidth>
           <InputLabel id="rating-select-label">Price range</InputLabel>
+          { /* @ts-ignore */}
           <Slider
             value={price}
             onChange={handlePrice}

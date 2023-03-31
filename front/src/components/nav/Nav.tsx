@@ -59,13 +59,14 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 }));
 
 const Nav = ({onSearch}: Props) => {
+  //@ts-ignore
   const [{user, cart}, dispatch] = CartConsumerHook();
   const [isAdmin, setIsAdmin] = useState(true)
   
   const [articles_number, setArticles_number] = useState(0)
   const nbArticles = cart.reduce((acc: number, c: IProductCart) => acc + c.quantity, 0 )
-  
-  const handleLogout = (e: Event) => {
+  // @ts-ignore
+  const handleLogout = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
     dispatch({type: ActionTypes.UNSET_USER_SESSION})
@@ -85,7 +86,7 @@ const Nav = ({onSearch}: Props) => {
    }
 
 
-    if(!user._id && Cookies.get('user')) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user'))})
+    if(!user && Cookies.get('user')) dispatch({type:ActionTypes.SET_USER_SESSION,payload:JSON.parse(Cookies.get('user')?? '')})
     
     const localcart = getFromLocalStorage().cart.cart
     if(cart.length===0 && localcart && localcart.length>0){
@@ -98,7 +99,7 @@ const Nav = ({onSearch}: Props) => {
         
     } 
     setArticles_number(nbArticles)
-    setIsAdmin(Object.keys(user).length > 0 && user.role === 'admin'? true: false)
+    setIsAdmin(Object.keys(user?? {}).length > 0 && user.role === 'admin'? true: false)
 
   }, [user, cart])
  
@@ -110,6 +111,7 @@ const Nav = ({onSearch}: Props) => {
         </NavLink>
       </div>
       <div className={Style.searchshits}>
+        {/* @ts-ignore */}
         <SearchBar onSearch={handleSearch} />
       </div>
       
@@ -124,13 +126,14 @@ const Nav = ({onSearch}: Props) => {
             <HtmlTooltip
               title={
                 <Fragment>
-                  <Typography color="inherit">{user.firstname && user.lastname ? `Bonjour ${user.firstname} ${user.lastname}`: ''}</Typography>
-                    {user._id && (<><em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}</>)}
+                  <Typography color="inherit">{user && user.firstname && user.lastname ? `Bonjour ${user.firstname} ${user.lastname}`: ''}</Typography>
+                    {user && (<><em>{"Nous sommes"}</em> <b>{'TELLEMENT HEUREUX'}</b> <u>{'de vous revoir !'}</u>.{' '}</>)}
+                    {/* @ts-ignore */}
                     {Cookies.get('user') && (<Button onClick={(e) => handleLogout(e)}><LogoutIcon className='flex' /></Button>)}
                     
                 </Fragment>
               }>
-                  <IconButton><PersonIcon color={user._id? 'success':'inherit'} className={Style.userIcon} /></IconButton>
+                  <IconButton><PersonIcon color={user && user._id? 'success':'inherit'} className={Style.userIcon} /></IconButton>
               </HtmlTooltip>
           </NavLink>
           <NavLink className={Style.Link} to="/cart"><ShoppingCartIcon className='flex' />

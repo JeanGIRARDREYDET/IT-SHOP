@@ -5,6 +5,7 @@ import { IProduct } from "../../types/product"
 
 const Test = () => {
   const [products, setProducts] = useState<IProduct[] | [] >([])
+  // @ts-ignore 
   const [{cart}, dispatch] = CartConsumerHook();
 
   const remove = () => {

@@ -17,8 +17,9 @@ import { ActionTypes } from '../../stores/CartStore';
  
 const Product = () => {
     let { id } = useParams();
-    const [product, setProduct] = useState<IProduct>({});
+    const [product, setProduct] = useState<IProduct | any>({});
     const [error, setError] = useState({});
+    // @ts-ignore
     const [{cart}, dispatch] = CartConsumerHook();
     const {data, err} = useFetch<IProduct>("products/" + id)
 

@@ -27,7 +27,9 @@ const ProductForm = ( { product }: Props) => {
       name, 
       brand, 
       description, 
+      //@ts-ignore
       images: Array.isArray(images)? images : images.split(",").map(el => el.trim()), 
+      //@ts-ignore
       categories: Array.isArray(categories)? categories : categories.split(",").map(el => el.trim()), 
       price, 
       stock, 
@@ -54,7 +56,9 @@ const ProductForm = ( { product }: Props) => {
       name, 
       brand, 
       description, 
+      // @ts-ignore
       images: Array.isArray(images)? images : images.split(",").map(el => el.trim()), 
+      // @ts-ignore
       categories: Array.isArray(categories)? categories : categories.split(",").map(el => el.trim()), 
       price, 
       stock, 
@@ -75,7 +79,7 @@ const ProductForm = ( { product }: Props) => {
   }
 
  useEffect(()=>{
-  setID(product? product._id: '')
+  setID(product && product._id? product._id: '')
   setName(product? product.name: '')
   setBrand(product? product.brand: '')
   setDescription(product? product.description : '')
@@ -104,19 +108,23 @@ const ProductForm = ( { product }: Props) => {
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="images-product">Images</InputLabel>
-        <Input id="images-product" aria-describedby="my-helper-text" type="text"  placeholder="https://" value={images} onChange={(event)=>{setImages(event.currentTarget.value);
+        {/* @ts-ignore */}
+        <Input id="images-product" aria-describedby="my-helper-text" type="text"  placeholder="https://" value={images} onChange={(event)=>{setImages(event.currentTarget.value)
         }}  />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="categories-product">Catégories</InputLabel>
+                {/* @ts-ignore */}
         <Input id="categories-product" aria-describedby="my-helper-text" type="text" value ={categories} onChange={(event)=>setCategories(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="price-product">Prix</InputLabel>
+                {/* @ts-ignore */}
         <Input id="price-product" aria-describedby="my-helper-text" type="number" value={price} onChange={(event)=>setPrice(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>
         <InputLabel htmlFor="stock-product">Stock</InputLabel>
+                {/* @ts-ignore */}
         <Input id="stock-product" value ={stock} aria-describedby="my-helper-text" type="number" onChange={(event)=>setStock(event.currentTarget.value)} />
       </Box>
       <Box sx={{p: 2}}>

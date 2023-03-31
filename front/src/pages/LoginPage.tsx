@@ -46,6 +46,7 @@ const LoginPage = () => {
   const [isFullCreated, setIsFullCreated] = useState(false);
   const [credentials, setCredentials] = useState<ISignIn | null>(null);
   const [isUserLogged, setIsUserLogged] = useState(false)
+  // @ts-ignore
   const [{user}, dispatch] = CartConsumerHook();
 
   const handleLogin = (credentials: ILogin) => {
