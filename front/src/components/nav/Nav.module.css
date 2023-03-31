@@ -37,16 +37,21 @@ nav ul li:hover {
   padding: 0rem 1rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color:var(--secondary-color);
+  color: var(--secondary-color);
   display: flex;
   align-items: center;
 
 }
+.userIcon {
+  color: var(--secondary-color);
+}
 
 .logo{
   width: 70px;
-  filter: opacity(1) drop-shadow(0 0 0 white);
+  filter: invert(100%) sepia(50%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
 }
+
+
 .cartProductNumber {
   position: absolute;
   font-size: 0.6rem;

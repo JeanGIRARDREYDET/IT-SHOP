@@ -36,7 +36,7 @@ const SearchBar = ({onSearch}: Props) => {
       <CustomAutocomplete onChange={onSearch} />
     
  
-      <span><SearchIcon sx={{p: 2}} /></span>
+      <span className={Style.icon}><SearchIcon sx={{p: 2}} /></span>
       {/* <button className={Style.SearchIcone} onClick={handle}> 
       <SearchIcon  />
       </button> */}

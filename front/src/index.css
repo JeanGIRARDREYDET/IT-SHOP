@@ -8,7 +8,7 @@
   --primary-color: #022F5D;
   --secondary-color:#F6F4F4;
   --terciary-color: #EEE8E8;
-  --quadtry-color:#019DEB;
+  --quadtry-color: #019DEB;
   --pentry-color: #E71616;
 
   background-color: rgba(229, 223, 223, 0.3);
@@ -58,19 +58,20 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 header .MuiAutocomplete-root label{
 
-  color : var(--secondary-color)!important;
-  background-color: var(--primary-color);
-
+  color : var(--primary-color)!important;
+ 
 }
 
-header  .MuiAutocomplete-root div {
+header .MuiAutocomplete-root .MuiFormControl-root  {
 
-  color : var(--secondary-color)!important;
+  color : var(--primary-color)!important;
   border-color: var(--secondary-color)!important;
   border-style: double;
 
 }
+
 
 

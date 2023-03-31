@@ -75,7 +75,7 @@ const LoginPage = () => {
  //  const [cookies, setCookie] = useCookies(['token']);
  //Cookies.set('nomDuCookie', 'valeurDuCookie');
     
-    fetch(`${import.meta.env.VITE_API_URL}/auth/login`, requestOptions)
+    fetch(`${import.meta.env.VITE_API_URL}auth/login`, requestOptions)
     .then(res => {
       if(res.ok) {
         return res.json()

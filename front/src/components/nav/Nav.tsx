@@ -104,9 +104,9 @@ const Nav = ({onSearch}: Props) => {
  
   return (
     <nav className={Style.navigator}>
-      <div id="brandshits" className="">
-      <NavLink to="/">
-        <img className={Style.logo} src={Logo} alt=""/>
+      <div id="brand-container" className={Style.logoContainer}>
+        <NavLink to="/">
+          <img className={Style.logo} src={Logo} alt=""/>
         </NavLink>
       </div>
       <div className={Style.searchshits}>
@@ -117,7 +117,8 @@ const Nav = ({onSearch}: Props) => {
         <ul>
           { /*  or <li> via children ?  ADD ROUTER */ }
           <NavLink className={Style.Link} to="/products" >Produits</NavLink>
-          { isAdmin && <NavLink className={Style.Link} to="/admin"><AdminPanelSettingsIcon className='flex' /></NavLink> }
+          { isAdmin && <NavLink className={Style.Link} to="/admin"><AdminPanelSettingsIcon className={''} /></NavLink> }
+
           <NavLink className={Style.Link} to="/login">
 
             <HtmlTooltip
@@ -129,7 +130,7 @@ const Nav = ({onSearch}: Props) => {
                     
                 </Fragment>
               }>
-                  <IconButton><PersonIcon color={user._id? 'success':'inherit'}/></IconButton>
+                  <IconButton><PersonIcon color={user._id? 'success':'inherit'} className={Style.userIcon} /></IconButton>
               </HtmlTooltip>
           </NavLink>
           <NavLink className={Style.Link} to="/cart"><ShoppingCartIcon className='flex' />
