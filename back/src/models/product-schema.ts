@@ -1,5 +1,6 @@
-import { Schema, model } from 'mongoose';
+
 import { IProduct } from '@src/models/Product';
+import { Schema, model } from 'mongoose';
 
 const productSchema = new Schema<IProduct>({
   name: { type: String, required: true },
