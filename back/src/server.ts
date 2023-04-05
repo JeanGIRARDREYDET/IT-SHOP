@@ -100,41 +100,12 @@ console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..../front/dist")));
 
-// Set static directory (js and css).
-const staticDir = path.join(__dirname, 'public');
-const staticProdDir = path.join(__dirname, '../../front/dist')
-if (EnvVars.NodeEnv === NodeEnvs.Production) {
-  app.use(express.static(staticProdDir))
-} else {
-  app.use(express.static(staticDir));
-}
-
-
-// Nav to login pg by default
-app.get('/', (_: Request, res: Response) => {
-  res.render('home', { title: 'Express Typescript App' });
-});
-
-// app.get('/react/', (_: Request, res: Response) => {
-//   res.render('home', {} );
-// })
-
-// Nav to login pg by default
-app.get('/login', (_: Request, res: Response) => {
-  res.sendFile('login.html', { root: viewsDir });
-});
-
-// Redirect to login if not logged in.
-app.get('/users', (req: Request, res: Response) => {
-  const jwt = req.signedCookies[EnvVars.CookieProps.Key];
-  if (!jwt) {
-    res.redirect('/');
-  } else {
-    res.sendFile('users.html', {root: viewsDir});
-  }
-});
-
-
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "../../", "front", "dist", "index.html")
+    )
+  );
+} 
 // **** Export default **** //
 
 export default app;
