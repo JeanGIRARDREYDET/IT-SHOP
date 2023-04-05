@@ -40,11 +40,9 @@ const CartRecap = ({paiementInfos}: Props) => {
   }
   useEffect(() => {
     if(isValid()){
-      console.log('isvalid')
       setIsValidCheckout(true)
     }
     else{
-      console.log('is not valid')
       setIsValidCheckout(false)
     }
   setTotalPrice(price)

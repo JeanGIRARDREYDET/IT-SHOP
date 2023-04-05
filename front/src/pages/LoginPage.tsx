@@ -147,7 +147,7 @@ const LoginPage = () => {
     })
   }
   useEffect(() => {
-    setIsUserLogged(Object.keys(user).length > 0)
+    setIsUserLogged(user && Object.keys(user).length > 0)
   }, [user])
   return ( 
   
