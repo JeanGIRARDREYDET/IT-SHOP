@@ -1,6 +1,4 @@
-/**
- * Setup express server.
- */
+/** * Setup express server. */
 
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
@@ -22,15 +20,11 @@ import { NodeEnvs } from '@src/constants/misc';
 import { RouteError } from '@src/other/classes';
 import mongoConnection from './repos/mongo-connect';
 
-
-
-
 // **** Variables **** //
 
 const app = express();
 
 // ***** Types ****** //
-
 
 // **** Setup **** //
 app.set('view engine', 'pug');
@@ -46,6 +40,14 @@ app.use(cors())
 
 app.options('*', cors()) // include before other routes
 // Show routes called in console during development
+
+// Serve frontend
+if (process.env.NODE_ENV === "production") {
+  //app.use(morgan(''));
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  mongoConnection(EnvVars.PRE_MONGO_URL_MANUEL, EnvVars.POST_MONGO_URL_MANUEL, EnvVars.DATABASE);
+}
+
 if (EnvVars.NodeEnv === NodeEnvs.Dev) {
   app.use(morgan('dev'));
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -93,7 +95,12 @@ app.set('views', viewsDir);
 //set react views directory
 // const reactViewsDir = path.join(__dirname, 'views/react');
 // app.set('reactViews', reactViewsDir);
+// Serve frontend
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "..../front/dist")));
 
+<<<<<<< HEAD
 // Set static directory (js and css).
 const staticDir = path.join(__dirname, 'public');
 const staticProdDir = path.join(__dirname, '../../front/dist')
@@ -129,6 +136,14 @@ app.get('/users', (req: Request, res: Response) => {
 });
 
 
+=======
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "../../", "front", "dist", "index.html")
+    )
+  );
+} 
+>>>>>>> 2e71c0d8 (suppresion fichier in utile)
 // **** Export default **** //
 
 export default app;

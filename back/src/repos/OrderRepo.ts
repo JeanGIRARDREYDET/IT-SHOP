@@ -1,4 +1,5 @@
-import { IOrder } from '@src/models/Order';
+
+import IOrder from '@src/models/Order';
 import { OrderSchema } from '@src/models/order-schema';
 
 
