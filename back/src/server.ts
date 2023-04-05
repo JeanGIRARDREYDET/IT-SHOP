@@ -96,16 +96,22 @@ app.set('views', viewsDir);
 
 // Set static directory (js and css).
 const staticDir = path.join(__dirname, 'public');
-app.use(express.static(staticDir));
+const staticProdDir = path.join(__dirname, '../../front/dist')
+if (EnvVars.NodeEnv === NodeEnvs.Production) {
+  app.use(express.static(staticProdDir))
+} else {
+  app.use(express.static(staticDir));
+}
+
 
 // Nav to login pg by default
 app.get('/', (_: Request, res: Response) => {
   res.render('home', { title: 'Express Typescript App' });
 });
 
-app.get('/react/', (_: Request, res: Response) => {
-  res.render('home', {} );
-})
+// app.get('/react/', (_: Request, res: Response) => {
+//   res.render('home', {} );
+// })
 
 // Nav to login pg by default
 app.get('/login', (_: Request, res: Response) => {
