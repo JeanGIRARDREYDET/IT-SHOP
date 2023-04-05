@@ -96,7 +96,7 @@ app.set('views', viewsDir);
 // Serve frontend
 console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "..../front/dist")));
+  app.use(express.static(path.join(__dirname, "../../front/dist")));
 
   app.get("*", (req, res) =>
     res.sendFile(
