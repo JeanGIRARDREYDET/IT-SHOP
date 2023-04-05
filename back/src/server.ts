@@ -100,7 +100,6 @@ console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..../front/dist")));
 
-<<<<<<< HEAD
 // Set static directory (js and css).
 const staticDir = path.join(__dirname, 'public');
 const staticProdDir = path.join(__dirname, '../../front/dist')
@@ -136,14 +135,6 @@ app.get('/users', (req: Request, res: Response) => {
 });
 
 
-=======
-  app.get("*", (req, res) =>
-    res.sendFile(
-      path.resolve(__dirname, "../../", "front", "dist", "index.html")
-    )
-  );
-} 
->>>>>>> 2e71c0d8 (suppresion fichier in utile)
 // **** Export default **** //
 
 export default app;
