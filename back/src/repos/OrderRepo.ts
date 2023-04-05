@@ -1,6 +1,7 @@
 import { IOrder } from '@src/models/Order';
 import { OrderSchema } from '@src/models/order-schema';
 
+
 // **** Functions **** //
 
 /**
@@ -50,8 +51,8 @@ async function add(product: IOrder): Promise<void> {
 }
 
 async function migrate(): Promise<void> {
-  const res = await OrderSchema.insertMany(manyOrders);
-  console.log(res);
+ // const res = await OrderSchema.insertMany(manyOrders);
+ // console.log(res);
   
 }
 
