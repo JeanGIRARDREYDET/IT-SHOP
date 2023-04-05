@@ -1,10 +1,6 @@
 
-
 import { Schema, model, Types } from 'mongoose';
 import IOrder from './Order';
-
-
-
 
 const orderSchema = new Schema<IOrder>({
  // userID: { type:  Types.ObjectId, required: true },
